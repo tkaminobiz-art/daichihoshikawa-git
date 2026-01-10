@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { ArrowRight, X, Instagram, Facebook, Menu } from "lucide-react";
 
-// ▼ 1. アニメーション用コンポーネント（安全設計：w-fullを追加してレイアウト崩れを防止）
+// ▼ 1. アニメーション用コンポーネント
 const Reveal = ({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) => {
    const ref = useRef<HTMLDivElement>(null);
    const [isVisible, setIsVisible] = useState(false);
@@ -16,7 +16,7 @@ const Reveal = ({ children, delay = 0 }: { children: React.ReactNode; delay?: nu
                observer.disconnect();
             }
          },
-         { threshold: 0.1 } // 少しでも見えたら発火（スマホ対策）
+         { threshold: 0.1 }
       );
       if (ref.current) observer.observe(ref.current);
       return () => observer.disconnect();
@@ -114,8 +114,9 @@ const roadmap = [
 ];
 
 export default function Page() {
+   // TypeScript Fix: Explicitly type useState to allow Activity object or null
    const [selectedActivity, setSelectedActivity] = useState<Activity | null>(null);
-   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false); // スマホメニューの状態管理
+   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
    const toggleMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
    const navLinks = ['VISION', 'POLICY', 'ROADMAP', 'ACTIVITY', 'PROFILE'];
@@ -123,9 +124,7 @@ export default function Page() {
    return (
       <div className="flex min-h-screen text-[#0A1A3A] bg-gray-100 selection:bg-[#FF1A1A] selection:text-white font-sans">
 
-         {/* =================================================================
-          MOBILE HEADER (スマホ用ヘッダー：ここが復活しました！)
-         ================================================================= */}
+         {/* MOBILE HEADER */}
          <header className="lg:hidden fixed top-0 left-0 right-0 h-16 bg-[#0A1A3A] z-[60] flex items-center justify-between px-6 shadow-md text-white">
             <div className="font-serif font-bold text-lg tracking-widest">星川大地</div>
             <button onClick={toggleMenu} className="p-2">
@@ -162,9 +161,7 @@ export default function Page() {
             </div>
          )}
 
-         {/* =================================================================
-          LEFT SIDEBAR (PC Only)
-         ================================================================= */}
+         {/* LEFT SIDEBAR (PC Only) */}
          <aside className="hidden lg:flex fixed left-0 top-0 h-screen w-[25%] bg-[#F9F9F6] border-r border-gray-200 z-50 flex-col justify-between p-8 overflow-hidden">
             <div className="absolute inset-0 opacity-20 pointer-events-none" style={{ backgroundImage: "url('https://grainy-gradients.vercel.app/noise.svg')" }}></div>
             <div className="mt-12 relative z-10 writing-vertical-rl text-5xl font-serif tracking-widest font-black text-[#0A1A3A]">
@@ -175,9 +172,7 @@ export default function Page() {
             </div>
          </aside>
 
-         {/* =================================================================
-          CENTER COLUMN (Main Content)
-         ================================================================= */}
+         {/* CENTER COLUMN (Main Content) */}
          <main className="flex-1 lg:ml-[25%] lg:mr-[25%] bg-white relative z-40 shadow-[0_0_60px_rgba(0,0,0,0.2)] min-h-screen pb-20 pt-16 lg:pt-0">
 
             {/* HERO SECTION */}
@@ -202,24 +197,70 @@ export default function Page() {
             {/* CONTENT BODY */}
             <div className="px-6 md:px-12 py-24 space-y-32 bg-white">
 
-               {/* VISION */}
+               {/* VISION (★ C案：アンチグラビティ・ハイブリッドで刷新) */}
                <section id="vision">
                   <Reveal>
-                     <div className="flex items-center gap-4 mb-8">
+                     <div className="flex items-center gap-4 mb-16">
                         <span className="h-[2px] w-12 bg-[#FF1A1A]"></span>
                         <h3 className="text-sm font-bold tracking-widest text-[#FF1A1A]">VISION</h3>
                      </div>
-                     <h4 className="text-2xl lg:text-4xl font-serif font-bold mb-12 text-[#0A1A3A]">星川だいちが約束する<br />「3つの奈良」</h4>
+                     <h4 className="text-3xl md:text-4xl font-serif font-bold mb-20 text-[#0A1A3A] leading-relaxed">
+                        星川だいちが約束する<br />「3つの奈良」
+                     </h4>
                   </Reveal>
-                  <div className="grid gap-6">
-                     {["子どもと女性が安全・安心に暮らせる奈良", "「お金が落ちる」奈良", "災害でも「守り抜く」奈良"].map((item, i) => (
-                        <Reveal key={i} delay={i * 100}>
-                           <div className="group p-8 border border-gray-100 hover:border-[#FF1A1A] transition-all duration-300 shadow-sm hover:shadow-lg bg-gray-50/50">
-                              <span className="text-5xl font-black text-gray-200 block mb-2 group-hover:text-[#FF1A1A] transition-colors">0{i + 1}</span>
-                              <h5 className="text-lg lg:text-xl font-bold">{item}</h5>
+
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                     {/* Vision 01 */}
+                     <Reveal delay={100}>
+                        <div className="group relative h-[400px] border border-gray-200 overflow-hidden bg-[#F9F9F6] transition-all duration-500 hover:shadow-2xl hover:-translate-y-2">
+                           {/* 背景画像（薄く）- Image corrected to real file */}
+                           <img src="/images/activity_03.jpg" className="absolute inset-0 w-full h-full object-cover opacity-10 group-hover:opacity-20 transition-opacity duration-500 grayscale" alt="Safety" />
+                           <div className="absolute inset-0 p-8 flex flex-col justify-between z-10">
+                              <span className="text-6xl font-black text-gray-200/50 absolute top-4 right-4">01</span>
+                              {/* 縦書きタイトル */}
+                              <h5 className="writing-vertical-rl text-3xl font-serif font-bold text-[#0A1A3A] tracking-widest h-2/3 border-r-2 border-[#FF1A1A]/30 pr-4">
+                                 制度の「穴」を、<br /><span className="text-[#FF1A1A]">埋める。</span>
+                              </h5>
+                              <p className="text-sm font-medium text-gray-600 leading-relaxed border-t border-gray-300 pt-4 mt-auto">
+                                 子育て・防犯の現場にある「隙間」を、見守りカメラ助成やシッター支援という具体的な「制度」で塞ぎます。
+                              </p>
                            </div>
-                        </Reveal>
-                     ))}
+                        </div>
+                     </Reveal>
+
+                     {/* Vision 02 */}
+                     <Reveal delay={200}>
+                        <div className="group relative h-[400px] border border-gray-200 overflow-hidden bg-[#F9F9F6] transition-all duration-500 hover:shadow-2xl hover:-translate-y-2">
+                           {/* Image corrected to real file */}
+                           <img src="/images/activity_02.png" className="absolute inset-0 w-full h-full object-cover opacity-10 group-hover:opacity-20 transition-opacity duration-500 grayscale" alt="Economy" />
+                           <div className="absolute inset-0 p-8 flex flex-col justify-between z-10">
+                              <span className="text-6xl font-black text-gray-200/50 absolute top-4 right-4">02</span>
+                              <h5 className="writing-vertical-rl text-3xl font-serif font-bold text-[#0A1A3A] tracking-widest h-2/3 border-r-2 border-[#FF1A1A]/30 pr-4">
+                                 奈良の「宝」を、<br /><span className="text-[#FF1A1A]">磨く。</span>
+                              </h5>
+                              <p className="text-sm font-medium text-gray-600 leading-relaxed border-t border-gray-300 pt-4 mt-auto">
+                                 日本酒発祥の地、歴史遺産。あるものを活かし、滞在と消費を生む「産業」へと昇華させます。
+                              </p>
+                           </div>
+                        </div>
+                     </Reveal>
+
+                     {/* Vision 03 */}
+                     <Reveal delay={300}>
+                        <div className="group relative h-[400px] border border-gray-200 overflow-hidden bg-[#F9F9F6] transition-all duration-500 hover:shadow-2xl hover:-translate-y-2">
+                           {/* Image corrected to real file */}
+                           <img src="/images/activity_04.jpg" className="absolute inset-0 w-full h-full object-cover opacity-10 group-hover:opacity-20 transition-opacity duration-500 grayscale" alt="Disaster" />
+                           <div className="absolute inset-0 p-8 flex flex-col justify-between z-10">
+                              <span className="text-6xl font-black text-gray-200/50 absolute top-4 right-4">03</span>
+                              <h5 className="writing-vertical-rl text-3xl font-serif font-bold text-[#0A1A3A] tracking-widest h-2/3 border-r-2 border-[#FF1A1A]/30 pr-4">
+                                 命の「砦」を、<br /><span className="text-[#FF1A1A]">築く。</span>
+                              </h5>
+                              <p className="text-sm font-medium text-gray-600 leading-relaxed border-t border-gray-300 pt-4 mt-auto">
+                                 五條市を要とした防災拠点と、空飛ぶドローン網。災害時に確実に機能するインフラを整備します。
+                              </p>
+                           </div>
+                        </div>
+                     </Reveal>
                   </div>
                </section>
 
@@ -231,17 +272,17 @@ export default function Page() {
                            <span className="h-[2px] w-12 bg-[#FF1A1A]"></span>
                            <h3 className="text-sm font-bold tracking-widest text-[#FF1A1A]">POLICY</h3>
                         </div>
-                        <h4 className="text-2xl lg:text-4xl font-serif font-bold text-[#0A1A3A]">現場の声から生まれた、<br />5つの重点政策。</h4>
+                        <h4 className="text-3xl md:text-4xl font-serif font-bold text-[#0A1A3A]">現場の声から生まれた、<br />5つの重点政策。</h4>
                      </div>
                   </Reveal>
 
                   {/* Policy 01 */}
                   <Reveal>
                      <div className="relative group">
-                        <span className="absolute -top-12 -left-4 lg:-top-16 lg:-left-12 text-[100px] lg:text-[180px] font-black text-gray-100 select-none z-0 group-hover:text-red-50 transition-colors leading-none">01</span>
-                        <div className="relative z-10 pl-4 lg:pl-8 border-l-4 lg:border-l-8 border-[#FF1A1A]">
-                           <h5 className="text-xl lg:text-3xl font-bold mb-6 text-[#0A1A3A]">「守りの穴」を、<br />仕組みで塞ぐ。</h5>
-                           <ul className="space-y-4 text-sm lg:text-lg text-gray-700">
+                        <span className="absolute -top-16 -left-6 md:-left-12 text-[140px] md:text-[180px] font-black text-gray-100 select-none z-0 group-hover:text-red-50 transition-colors leading-none">01</span>
+                        <div className="relative z-10 pl-4 md:pl-8 border-l-0 md:border-l-8 border-[#FF1A1A]">
+                           <h5 className="text-2xl md:text-3xl font-bold mb-6 text-[#0A1A3A]">「守りの穴」を、<br />仕組みで塞ぐ。</h5>
+                           <ul className="space-y-4 text-base md:text-lg text-gray-700">
                               <li className="flex gap-3"><ArrowRight className="text-[#FF1A1A] shrink-0" /> 見守りカメラ設置の助成を確保・拡充</li>
                               <li className="flex gap-3"><ArrowRight className="text-[#FF1A1A] shrink-0" /> <span><strong className="text-[#FF1A1A] bg-red-50 px-1">ベビーシッター助成</strong>の前進</span></li>
                               <li className="flex gap-3"><ArrowRight className="text-[#FF1A1A] shrink-0" /> 児相・警察・行政の連携システム提言</li>
@@ -253,10 +294,10 @@ export default function Page() {
                   {/* Policy 02 */}
                   <Reveal>
                      <div className="relative group">
-                        <span className="absolute -top-12 -left-4 lg:-top-16 lg:-left-12 text-[100px] lg:text-[180px] font-black text-gray-100 select-none z-0 group-hover:text-[#0A1A3A]/5 transition-colors leading-none">02</span>
-                        <div className="relative z-10 pl-4 lg:pl-8 border-l-4 lg:border-l-8 border-[#0A1A3A]">
-                           <h5 className="text-xl lg:text-3xl font-bold mb-6 text-[#0A1A3A]">移動のストレスを減らし、<br />暮らしを快適に。</h5>
-                           <ul className="space-y-4 text-sm lg:text-lg text-gray-700">
+                        <span className="absolute -top-16 -left-6 md:-left-12 text-[140px] md:text-[180px] font-black text-gray-100 select-none z-0 group-hover:text-[#0A1A3A]/5 transition-colors leading-none">02</span>
+                        <div className="relative z-10 pl-4 md:pl-8 border-l-0 md:border-l-8 border-[#0A1A3A]">
+                           <h5 className="text-2xl md:text-3xl font-bold mb-6 text-[#0A1A3A]">移動のストレスを減らし、<br />暮らしを快適に。</h5>
+                           <ul className="space-y-4 text-base md:text-lg text-gray-700">
                               <li className="flex gap-3"><ArrowRight className="text-[#FF1A1A] shrink-0" /> 公共ライドシェアの積極導入を提言</li>
                               <li className="flex gap-3"><ArrowRight className="text-[#FF1A1A] shrink-0" /> 踏切課題の解消（近鉄・県・市の協議促進）</li>
                               <li className="flex gap-3"><ArrowRight className="text-[#FF1A1A] shrink-0" /> 道路環境の改善</li>
@@ -268,13 +309,13 @@ export default function Page() {
                   {/* Policy 03 */}
                   <Reveal>
                      <div className="relative group">
-                        <span className="absolute -top-12 -left-4 lg:-top-16 lg:-left-12 text-[100px] lg:text-[180px] font-black text-gray-100 select-none z-0 group-hover:text-red-50 transition-colors leading-none">03</span>
-                        <div className="relative z-10 pl-4 lg:pl-8 border-l-4 lg:border-l-8 border-[#FF1A1A]">
-                           <h5 className="text-xl lg:text-3xl font-bold mb-6 text-[#0A1A3A]">奈良は「来て終わり」じゃなく<br />「泊まって、食べて、楽しむ」へ。</h5>
-                           <div className="my-6 w-full h-48 lg:h-64 overflow-hidden rounded-lg">
+                        <span className="absolute -top-16 -left-6 md:-left-12 text-[140px] md:text-[180px] font-black text-gray-100 select-none z-0 group-hover:text-red-50 transition-colors leading-none">03</span>
+                        <div className="relative z-10 pl-4 md:pl-8 border-l-0 md:border-l-8 border-[#FF1A1A]">
+                           <h5 className="text-2xl md:text-3xl font-bold mb-6 text-[#0A1A3A]">奈良は「来て終わり」じゃなく<br />「泊まって、食べて、楽しむ」へ。</h5>
+                           <div className="my-6 w-full h-48 md:h-64 overflow-hidden rounded-lg">
                               <img src="/images/activity_02.png" alt="Sake" className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-500" />
                            </div>
-                           <ul className="space-y-4 text-sm lg:text-lg text-gray-700">
+                           <ul className="space-y-4 text-base md:text-lg text-gray-700">
                               <li className="flex gap-3"><ArrowRight className="text-[#FF1A1A] shrink-0" /> 平城宮跡南側に<strong className="text-[#FF1A1A] bg-red-50 px-1">「食のハブ拠点」</strong>を整備</li>
                               <li className="flex gap-3"><ArrowRight className="text-[#FF1A1A] shrink-0" /> 日本酒発祥の地ブランド戦略（酒米「奈良露」）</li>
                               <li className="flex gap-3"><ArrowRight className="text-[#FF1A1A] shrink-0" /> ふるさと納税の「コト消費」化</li>
@@ -286,10 +327,10 @@ export default function Page() {
                   {/* Policy 04 */}
                   <Reveal>
                      <div className="relative group">
-                        <span className="absolute -top-12 -left-4 lg:-top-16 lg:-left-12 text-[100px] lg:text-[180px] font-black text-gray-100 select-none z-0 group-hover:text-[#0A1A3A]/5 transition-colors leading-none">04</span>
-                        <div className="relative z-10 pl-4 lg:pl-8 border-l-4 lg:border-l-8 border-[#0A1A3A]">
-                           <h5 className="text-xl lg:text-3xl font-bold mb-6 text-[#0A1A3A]">現場で働く人を、<br />全力で支える。</h5>
-                           <ul className="space-y-4 text-sm lg:text-lg text-gray-700">
+                        <span className="absolute -top-16 -left-6 md:-left-12 text-[140px] md:text-[180px] font-black text-gray-100 select-none z-0 group-hover:text-[#0A1A3A]/5 transition-colors leading-none">04</span>
+                        <div className="relative z-10 pl-4 md:pl-8 border-l-0 md:border-l-8 border-[#0A1A3A]">
+                           <h5 className="text-2xl md:text-3xl font-bold mb-6 text-[#0A1A3A]">現場で働く人を、<br />全力で支える。</h5>
+                           <ul className="space-y-4 text-base md:text-lg text-gray-700">
                               <li className="flex gap-3"><ArrowRight className="text-[#FF1A1A] shrink-0" /> 介護・保育の処遇改善</li>
                               <li className="flex gap-3"><ArrowRight className="text-[#FF1A1A] shrink-0" /> 教職員／警察官の採用広報強化</li>
                            </ul>
@@ -300,13 +341,13 @@ export default function Page() {
                   {/* Policy 05 */}
                   <Reveal>
                      <div className="relative group">
-                        <span className="absolute -top-12 -left-4 lg:-top-16 lg:-left-12 text-[100px] lg:text-[180px] font-black text-gray-100 select-none z-0 group-hover:text-red-50 transition-colors leading-none">05</span>
-                        <div className="relative z-10 pl-4 lg:pl-8 border-l-4 lg:border-l-8 border-[#FF1A1A]">
-                           <h5 className="text-xl lg:text-3xl font-bold mb-6 text-[#0A1A3A]">備えは“買える”ように、<br />“見に行ける”ように。</h5>
-                           <div className="my-6 w-full h-48 lg:h-64 overflow-hidden rounded-lg">
+                        <span className="absolute -top-16 -left-6 md:-left-12 text-[140px] md:text-[180px] font-black text-gray-100 select-none z-0 group-hover:text-red-50 transition-colors leading-none">05</span>
+                        <div className="relative z-10 pl-4 md:pl-8 border-l-0 md:border-l-8 border-[#FF1A1A]">
+                           <h5 className="text-2xl md:text-3xl font-bold mb-6 text-[#0A1A3A]">備えは“買える”ように、<br />“見に行ける”ように。</h5>
+                           <div className="my-6 w-full h-48 md:h-64 overflow-hidden rounded-lg">
                               <img src="/images/activity_04.jpg" alt="Disaster Prevention" className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-500" />
                            </div>
-                           <ul className="space-y-4 text-sm lg:text-lg text-gray-700">
+                           <ul className="space-y-4 text-base md:text-lg text-gray-700">
                               <li className="flex gap-3"><ArrowRight className="text-[#FF1A1A] shrink-0" /> 災害時のドローン隊強化（契約・運用）</li>
                               <li className="flex gap-3"><ArrowRight className="text-[#FF1A1A] shrink-0" /> 消防学校（五條市）の防災拠点化</li>
                            </ul>
@@ -413,9 +454,7 @@ export default function Page() {
             </div>
          </main>
 
-         {/* =================================================================
-          RIGHT SIDEBAR (Fixed - PC Only)
-         ================================================================= */}
+         {/* RIGHT SIDEBAR (PC Only) */}
          <aside className="hidden lg:flex fixed right-0 top-0 h-screen w-[25%] bg-[#0A1A3A] text-white z-50 flex-col justify-between p-10 pt-20 shadow-2xl">
             <div className="absolute inset-0 opacity-5 pointer-events-none" style={{ backgroundImage: "url('https://www.transparenttextures.com/patterns/seigaiha.png')" }}></div>
             <nav className="relative z-10 flex flex-col gap-8">
@@ -427,7 +466,10 @@ export default function Page() {
                ))}
             </nav>
 
+            {/* SNS & CTA */}
             <div className="relative z-10 pb-8 space-y-8">
+
+               {/* LINE Button */}
                <a
                   href="https://lin.ee/n4zXBZ7"
                   target="_blank"
@@ -438,13 +480,17 @@ export default function Page() {
                   <div className="absolute inset-0 bg-white/20 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-500"></div>
                </a>
 
+               {/* Social Icons */}
                <div className="flex justify-center gap-6">
+                  {/* X (Twitter) */}
                   <a href="https://twitter.com/daichi_star/" target="_blank" rel="noopener noreferrer" className="text-white/60 hover:text-[#FF1A1A] transition-colors p-2 hover:bg-white/5 rounded-full">
                      <svg viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" /></svg>
                   </a>
+                  {/* Instagram */}
                   <a href="https://www.instagram.com/daichi_star12/" target="_blank" rel="noopener noreferrer" className="text-white/60 hover:text-[#FF1A1A] transition-colors p-2 hover:bg-white/5 rounded-full">
                      <Instagram className="w-6 h-6" />
                   </a>
+                  {/* Facebook */}
                   <a href="https://www.facebook.com/profile.php?id=100089702911147" target="_blank" rel="noopener noreferrer" className="text-white/60 hover:text-[#FF1A1A] transition-colors p-2 hover:bg-white/5 rounded-full">
                      <Facebook className="w-6 h-6" />
                   </a>
