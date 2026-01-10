@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { ArrowRight, X } from "lucide-react";
 
-// ▼ 活動報告データ（チラシ等の一次情報に基づき強化済み）
+// ▼ 活動報告データ
 interface Activity {
    id: number;
    title: string;
@@ -48,12 +48,38 @@ const activities: Activity[] = [
    }
 ];
 
-// ▼ 未来年表データ（ROADMAP）
+// ▼ 未来年表データ（チラシ情報を元に大幅補強）
 const roadmap = [
-   { year: "2025", title: "大阪・関西万博", subtitle: "奈良への誘致強化・「ALL NARA」での発信" },
-   { year: "2026", title: "広報戦略の革新", subtitle: "Vtuber「奈々鹿」活用による県政関心層の拡大" },
-   { year: "2028", title: "五條市防災拠点", subtitle: "コアゾーン整備完了・広域防災体制の確立" },
-   { year: "2031", title: "奈良国体・障スポ", subtitle: "トップアスリート育成成果とスポーツ文化の継承" },
+   {
+      year: "2025.04",
+      title: "防災ドローン協定 始動",
+      subtitle: "民間団体(JUIDA)・近鉄との連携開始",
+      description: "能登半島地震でも実績のある民間団体と連携し、山間部の多い奈良県での孤立地域把握や物資運搬体制を確立。平時の訓練も含めた実効性のある「空の防災網」を敷きます。"
+   },
+   {
+      year: "2025.10",
+      title: "日韓音楽交流・文化セミナー",
+      subtitle: "「なら100年会館」での国際発信",
+      description: "10月24日・25日に日韓の音楽交流イベントおよび文化セミナーを開催。奈良スーパーアプリとも連携し、奈良の文化力を世界へ発信する拠点づくりを進めます。"
+   },
+   {
+      year: "2026.03",
+      title: "Vtuber「奈々鹿」1万人計画",
+      subtitle: "広報戦略の革新とデータ分析",
+      description: "県公認Vtuberのフォロワー1万人達成を目標に、コラボ施策や効果分析を実施。単なるキャラ活用に留まらず、ふるさと納税や観光誘致に直結する「稼ぐ広報」へと進化させます。"
+   },
+   {
+      year: "2027",
+      title: "県文化会館 リニューアル",
+      subtitle: "「音にこだわる」舞台芸術の殿堂へ",
+      description: "民間活力を導入するコンセッション方式を採用し、施設運営権を長期間設定。税金に頼りすぎない運営モデルで、誰もが気軽に音楽に触れられる文化拠点を完成させます。"
+   },
+   {
+      year: "2031",
+      title: "奈良国体・障スポ",
+      subtitle: "ジュニアアスリート育成の集大成",
+      description: "2031年の地元開催を見据え、現在のジュニア世代への育成プログラムや競技力分析を強化。「観る」だけでなく「支える・参加する」スポーツ文化を奈良に根付かせます。"
+   }
 ];
 
 export default function Page() {
@@ -121,7 +147,7 @@ export default function Page() {
                      <h4 className="text-3xl md:text-4xl font-serif font-bold text-[#0A1A3A]">現場の声から生まれた、<br />5つの重点政策。</h4>
                   </div>
 
-                  {/* Policy 01 */}
+                  {/* Policy Items (01-05) */}
                   <div className="relative group">
                      <span className="absolute -top-16 -left-6 md:-left-12 text-[140px] md:text-[180px] font-black text-gray-100 select-none z-0 group-hover:text-red-50 transition-colors leading-none">01</span>
                      <div className="relative z-10 pl-4 md:pl-8 border-l-0 md:border-l-8 border-[#FF1A1A]">
@@ -134,7 +160,6 @@ export default function Page() {
                      </div>
                   </div>
 
-                  {/* Policy 02 */}
                   <div className="relative group">
                      <span className="absolute -top-16 -left-6 md:-left-12 text-[140px] md:text-[180px] font-black text-gray-100 select-none z-0 group-hover:text-[#0A1A3A]/5 transition-colors leading-none">02</span>
                      <div className="relative z-10 pl-4 md:pl-8 border-l-0 md:border-l-8 border-[#0A1A3A]">
@@ -147,7 +172,6 @@ export default function Page() {
                      </div>
                   </div>
 
-                  {/* Policy 03 */}
                   <div className="relative group">
                      <span className="absolute -top-16 -left-6 md:-left-12 text-[140px] md:text-[180px] font-black text-gray-100 select-none z-0 group-hover:text-red-50 transition-colors leading-none">03</span>
                      <div className="relative z-10 pl-4 md:pl-8 border-l-0 md:border-l-8 border-[#FF1A1A]">
@@ -163,7 +187,6 @@ export default function Page() {
                      </div>
                   </div>
 
-                  {/* Policy 04 */}
                   <div className="relative group">
                      <span className="absolute -top-16 -left-6 md:-left-12 text-[140px] md:text-[180px] font-black text-gray-100 select-none z-0 group-hover:text-[#0A1A3A]/5 transition-colors leading-none">04</span>
                      <div className="relative z-10 pl-4 md:pl-8 border-l-0 md:border-l-8 border-[#0A1A3A]">
@@ -175,7 +198,6 @@ export default function Page() {
                      </div>
                   </div>
 
-                  {/* Policy 05 */}
                   <div className="relative group">
                      <span className="absolute -top-16 -left-6 md:-left-12 text-[140px] md:text-[180px] font-black text-gray-100 select-none z-0 group-hover:text-red-50 transition-colors leading-none">05</span>
                      <div className="relative z-10 pl-4 md:pl-8 border-l-0 md:border-l-8 border-[#FF1A1A]">
@@ -191,33 +213,34 @@ export default function Page() {
                   </div>
                </section>
 
-               {/* ROADMAP (新セクション) */}
+               {/* ROADMAP (ボリュームアップ版) */}
                <section id="roadmap" className="pt-20 border-t border-gray-200">
                   <div className="flex items-center gap-4 mb-16">
                      <span className="h-[2px] w-12 bg-[#FF1A1A]"></span>
                      <h3 className="text-sm font-bold tracking-widest text-[#FF1A1A]">ROADMAP</h3>
                   </div>
 
-                  <div className="relative max-w-3xl mx-auto pl-8 md:pl-0">
+                  <div className="relative max-w-4xl mx-auto pl-8 md:pl-0">
                      {/* タイムラインの縦線 */}
                      <div className="absolute left-0 md:left-1/2 top-0 bottom-0 w-[2px] bg-gray-200 -translate-x-1/2"></div>
 
                      <div className="space-y-24">
                         {roadmap.map((item, index) => (
-                           <div key={index} className={`relative flex flex-col md:flex-row items-center ${index % 2 === 0 ? 'md:flex-row-reverse' : ''}`}>
+                           <div key={index} className={`relative flex flex-col md:flex-row items-start md:items-center ${index % 2 === 0 ? 'md:flex-row-reverse' : ''}`}>
 
                               {/* 丸ポチ */}
-                              <div className="absolute left-0 md:left-1/2 w-6 h-6 bg-[#FF1A1A] rounded-full border-4 border-white shadow-md z-10 -translate-x-1/2 transform transition-transform hover:scale-125"></div>
+                              <div className="absolute left-0 md:left-1/2 top-4 md:top-auto w-6 h-6 bg-[#FF1A1A] rounded-full border-4 border-white shadow-md z-10 -translate-x-1/2 transform transition-transform hover:scale-125"></div>
 
                               {/* スペーサー */}
                               <div className="hidden md:block md:w-1/2"></div>
 
                               {/* テキストコンテンツ */}
                               <div className={`w-full md:w-1/2 pl-12 md:pl-0 ${index % 2 === 0 ? 'md:pr-16 md:text-right' : 'md:pl-16 md:text-left'}`}>
-                                 <span className="text-6xl font-black text-gray-200 block -mb-4 relative z-0">{item.year}</span>
+                                 <span className="text-4xl md:text-5xl font-black text-gray-300 block mb-2">{item.year}</span>
                                  <div className="relative z-10">
-                                    <h4 className="text-2xl font-bold text-[#0A1A3A] mb-2">{item.title}</h4>
-                                    <p className="text-gray-600 font-medium border-l-4 md:border-l-0 border-[#FF1A1A] md:border-none pl-4 md:pl-0">{item.subtitle}</p>
+                                    <h4 className="text-xl md:text-2xl font-bold text-[#0A1A3A] mb-2">{item.title}</h4>
+                                    <p className="text-[#FF1A1A] font-bold text-sm mb-3">{item.subtitle}</p>
+                                    <p className="text-gray-600 text-sm leading-relaxed">{item.description}</p>
                                  </div>
                               </div>
                            </div>
@@ -231,7 +254,7 @@ export default function Page() {
                   </div>
                </section>
 
-               {/* ACTIVITY REPORT (ボタン＆ポップアップ) */}
+               {/* ACTIVITY REPORT */}
                <section id="activity" className="pt-32 border-t border-gray-200">
                   <div className="flex items-center gap-4 mb-12">
                      <span className="h-[2px] w-12 bg-[#FF1A1A]"></span>
