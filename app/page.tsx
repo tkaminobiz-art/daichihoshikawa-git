@@ -4,7 +4,16 @@ import React, { useState } from "react";
 import { ArrowRight, X } from "lucide-react";
 
 // ▼ 活動報告データ（チラシ等の「一次情報」に基づき、具体名・機種名を反映して強化）
-const activities = [
+interface Activity {
+   id: number;
+   title: string;
+   image: string;
+   category: string;
+   description: string;
+   date: string;
+}
+
+const activities: Activity[] = [
    {
       id: 1,
       title: "国際交流：サマルカンドとの架け橋",
@@ -40,7 +49,7 @@ const activities = [
 ];
 
 export default function Page() {
-   const [selectedActivity, setSelectedActivity] = useState(null);
+   const [selectedActivity, setSelectedActivity] = useState<Activity | null>(null);
 
    return (
       <div className="flex min-h-screen text-[#0A1A3A] bg-gray-100 selection:bg-[#FF1A1A] selection:text-white">
