@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { ArrowRight, X } from "lucide-react";
 
-// ▼ 活動報告データ（チラシ等の「一次情報」に基づき、具体名・機種名を反映して強化）
+// ▼ 活動報告データ（チラシ等の一次情報に基づき強化済み）
 interface Activity {
    id: number;
    title: string;
@@ -46,6 +46,14 @@ const activities: Activity[] = [
       description: "陸上自衛隊明野駐屯地にて、最新多用途ヘリ「UH-2 ハヤブサ」に体験試乗。さらに五條市の大規模防災拠点予定地を現地視察しました。机上の空論ではなく、「実際の災害時にヘリがどこに着陸し、物資をどうピストン輸送するか」という現場レベルの動線を徹底確認。県民の命を守るための「リアルな備え」を追求し続けています。",
       date: "2025.01.08"
    }
+];
+
+// ▼ 未来年表データ（ROADMAP）
+const roadmap = [
+   { year: "2025", title: "大阪・関西万博", subtitle: "奈良への誘致強化・「ALL NARA」での発信" },
+   { year: "2026", title: "広報戦略の革新", subtitle: "Vtuber「奈々鹿」活用による県政関心層の拡大" },
+   { year: "2028", title: "五條市防災拠点", subtitle: "コアゾーン整備完了・広域防災体制の確立" },
+   { year: "2031", title: "奈良国体・障スポ", subtitle: "トップアスリート育成成果とスポーツ文化の継承" },
 ];
 
 export default function Page() {
@@ -183,8 +191,48 @@ export default function Page() {
                   </div>
                </section>
 
-               {/* ACTIVITY REPORT (アップデート版) */}
-               <section id="activity" className="pt-20 border-t border-gray-200">
+               {/* ROADMAP (新セクション) */}
+               <section id="roadmap" className="pt-20 border-t border-gray-200">
+                  <div className="flex items-center gap-4 mb-16">
+                     <span className="h-[2px] w-12 bg-[#FF1A1A]"></span>
+                     <h3 className="text-sm font-bold tracking-widest text-[#FF1A1A]">ROADMAP</h3>
+                  </div>
+
+                  <div className="relative max-w-3xl mx-auto pl-8 md:pl-0">
+                     {/* タイムラインの縦線 */}
+                     <div className="absolute left-0 md:left-1/2 top-0 bottom-0 w-[2px] bg-gray-200 -translate-x-1/2"></div>
+
+                     <div className="space-y-24">
+                        {roadmap.map((item, index) => (
+                           <div key={index} className={`relative flex flex-col md:flex-row items-center ${index % 2 === 0 ? 'md:flex-row-reverse' : ''}`}>
+
+                              {/* 丸ポチ */}
+                              <div className="absolute left-0 md:left-1/2 w-6 h-6 bg-[#FF1A1A] rounded-full border-4 border-white shadow-md z-10 -translate-x-1/2 transform transition-transform hover:scale-125"></div>
+
+                              {/* スペーサー */}
+                              <div className="hidden md:block md:w-1/2"></div>
+
+                              {/* テキストコンテンツ */}
+                              <div className={`w-full md:w-1/2 pl-12 md:pl-0 ${index % 2 === 0 ? 'md:pr-16 md:text-right' : 'md:pl-16 md:text-left'}`}>
+                                 <span className="text-6xl font-black text-gray-200 block -mb-4 relative z-0">{item.year}</span>
+                                 <div className="relative z-10">
+                                    <h4 className="text-2xl font-bold text-[#0A1A3A] mb-2">{item.title}</h4>
+                                    <p className="text-gray-600 font-medium border-l-4 md:border-l-0 border-[#FF1A1A] md:border-none pl-4 md:pl-0">{item.subtitle}</p>
+                                 </div>
+                              </div>
+                           </div>
+                        ))}
+
+                        {/* 未来への矢印 */}
+                        <div className="absolute left-0 md:left-1/2 bottom-[-40px] -translate-x-1/2 text-gray-300">
+                           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="animate-bounce"><path d="M12 5v14M19 12l-7 7-7-7" /></svg>
+                        </div>
+                     </div>
+                  </div>
+               </section>
+
+               {/* ACTIVITY REPORT (ボタン＆ポップアップ) */}
+               <section id="activity" className="pt-32 border-t border-gray-200">
                   <div className="flex items-center gap-4 mb-12">
                      <span className="h-[2px] w-12 bg-[#FF1A1A]"></span>
                      <h3 className="text-sm font-bold tracking-widest text-[#FF1A1A]">ACTIVITY</h3>
@@ -244,7 +292,7 @@ export default function Page() {
          <aside className="hidden lg:flex fixed right-0 top-0 h-screen w-[25%] bg-[#0A1A3A] text-white z-50 flex-col justify-between p-10 pt-20 shadow-2xl">
             <div className="absolute inset-0 opacity-5 pointer-events-none" style={{ backgroundImage: "url('https://www.transparenttextures.com/patterns/seigaiha.png')" }}></div>
             <nav className="relative z-10 flex flex-col gap-8">
-               {['VISION', 'POLICY', 'ACTIVITY', 'PROFILE'].map((item) => (
+               {['VISION', 'POLICY', 'ROADMAP', 'ACTIVITY', 'PROFILE'].map((item) => (
                   <a key={item} href={`#${item.toLowerCase()}`} className="group flex items-center text-lg font-bold tracking-[0.2em] transition-all hover:text-[#FF1A1A]">
                      <span className="w-0 h-[2px] bg-[#FF1A1A] mr-0 group-hover:w-6 group-hover:mr-4 transition-all duration-300"></span>
                      {item}
