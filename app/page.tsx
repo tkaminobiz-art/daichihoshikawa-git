@@ -198,30 +198,36 @@ export default function Page() {
          {/* CENTER COLUMN (Main Content) */}
          <main className="flex-1 lg:ml-[25%] lg:mr-[25%] bg-white relative z-40 shadow-[0_0_60px_rgba(0,0,0,0.2)] min-h-screen pb-40 lg:pb-20 pt-16 lg:pt-0">
 
-            {/* HERO SECTION */}
-            <section className="relative h-[80vh] lg:h-[85vh] w-full bg-gray-900 overflow-hidden group">
-               <img src="/images/image_11.png" alt="Hero" className="absolute inset-0 w-full h-full object-cover opacity-90 transition-transform duration-[20s] ease-linear group-hover:scale-110" />
-               <div className="absolute inset-0 bg-gradient-to-t from-[#0A1A3A] via-transparent to-transparent opacity-95"></div>
+            {/* HERO SECTION (MOBILE OPTIMIZED) */}
+            <section className="relative h-[85vh] w-full bg-gray-900 overflow-hidden group">
+               <img
+                  src="/images/image_11.png"
+                  alt="Hero"
+                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-[20s] ease-linear group-hover:scale-110 lg:opacity-90 opacity-40"
+               />
+               <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-[#0A1A3A] lg:bg-gradient-to-t lg:from-[#0A1A3A] lg:via-transparent lg:to-transparent opacity-95"></div>
 
                {/* MOBILE PORTRAIT */}
                <img
                   src="/images/left-column.png"
                   alt="Portrait Mobile"
-                  className="lg:hidden absolute bottom-0 right-[-10%] w-[70%] max-w-[300px] object-contain object-bottom z-10 drop-shadow-2xl opacity-90"
+                  className="lg:hidden absolute bottom-0 right-[-5%] w-[80%] max-w-[350px] object-contain object-bottom z-10 drop-shadow-[0_0_30px_rgba(0,0,0,0.5)]"
                />
 
-               <div className="absolute bottom-12 left-6 right-6 lg:bottom-16 lg:left-12 lg:right-12 z-20">
+               <div className="absolute top-24 left-6 right-6 lg:top-auto lg:bottom-16 lg:left-12 lg:right-12 z-20">
                   <Reveal>
-                     <h2 className="text-white text-3xl lg:text-7xl font-serif font-black leading-tight drop-shadow-2xl mb-6 lg:mb-8 text-shadow">
+                     <h2 className="text-white text-4xl lg:text-7xl font-serif font-black leading-tight drop-shadow-2xl mb-6 lg:mb-8 tracking-wide">
                         事件が起きてから<br />動くのではなく、<br /><span className="text-[#FF1A1A]">事件が起きない奈良へ。</span>
                      </h2>
                   </Reveal>
                   <Reveal delay={200}>
-                     <p className="text-white/90 text-sm lg:text-lg leading-loose max-w-[60%] lg:max-w-2xl font-medium border-l-4 border-[#FF1A1A] pl-4 lg:pl-6 bg-black/30 lg:bg-transparent p-2 lg:p-0 backdrop-blur-sm lg:backdrop-blur-none rounded-r lg:rounded-none">
-                        元警察官として、現場で守ってきた。<br />
-                        次は、制度（しくみ）で守る。<br />
-                        それが星川だいちの決意です。
-                     </p>
+                     <div className="lg:border-l-4 lg:border-[#FF1A1A] lg:pl-6">
+                        <p className="text-white/90 text-sm lg:text-lg leading-loose font-medium drop-shadow-md">
+                           元警察官として、現場で守ってきた。<br />
+                           次は、制度（しくみ）で守る。<br />
+                           それが星川だいちの決意です。
+                        </p>
+                     </div>
                   </Reveal>
                </div>
             </section>
