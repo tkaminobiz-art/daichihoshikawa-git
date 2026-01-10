@@ -9,3 +9,14 @@
 ✓ Starting...
 ✓ Ready in 737ms
  GET / 200 in 574ms (compile: 421ms, render: 153ms)
+ GET / 200 in 254ms (compile: 120ms, render: 134ms)
+✓ Compiled in 888ms
+⚠ Fast Refresh had to perform a full reload when ./app/page.tsx changed. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+⚠ Fast Refresh had to perform a full reload when ./app/page.tsx changed. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ GET / 200 in 494ms (compile: 245ms, render: 249ms)
+ GET / 200 in 235ms (compile: 3ms, render: 232ms)
+ GET / 200 in 227ms (compile: 10ms, render: 217ms)
+ GET / 200 in 123ms (compile: 8ms, render: 115ms)
+ GET / 200 in 75ms (compile: 20ms, render: 56ms)
+✓ Compiled in 155ms
+ GET / 200 in 190ms (compile: 115ms, render: 76ms)
