@@ -1,26 +1,59 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+    --font-noto-sans-jp: "Noto Sans JP", sans-serif;
+    --font-noto-serif-jp: "Noto Serif JP", serif;
+    --font-montserrat: "Montserrat", sans-serif;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+    font-family: var(--font-noto-sans-jp);
+}
+
+.font-serif {
+    font-family: var(--font-noto-serif-jp);
+}
+
+.font-montserrat {
+    font-family: var(--font-montserrat);
+}
+
+/* Vertical Writing Mode */
+.writing-vertical {
+    writing-mode: vertical-rl;
+    text-orientation: upright;
+    font-feature-settings: "palt";
+}
+
+/* Force Noise Overlay */
+.bg-washi {
+    background-color: #F9F9F6;
+    position: relative;
+}
+
+.bg-washi::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    /* User requested specific noise URL pattern or similar high-quality noise */
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.4'/%3E%3C/svg%3E");
+    opacity: 0.4;
+    mix-blend-mode: multiply;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Deep Night Gradient & Glassmorphism */
+.bg-deep-night {
+    background: linear-gradient(to bottom, #050A18, #0A1A3A, #142850);
+}
+
+/* Text Mask for Cinematic Hero */
+.text-shadow-hero {
+    text-shadow: 0 4px 30px rgba(0, 0, 0, 0.9);
+}
+
+/* Smooth Parallax Base */
+.parallax-layer {
+    will-change: transform;
 }
