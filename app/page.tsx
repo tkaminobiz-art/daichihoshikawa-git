@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { ArrowRight, X } from "lucide-react";
+import { ArrowRight, X, Instagram, Facebook } from "lucide-react";
 
 // ▼ 活動報告データ
 interface Activity {
@@ -48,7 +48,7 @@ const activities: Activity[] = [
    }
 ];
 
-// ▼ 未来年表データ（チラシ情報を元に大幅補強）
+// ▼ 未来年表データ（ROADMAP）
 const roadmap = [
    {
       year: "2025.04",
@@ -147,7 +147,7 @@ export default function Page() {
                      <h4 className="text-3xl md:text-4xl font-serif font-bold text-[#0A1A3A]">現場の声から生まれた、<br />5つの重点政策。</h4>
                   </div>
 
-                  {/* Policy Items (01-05) */}
+                  {/* Policy 01 */}
                   <div className="relative group">
                      <span className="absolute -top-16 -left-6 md:-left-12 text-[140px] md:text-[180px] font-black text-gray-100 select-none z-0 group-hover:text-red-50 transition-colors leading-none">01</span>
                      <div className="relative z-10 pl-4 md:pl-8 border-l-0 md:border-l-8 border-[#FF1A1A]">
@@ -160,6 +160,7 @@ export default function Page() {
                      </div>
                   </div>
 
+                  {/* Policy 02 */}
                   <div className="relative group">
                      <span className="absolute -top-16 -left-6 md:-left-12 text-[140px] md:text-[180px] font-black text-gray-100 select-none z-0 group-hover:text-[#0A1A3A]/5 transition-colors leading-none">02</span>
                      <div className="relative z-10 pl-4 md:pl-8 border-l-0 md:border-l-8 border-[#0A1A3A]">
@@ -172,6 +173,7 @@ export default function Page() {
                      </div>
                   </div>
 
+                  {/* Policy 03 */}
                   <div className="relative group">
                      <span className="absolute -top-16 -left-6 md:-left-12 text-[140px] md:text-[180px] font-black text-gray-100 select-none z-0 group-hover:text-red-50 transition-colors leading-none">03</span>
                      <div className="relative z-10 pl-4 md:pl-8 border-l-0 md:border-l-8 border-[#FF1A1A]">
@@ -187,6 +189,7 @@ export default function Page() {
                      </div>
                   </div>
 
+                  {/* Policy 04 */}
                   <div className="relative group">
                      <span className="absolute -top-16 -left-6 md:-left-12 text-[140px] md:text-[180px] font-black text-gray-100 select-none z-0 group-hover:text-[#0A1A3A]/5 transition-colors leading-none">04</span>
                      <div className="relative z-10 pl-4 md:pl-8 border-l-0 md:border-l-8 border-[#0A1A3A]">
@@ -198,6 +201,7 @@ export default function Page() {
                      </div>
                   </div>
 
+                  {/* Policy 05 */}
                   <div className="relative group">
                      <span className="absolute -top-16 -left-6 md:-left-12 text-[140px] md:text-[180px] font-black text-gray-100 select-none z-0 group-hover:text-red-50 transition-colors leading-none">05</span>
                      <div className="relative z-10 pl-4 md:pl-8 border-l-0 md:border-l-8 border-[#FF1A1A]">
@@ -213,7 +217,7 @@ export default function Page() {
                   </div>
                </section>
 
-               {/* ROADMAP (ボリュームアップ版) */}
+               {/* ROADMAP */}
                <section id="roadmap" className="pt-20 border-t border-gray-200">
                   <div className="flex items-center gap-4 mb-16">
                      <span className="h-[2px] w-12 bg-[#FF1A1A]"></span>
@@ -221,20 +225,13 @@ export default function Page() {
                   </div>
 
                   <div className="relative max-w-4xl mx-auto pl-8 md:pl-0">
-                     {/* タイムラインの縦線 */}
                      <div className="absolute left-0 md:left-1/2 top-0 bottom-0 w-[2px] bg-gray-200 -translate-x-1/2"></div>
 
                      <div className="space-y-24">
                         {roadmap.map((item, index) => (
                            <div key={index} className={`relative flex flex-col md:flex-row items-start md:items-center ${index % 2 === 0 ? 'md:flex-row-reverse' : ''}`}>
-
-                              {/* 丸ポチ */}
                               <div className="absolute left-0 md:left-1/2 top-4 md:top-auto w-6 h-6 bg-[#FF1A1A] rounded-full border-4 border-white shadow-md z-10 -translate-x-1/2 transform transition-transform hover:scale-125"></div>
-
-                              {/* スペーサー */}
                               <div className="hidden md:block md:w-1/2"></div>
-
-                              {/* テキストコンテンツ */}
                               <div className={`w-full md:w-1/2 pl-12 md:pl-0 ${index % 2 === 0 ? 'md:pr-16 md:text-right' : 'md:pl-16 md:text-left'}`}>
                                  <span className="text-4xl md:text-5xl font-black text-gray-300 block mb-2">{item.year}</span>
                                  <div className="relative z-10">
@@ -245,8 +242,6 @@ export default function Page() {
                               </div>
                            </div>
                         ))}
-
-                        {/* 未来への矢印 */}
                         <div className="absolute left-0 md:left-1/2 bottom-[-40px] -translate-x-1/2 text-gray-300">
                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="animate-bounce"><path d="M12 5v14M19 12l-7 7-7-7" /></svg>
                         </div>
@@ -322,13 +317,37 @@ export default function Page() {
                   </a>
                ))}
             </nav>
-            <div className="relative z-10 pb-8">
-               <button className="w-full py-6 bg-[#FF1A1A] text-white font-bold text-lg tracking-widest shadow-[0_0_30px_rgba(255,26,26,0.6)] hover:scale-105 active:scale-95 transition-all mb-6">LINE 登録</button>
-               <div className="flex justify-center gap-6 mb-8">
-                  <a href="https://twitter.com/daichi_star/" target="_blank" rel="noopener noreferrer" className="hover:text-[#FF1A1A] transition-colors">
+
+            {/* SNS & CTA */}
+            <div className="relative z-10 pb-8 space-y-8">
+
+               {/* LINE Button */}
+               <a
+                  href="https://lin.ee/n4zXBZ7"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block w-full py-6 bg-[#FF1A1A] text-white font-bold text-lg tracking-widest shadow-[0_0_30px_rgba(255,26,26,0.6)] hover:scale-105 active:scale-95 transition-all text-center relative overflow-hidden group"
+               >
+                  <span className="relative z-10">LINE 登録</span>
+                  <div className="absolute inset-0 bg-white/20 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-500"></div>
+               </a>
+
+               {/* Social Icons */}
+               <div className="flex justify-center gap-6">
+                  {/* X (Twitter) */}
+                  <a href="https://twitter.com/daichi_star/" target="_blank" rel="noopener noreferrer" className="text-white/60 hover:text-[#FF1A1A] transition-colors p-2 hover:bg-white/5 rounded-full">
                      <svg viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" /></svg>
                   </a>
+                  {/* Instagram */}
+                  <a href="https://www.instagram.com/daichi_star12/" target="_blank" rel="noopener noreferrer" className="text-white/60 hover:text-[#FF1A1A] transition-colors p-2 hover:bg-white/5 rounded-full">
+                     <Instagram className="w-6 h-6" />
+                  </a>
+                  {/* Facebook */}
+                  <a href="https://www.facebook.com/profile.php?id=100089702911147" target="_blank" rel="noopener noreferrer" className="text-white/60 hover:text-[#FF1A1A] transition-colors p-2 hover:bg-white/5 rounded-full">
+                     <Facebook className="w-6 h-6" />
+                  </a>
                </div>
+
                <div className="text-xs text-gray-400 opacity-60 space-y-2 text-center">
                   <p>日本維新の会 奈良県総支部</p>
                   <p>事務所: 奈良市青野町1-4-27</p>
