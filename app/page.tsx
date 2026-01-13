@@ -334,13 +334,57 @@ export default function Page() {
                      </h4>
                   </Reveal>
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative z-10">
-                     {["制度の「穴」を、埋める。", "奈良の「宝」を、磨く。", "命の「砦」を、築く。"].map((title, i) => (
+                     {[
+                        {
+                           title: "制度の「穴」を、", title2: "埋める。",
+                           sub: "誰ひとり取り残さない、鉄壁の守り。",
+                           desc: "子育てや防犯の現場には、制度の挟間で苦しむ人がいます。精神論ではなく「具体的な仕組み」で、その隙間を確実に埋めます。",
+                           tags: ["見守りカメラ", "シッター助成"]
+                        },
+                        {
+                           title: "奈良の「宝」を、", title2: "磨く。",
+                           sub: "歴史を「稼ぐ力」へ。文化観光の産業化。",
+                           desc: "日本酒発祥の地や古都の景観。これらを単なる遺産で終わらせず、滞在と消費を生む「産業」へと昇華させます。",
+                           tags: ["酒蔵ツーリズム", "食のハブ拠点"]
+                        },
+                        {
+                           title: "命の「砦」を、", title2: "築く。",
+                           sub: "陸の孤立を空から救う、次世代の防災網。",
+                           desc: "能登半島地震の教訓を活かし、五條市を拠点とした広域防災ベースと、ドローン物流網を構築し、命を繋ぐインフラを築きます。",
+                           tags: ["五條防災拠点", "ドローン物流"]
+                        }
+                     ].map((v, i) => (
                         <Reveal key={i} delay={i * 100}>
-                           <div className="group relative h-[400px] border border-gray-200 overflow-hidden bg-[#F9F9F6] transition-all duration-500 hover:shadow-2xl hover:-translate-y-2">
-                              <img src={visionImages[i]} className="absolute inset-0 w-full h-full object-cover opacity-10 group-hover:opacity-20 transition-opacity duration-500 grayscale" />
-                              <div className="absolute inset-0 p-8 flex flex-col justify-between z-10">
-                                 <span className="text-6xl font-black text-gray-200/50 absolute top-4 right-4">0{i + 1}</span>
-                                 <h5 className="writing-vertical-rl text-3xl font-serif font-bold text-[#0A1A3A] tracking-wider my-auto border-r-2 border-[#FF1A1A]/30 pr-6 leading-loose" dangerouslySetInnerHTML={{ __html: title.replace("、", "<span class='text-[#FF1A1A]'>") + "</span>" }} />
+                           <div className="group relative h-[500px] border border-gray-200 overflow-hidden bg-[#F9F9F6] transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 flex flex-col">
+                              <img src={visionImages[i]} className="absolute inset-0 w-full h-full object-cover opacity-10 group-hover:opacity-15 transition-opacity duration-500 grayscale" />
+
+                              {/* Number */}
+                              <span className="text-7xl font-black text-[#0A1A3A]/5 absolute top-2 right-4 z-0 group-hover:text-[#FF1A1A]/10 transition-colors">0{i + 1}</span>
+
+                              <div className="relative z-10 p-8 flex-1 flex flex-col">
+                                 {/* Vertical Slogan */}
+                                 <div className="flex-1 flex items-center justify-center py-6">
+                                    <h5 className="writing-vertical-rl text-3xl font-serif font-bold text-[#0A1A3A] tracking-wider border-r-2 border-[#FF1A1A]/30 pr-6 leading-loose shadow-[4px_0_0_0_rgba(255,255,255,0.8)]">
+                                       {v.title}<span className="text-[#FF1A1A]">{v.title2}</span>
+                                    </h5>
+                                 </div>
+
+                                 {/* Detailed Description */}
+                                 <div className="mt-auto space-y-4">
+                                    <h6 className="text-[#FF1A1A] font-bold text-xs tracking-widest border-b border-[#FF1A1A]/20 pb-2 mb-2">
+                                       {v.sub}
+                                    </h6>
+                                    <p className="text-sm font-medium text-gray-700 leading-loose text-justify">
+                                       {v.desc}
+                                    </p>
+                                    <div className="flex flex-wrap gap-2 pt-2">
+                                       {v.tags.map((tag, t) => (
+                                          <span key={t} className="text-[10px] font-bold bg-[#0A1A3A] text-white px-2 py-1 rounded-sm">
+                                             # {tag}
+                                          </span>
+                                       ))}
+                                    </div>
+                                 </div>
                               </div>
                            </div>
                         </Reveal>
