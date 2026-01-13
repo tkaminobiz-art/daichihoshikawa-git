@@ -4,6 +4,9 @@ import React, { useState, useEffect, useRef, useCallback } from "react";
 import { ArrowRight, X, Instagram, Facebook, Menu, ChevronDown, ChevronUp, Quote } from "lucide-react";
 
 import { motion } from "framer-motion";
+import { TextReveal } from "@/components/anim/TextReveal";
+import { Parallax } from "@/components/anim/Parallax";
+import { Magnetic } from "@/components/anim/Magnetic";
 
 // ▼ 0. オープニング演出コンポーネント (NEW!)
 const Particles = () => {
@@ -228,9 +231,11 @@ export default function Page() {
          {/* MOBILE HEADER */}
          <header className={`lg:hidden fixed top-0 left-0 right-0 h-16 bg-[#0A1A3A] z-[60] flex items-center justify-between px-6 shadow-md text-white transition-transform duration-700 ${loadingComplete ? 'translate-y-0' : '-translate-y-full'}`}>
             <div className="font-serif font-bold text-lg tracking-widest">星川大地</div>
-            <button onClick={toggleMenu} className="p-2">
-               {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
+            <Magnetic>
+               <button onClick={toggleMenu} className="p-2">
+                  {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+               </button>
+            </Magnetic>
          </header>
 
          {/* MOBILE MENU OVERLAY */}
@@ -327,7 +332,7 @@ export default function Page() {
                   <Reveal>
                      <div className="flex items-center gap-4 mb-16 relative z-10">
                         <span className="h-[2px] w-12 bg-[#FF1A1A]"></span>
-                        <h3 className="text-sm font-bold tracking-widest text-[#FF1A1A]">VISION</h3>
+                        <TextReveal className="text-sm font-bold tracking-widest text-[#FF1A1A]">VISION</TextReveal>
                      </div>
                      <h4 className="text-3xl md:text-4xl font-serif font-bold mb-20 text-[#0A1A3A] leading-relaxed relative z-10">
                         星川だいちが約束する<br />「3つの奈良」
@@ -356,7 +361,9 @@ export default function Page() {
                      ].map((v, i) => (
                         <Reveal key={i} delay={i * 100}>
                            <div className="group relative h-[500px] border border-gray-200 overflow-hidden bg-[#F9F9F6] transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 flex flex-col">
-                              <img src={visionImages[i]} className="absolute inset-0 w-full h-full object-cover opacity-10 group-hover:opacity-15 transition-opacity duration-500 grayscale" />
+                              <Parallax className="absolute inset-0 w-full h-full z-0" offset={20}>
+                                 <img src={visionImages[i]} className="absolute inset-0 w-full h-[120%] object-cover opacity-10 group-hover:opacity-15 transition-opacity duration-500 grayscale" />
+                              </Parallax>
 
                               {/* Number */}
                               <span className="text-7xl font-black text-[#0A1A3A]/5 absolute top-2 right-4 z-0 group-hover:text-[#FF1A1A]/10 transition-colors">0{i + 1}</span>
@@ -397,7 +404,7 @@ export default function Page() {
                   <Reveal>
                      <div className="flex items-center gap-4 mb-16">
                         <span className="h-[2px] w-12 bg-[#FF1A1A]"></span>
-                        <h3 className="text-sm font-bold tracking-widest text-[#FF1A1A]">POLICY</h3>
+                        <TextReveal className="text-sm font-bold tracking-widest text-[#FF1A1A]">POLICY</TextReveal>
                      </div>
                      <h4 className="text-3xl md:text-4xl font-serif font-bold mb-16 text-[#0A1A3A]">現場の声から生まれた、<br />5つの重点政策。</h4>
                   </Reveal>
@@ -430,7 +437,7 @@ export default function Page() {
                   <Reveal>
                      <div className="flex items-center gap-4 mb-16 relative z-10">
                         <span className="h-[2px] w-12 bg-[#FF1A1A]"></span>
-                        <h3 className="text-sm font-bold tracking-widest text-[#FF1A1A]">RESULTS</h3>
+                        <TextReveal className="text-sm font-bold tracking-widest text-[#FF1A1A]">RESULTS</TextReveal>
                      </div>
                      <h4 className="text-3xl md:text-4xl font-serif font-bold mb-20 text-[#0A1A3A] relative z-10">
                         口先だけでなく、<br /><span className="text-[#FF1A1A] border-b-4 border-[#FF1A1A]/20">「結果」</span>で証明する。
@@ -470,7 +477,7 @@ export default function Page() {
                   <Reveal>
                      <div className="flex items-center gap-4 mb-16 relative z-10">
                         <span className="h-[2px] w-12 bg-[#FF1A1A]"></span>
-                        <h3 className="text-sm font-bold tracking-widest text-[#FF1A1A]">ASSEMBLY</h3>
+                        <TextReveal className="text-sm font-bold tracking-widest text-[#FF1A1A]">ASSEMBLY</TextReveal>
                      </div>
                      <h4 className="text-3xl md:text-4xl font-serif font-bold mb-12 text-[#0A1A3A] relative z-10">
                         県民の声を背負い、<br />議会で<span className="text-[#FF1A1A]">「戦う」</span>。
@@ -637,14 +644,22 @@ export default function Page() {
             </nav>
 
             <div className="relative z-10 pb-8 space-y-8">
-               <a href="https://lin.ee/n4zXBZ7" target="_blank" rel="noopener noreferrer" className="block w-full py-6 bg-[#FF1A1A] text-white font-bold text-lg tracking-widest shadow-[0_0_30px_rgba(255,26,26,0.6)] hover:scale-105 active:scale-95 transition-all text-center relative overflow-hidden group">
-                  <span className="relative z-10">LINE 登録</span>
-                  <div className="absolute inset-0 bg-white/20 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-500"></div>
-               </a>
+               <Magnetic>
+                  <a href="https://lin.ee/n4zXBZ7" target="_blank" rel="noopener noreferrer" className="block w-full py-6 bg-[#FF1A1A] text-white font-bold text-lg tracking-widest shadow-[0_0_30px_rgba(255,26,26,0.6)] hover:scale-105 active:scale-95 transition-all text-center relative overflow-hidden group rounded-sm">
+                     <span className="relative z-10">LINE 登録</span>
+                     <div className="absolute inset-0 bg-white/20 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-500"></div>
+                  </a>
+               </Magnetic>
                <div className="flex justify-center gap-6">
-                  <a href="https://twitter.com/daichi_star/" target="_blank" className="text-white/60 hover:text-[#FF1A1A] transition-colors p-2 hover:bg-white/5 rounded-full"><svg viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" /></svg></a>
-                  <a href="https://www.instagram.com/daichi_star12/" target="_blank" className="text-white/60 hover:text-[#FF1A1A] transition-colors p-2 hover:bg-white/5 rounded-full"><Instagram className="w-6 h-6" /></a>
-                  <a href="https://www.facebook.com/profile.php?id=100089702911147" target="_blank" className="text-white/60 hover:text-[#FF1A1A] transition-colors p-2 hover:bg-white/5 rounded-full"><Facebook className="w-6 h-6" /></a>
+                  <Magnetic>
+                     <a href="https://twitter.com/daichi_star/" target="_blank" className="text-white/60 hover:text-[#FF1A1A] transition-colors p-2 hover:bg-white/5 rounded-full block"><svg viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" /></svg></a>
+                  </Magnetic>
+                  <Magnetic>
+                     <a href="https://www.instagram.com/daichi_star12/" target="_blank" className="text-white/60 hover:text-[#FF1A1A] transition-colors p-2 hover:bg-white/5 rounded-full block"><Instagram className="w-6 h-6" /></a>
+                  </Magnetic>
+                  <Magnetic>
+                     <a href="https://www.facebook.com/profile.php?id=100089702911147" target="_blank" className="text-white/60 hover:text-[#FF1A1A] transition-colors p-2 hover:bg-white/5 rounded-full block"><Facebook className="w-6 h-6" /></a>
+                  </Magnetic>
                </div>
                <div className="text-xs text-gray-400 opacity-60 space-y-2 text-center">
                   <p>日本維新の会 奈良県総支部</p>
