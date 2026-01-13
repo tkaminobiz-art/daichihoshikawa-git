@@ -8,18 +8,18 @@ const Opening = ({ onComplete }: { onComplete: () => void }) => {
    const [stage, setStage] = useState(0);
 
    useEffect(() => {
-      // ステップ1: 名前と肩書きが表示
+      // ステップ1: 名前表示 (0.5s)
       setTimeout(() => setStage(1), 500);
-      // ステップ2: メッセージ1「元警察官として～」
-      setTimeout(() => setStage(2), 1500);
-      // ステップ3: メッセージ2「次は、制度で～」
+      // ステップ2: 名前フェードアウト & 転換 (2.0s)
+      setTimeout(() => setStage(2), 2000);
+      // ステップ3: スローガン表示 (2.5s)
       setTimeout(() => setStage(3), 2500);
-      // ステップ4: 幕が上がる
-      setTimeout(() => setStage(4), 4000);
-      // ステップ5: 完了
+      // ステップ4: 幕が上がる (4.2s)
+      setTimeout(() => setStage(4), 4200);
+      // ステップ5: 完了 (5.0s)
       setTimeout(() => {
          onComplete();
-      }, 4800);
+      }, 5000);
    }, [onComplete]);
 
    if (stage === 5) return null;
@@ -29,34 +29,31 @@ const Opening = ({ onComplete }: { onComplete: () => void }) => {
          className={`fixed inset-0 z-[10000] flex items-center justify-center bg-[#0A1A3A] transition-transform duration-[1500ms] ease-[cubic-bezier(0.76,0,0.24,1)] ${stage === 4 ? "-translate-y-full" : "translate-y-0"
             }`}
       >
-         <div className="relative overflow-hidden text-center px-4">
-            {/* 名前 */}
-            <h1 className={`text-4xl md:text-6xl font-serif font-black text-white tracking-[0.3em] transition-all duration-[1500ms] ${stage >= 1 ? "opacity-100 translate-y-0 blur-0" : "opacity-0 translate-y-10 blur-sm"
+         <div className="relative overflow-hidden text-center px-4 w-full max-w-4xl">
+
+            {/* シーン1：名前とタイトル */}
+            <div className={`transition-all duration-1000 absolute inset-0 flex flex-col items-center justify-center ${stage === 1 ? "opacity-100 blur-0 scale-100" : "opacity-0 blur-xl scale-110 pointer-events-none"
                }`}>
-               星川大地
-            </h1>
+               <h1 className="text-4xl md:text-6xl font-serif font-black text-white tracking-[0.3em]">
+                  星川大地
+               </h1>
+               <div className="h-[2px] bg-[#FF1A1A] mt-4 w-24 mx-auto"></div>
+               <p className="text-white/40 mt-2 text-xs font-medium tracking-widest">
+                  OFFICIAL WEB SITE
+               </p>
+            </div>
 
-            {/* 金のライン */}
-            <div className={`h-[2px] bg-[#FF1A1A] mt-4 mx-auto transition-all duration-[1000ms] delay-500 ${stage >= 1 ? "w-24" : "w-0"
-               }`}></div>
-
-            {/* 英語サブタイトル */}
-            <p className={`text-white/40 mt-2 text-xs font-medium tracking-widest transition-all duration-[1000ms] delay-700 ${stage >= 1 ? "opacity-100" : "opacity-0"
+            {/* シーン2：魂のスローガン */}
+            <div className={`transition-all duration-1000 transform ${stage === 3 ? "opacity-100 translate-y-0 blur-0" : "opacity-0 translate-y-4 blur-sm"
                }`}>
-               OFFICIAL WEB SITE
-            </p>
-
-            {/* メッセージコンテナ */}
-            <div className="mt-8 space-y-4 font-medium h-24">
-               <p className={`text-white/80 text-sm md:text-lg tracking-widest transition-all duration-1000 ${stage >= 2 ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-                  }`}>
+               <p className="text-white/80 text-sm md:text-lg tracking-widest mb-6 block font-medium">
                   元警察官として、現場で守ってきた。
                </p>
-               <p className={`text-white text-lg md:text-2xl font-serif font-bold tracking-wider transition-all duration-1000 ${stage >= 3 ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-                  }`}>
+               <p className="text-white text-2xl md:text-4xl font-serif font-bold tracking-wider leading-relaxed">
                   次は、<span className="text-[#FF1A1A]">制度</span>（しくみ）で守る。
                </p>
             </div>
+
          </div>
       </div>
    );
