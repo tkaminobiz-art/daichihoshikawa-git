@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import { ArrowRight, X, Instagram, Facebook, Menu, ChevronDown, ChevronUp, Quote } from "lucide-react";
 
 // ▼ 0. オープニング演出コンポーネント (NEW!)
@@ -174,6 +174,10 @@ export default function Page() {
    const [openQA, setOpenQA] = useState<number | null>(null);
    const [loadingComplete, setLoadingComplete] = useState(false); // オープニング完了フラグ
 
+   const handleOpeningComplete = useCallback(() => {
+      setLoadingComplete(true);
+   }, []);
+
    const toggleMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
    const toggleQA = (index: number) => setOpenQA(openQA === index ? null : index);
    const navLinks = ['VISION', 'POLICY', 'RESULTS', 'ASSEMBLY', 'ROADMAP', 'ACTIVITY', 'PROFILE'];
@@ -182,7 +186,7 @@ export default function Page() {
       <div className="flex min-h-screen text-[#0A1A3A] bg-gray-100 selection:bg-[#FF1A1A] selection:text-white font-sans overflow-x-hidden">
 
          {/* オープニング演出 (初回のみ表示) */}
-         <Opening onComplete={() => setLoadingComplete(true)} />
+         <Opening onComplete={handleOpeningComplete} />
 
          {/* 全体テクスチャ（和紙） - 復活 */}
          <div className="fixed inset-0 pointer-events-none z-50 opacity-[0.03] mix-blend-multiply" style={{ backgroundImage: "url('https://grainy-gradients.vercel.app/noise.svg')" }}></div>
