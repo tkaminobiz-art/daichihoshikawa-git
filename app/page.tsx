@@ -138,7 +138,7 @@ export default function Page() {
          {/* =================================================================
           【和の仕掛け 1】全体テクスチャ（和紙）
          ================================================================= */}
-         <div className="fixed inset-0 pointer-events-none z-0 opacity-[0.03] mix-blend-multiply" style={{ backgroundImage: "url('https://grainy-gradients.vercel.app/noise.svg')" }}></div>
+         <div className="fixed inset-0 pointer-events-none z-50 opacity-[0.03] mix-blend-multiply" style={{ backgroundImage: "url('https://grainy-gradients.vercel.app/noise.svg')" }}></div>
 
          {/* MOBILE HEADER */}
          <header className="lg:hidden fixed top-0 left-0 right-0 h-16 bg-[#0A1A3A] z-[60] flex items-center justify-between px-6 shadow-md text-white">
