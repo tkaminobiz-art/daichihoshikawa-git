@@ -308,7 +308,7 @@ export default function Page() {
                               <img src={v.img} className="absolute inset-0 w-full h-full object-cover opacity-10 group-hover:opacity-20 transition-opacity duration-500 grayscale" alt="" />
                               <div className="absolute inset-0 p-8 flex flex-col justify-between z-10">
                                  <span className="text-6xl font-black text-[#0A1A3A]/10 absolute top-4 right-4">{v.id}</span>
-                                 <h5 className="writing-vertical-rl text-3xl font-serif font-bold text-[#0A1A3A] tracking-widest h-2/3 border-r-2 border-[#FF1A1A]/30 pr-4">
+                                 <h5 className="writing-vertical-rl text-3xl font-serif font-bold text-[#0A1A3A] tracking-wider my-auto border-r-2 border-[#FF1A1A]/30 pr-6 leading-loose">
                                     {v.title}<br /><span className="text-[#FF1A1A]">{v.title2}</span>
                                  </h5>
                                  <p className="text-sm font-medium text-gray-600 leading-relaxed border-t border-gray-300 pt-4 mt-auto">
