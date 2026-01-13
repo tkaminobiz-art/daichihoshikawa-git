@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
-import { ArrowRight, X, Instagram, Facebook, Menu } from "lucide-react";
+import { ArrowRight, X, Instagram, Facebook, Menu, ChevronDown, ChevronUp, Quote } from "lucide-react";
 
 // ▼ 1. アニメーション用コンポーネント
 const Reveal = ({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) => {
@@ -34,7 +34,9 @@ const Reveal = ({ children, delay = 0 }: { children: React.ReactNode; delay?: nu
    );
 };
 
-// ▼ 2. 活動報告データ
+// ▼ 2. データ定義
+
+// 活動報告
 interface Activity {
    id: number;
    title: string;
@@ -79,7 +81,7 @@ const activities: Activity[] = [
    }
 ];
 
-// ▼ 3. 未来年表データ
+// 未来年表
 const roadmap = [
    {
       year: "2025.04",
@@ -113,6 +115,32 @@ const roadmap = [
    }
 ];
 
+// 【NEW】実績データ（RESULTS）
+const results = [
+   { label: "ふるさと納税 寄付受入額", before: "35位", after: "19位", desc: "返礼品拡充とポータルサイト攻略により、昨年度比1.2倍の2億3700万円を達成。", unit: "位" },
+   { label: "県別インターネット利用率", value: "89.7", unit: "%", sub: "全国 第2位", desc: "全国トップクラスのデジタル土壌を活かし、行政手続きのオンライン化やSNS広報を加速させます。" },
+   { label: "男性職員 育休取得率", before: "2.5%", after: "39.5%", desc: "警察組織の「働き方改革」を断行。制度があっても使えない空気を打破し、現場の士気を向上。", unit: "%" },
+];
+
+// 【NEW】議会質疑（ASSEMBLY）
+const assemblyQA = [
+   {
+      q: "若者に県政が届いていない。どう情報を届けるのか？",
+      a: "「Vtuber奈々鹿」の本格活用を確約させました。",
+      detail: "これまでの堅苦しい広報では若者は振り向きません。県公認Vtuber「奈々鹿」を活用し、コラボ動画やグッズ展開を行うことで、これまで接点のなかった層へのリーチを実現します。現在フォロワー1万人計画を推進中です。"
+   },
+   {
+      q: "過疎地域の「移動の足」がない。高齢者が孤立している。",
+      a: "「公共ライドシェア」の積極導入へ、県を動かしました。",
+      detail: "バス路線の維持が困難な地域において、自治体やNPOが主体となる「公共ライドシェア」は切り札です。一般ドライバーが有償で運送する仕組みを、宇陀市内の実証運行に向けて具体的に前進させました。"
+   },
+   {
+      q: "災害時、道路が寸断されたらどう命を守るのか？",
+      a: "「空の物流網（ドローン）」協定を締結しました。",
+      detail: "能登半島地震の教訓から、陸路だけに頼るのは危険です。JUIDA（日本UAS産業振興協議会）や近鉄グループと連携し、孤立集落へドローンで物資を届ける協定を2025年4月から始動させます。"
+   }
+];
+
 // ▼ 4. デザイン用コンポーネント（金砂子・霞）
 const GoldDustAccent = () => (
    <div className="absolute -top-10 -left-10 w-40 h-40 opacity-30 pointer-events-none z-0" style={{
@@ -128,16 +156,21 @@ const MistSeparator = () => (
 export default function Page() {
    const [selectedActivity, setSelectedActivity] = useState<Activity | null>(null);
    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+   const [openQA, setOpenQA] = useState<number | null>(null); // QAのアコーディオン開閉
 
    const toggleMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
-   const navLinks = ['VISION', 'POLICY', 'ROADMAP', 'ACTIVITY', 'PROFILE'];
+   const toggleQA = (index: number) => setOpenQA(openQA === index ? null : index);
+
+   // NAV LINKS UPDATED
+   const navLinks = ['VISION', 'POLICY', 'RESULTS', 'ASSEMBLY', 'ROADMAP', 'ACTIVITY', 'PROFILE'];
 
    return (
       <div className="flex min-h-screen text-[#0A1A3A] bg-[#FAFAF6] selection:bg-[#FF1A1A] selection:text-white font-sans relative">
 
          {/* =================================================================
-          【和の仕掛け 1】全体テクスチャ（和紙）
-         ================================================================= */}
+           【和の仕掛け 1】全体テクスチャ（和紙）
+           FIX: z-indexを50にしてコンテンツの上に重ねる
+          ================================================================= */}
          <div className="fixed inset-0 pointer-events-none z-50 opacity-[0.03] mix-blend-multiply" style={{ backgroundImage: "url('https://grainy-gradients.vercel.app/noise.svg')" }}></div>
 
          {/* MOBILE HEADER */}
@@ -210,8 +243,8 @@ export default function Page() {
          <main className="flex-1 lg:ml-[25%] lg:mr-[25%] bg-[#FAFAF6] relative z-40 shadow-[0_0_60px_rgba(0,0,0,0.2)] min-h-screen pb-40 lg:pb-20 pt-16 lg:pt-0 border-r border-[#000]/5 lg:border-none">
 
             {/* =================================================================
-            【和の仕掛け 2】縦格子（PCのみメインエリア左右に極薄線）
-           ================================================================= */}
+             【和の仕掛け 2】縦格子（PCのみメインエリア左右に極薄線）
+            ================================================================= */}
             <div className="hidden lg:block absolute top-0 bottom-0 left-8 w-[1px] bg-[#0A1A3A]/5 z-0"></div>
             <div className="hidden lg:block absolute top-0 bottom-0 right-8 w-[1px] bg-[#0A1A3A]/5 z-0"></div>
 
@@ -265,7 +298,6 @@ export default function Page() {
                   </Reveal>
 
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative z-10">
-                     {/* Vision Cards (Bg updated to white/80 for contrast against washi) */}
                      {[
                         { id: "01", title: "制度の「穴」を、", title2: "埋める。", img: "/images/activity_03.jpg", desc: "子育て・防犯の現場にある「隙間」を、見守りカメラ助成やシッター支援という具体的な「制度」で塞ぎます。" },
                         { id: "02", title: "奈良の「宝」を、", title2: "磨く。", img: "/images/activity_02.png", desc: "日本酒発祥の地、歴史遺産。あるものを活かし、滞在と消費を生む「産業」へと昇華させます。" },
@@ -339,6 +371,94 @@ export default function Page() {
 
                <MistSeparator />
 
+               {/* 【NEW】RESULTS (実績) */}
+               <section id="results" className="relative">
+                  <GoldDustAccent />
+                  <Reveal>
+                     <div className="flex items-center gap-4 mb-16 relative z-10">
+                        <span className="h-[2px] w-12 bg-[#FF1A1A]"></span>
+                        <h3 className="text-sm font-bold tracking-widest text-[#FF1A1A]">RESULTS</h3>
+                     </div>
+                     <h4 className="text-3xl md:text-4xl font-serif font-bold mb-20 text-[#0A1A3A] relative z-10">
+                        口先だけでなく、<br /><span className="text-[#FF1A1A] border-b-4 border-[#FF1A1A]/20">「結果」</span>で証明する。
+                     </h4>
+                  </Reveal>
+
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6 relative z-10">
+                     {results.map((res, i) => (
+                        <Reveal key={i} delay={i * 100}>
+                           <div className="bg-white/80 backdrop-blur-sm p-8 border-t-4 border-[#FF1A1A] shadow-lg hover:shadow-2xl transition-all h-full flex flex-col">
+                              <h5 className="text-sm font-bold text-gray-500 tracking-wider mb-4 h-10">{res.label}</h5>
+                              <div className="flex items-end gap-2 mb-4">
+                                 {res.before && (
+                                    <>
+                                       <span className="text-2xl font-bold text-gray-300 line-through decoration-2 decoration-gray-300">{res.before}</span>
+                                       <ArrowRight className="text-[#FF1A1A] w-6 h-6 mb-2" />
+                                    </>
+                                 )}
+                                 <span className="text-5xl font-black text-[#0A1A3A] tracking-tighter">
+                                    {res.after || res.value}
+                                    <span className="text-lg font-bold ml-1">{res.unit}</span>
+                                 </span>
+                              </div>
+                              {res.sub && <span className="inline-block bg-[#FF1A1A] text-white text-xs font-bold px-2 py-1 mb-4 rounded w-fit">{res.sub}</span>}
+                              <p className="text-sm text-gray-600 leading-relaxed font-medium mt-auto border-t border-gray-100 pt-4">
+                                 {res.desc}
+                              </p>
+                           </div>
+                        </Reveal>
+                     ))}
+                  </div>
+               </section>
+
+               <MistSeparator />
+
+               {/* 【NEW】ASSEMBLY (議会活動) */}
+               <section id="assembly" className="relative">
+                  <GoldDustAccent />
+                  <Reveal>
+                     <div className="flex items-center gap-4 mb-16 relative z-10">
+                        <span className="h-[2px] w-12 bg-[#FF1A1A]"></span>
+                        <h3 className="text-sm font-bold tracking-widest text-[#FF1A1A]">ASSEMBLY</h3>
+                     </div>
+                     <h4 className="text-3xl md:text-4xl font-serif font-bold mb-12 text-[#0A1A3A] relative z-10">
+                        県民の声を背負い、<br />議会で<span className="text-[#FF1A1A]">「戦う」</span>。
+                     </h4>
+                  </Reveal>
+
+                  <div className="space-y-4 relative z-10">
+                     {assemblyQA.map((qa, i) => (
+                        <Reveal key={i} delay={i * 50}>
+                           <div className="border border-gray-200 rounded-lg overflow-hidden hover:border-[#FF1A1A] transition-colors bg-white/80 backdrop-blur-sm shadow-sm">
+                              <button
+                                 onClick={() => toggleQA(i)}
+                                 className="w-full text-left p-6 md:p-8 flex justify-between items-start gap-4 group bg-gray-50/50"
+                              >
+                                 <div className="space-y-2">
+                                    <div className="flex items-center gap-3">
+                                       <span className="bg-gray-800 text-white text-xs font-bold px-2 py-1 rounded">QUESTION</span>
+                                       <h5 className="font-bold text-gray-600 text-sm md:text-base">{qa.q}</h5>
+                                    </div>
+                                    <div className="flex items-center gap-3 mt-2">
+                                       <span className="bg-[#FF1A1A] text-white text-xs font-bold px-2 py-1 rounded">ANSWER</span>
+                                       <h4 className="font-bold text-[#0A1A3A] text-lg md:text-xl group-hover:text-[#FF1A1A] transition-colors">{qa.a}</h4>
+                                    </div>
+                                 </div>
+                                 {openQA === i ? <ChevronUp className="text-[#FF1A1A] shrink-0" /> : <ChevronDown className="text-gray-400 shrink-0" />}
+                              </button>
+                              <div className={`overflow-hidden transition-all duration-300 ease-in-out ${openQA === i ? "max-h-64 opacity-100" : "max-h-0 opacity-0"}`}>
+                                 <div className="p-6 md:p-8 pt-0 text-gray-600 leading-loose text-sm md:text-base border-t border-gray-100">
+                                    <p>{qa.detail}</p>
+                                 </div>
+                              </div>
+                           </div>
+                        </Reveal>
+                     ))}
+                  </div>
+               </section>
+
+               <MistSeparator />
+
                {/* ROADMAP */}
                <section id="roadmap" className="relative">
                   <GoldDustAccent />
@@ -404,14 +524,37 @@ export default function Page() {
                   </div>
                </section>
 
-               {/* PROFILE */}
-               <section id="profile" className="pt-20 border-t border-gray-200/50">
+               {/* 【NEW】PROFILE & STORY (魂のプロフィール) */}
+               <section id="profile" className="pt-20 border-t border-gray-200/50 relative">
+                  <GoldDustAccent />
+
+                  {/* STORY SECTION (黒背景で没入感を演出) */}
                   <Reveal>
-                     <div className="flex items-center gap-4 mb-12">
+                     <div className="bg-[#0A1A3A] text-white p-8 md:p-16 rounded-2xl relative overflow-hidden mb-16 shadow-2xl z-10">
+                        <Quote className="absolute top-8 left-8 text-white/10 w-32 h-32 rotate-180" />
+                        <div className="relative z-10 max-w-3xl mx-auto text-center space-y-8">
+                           <h3 className="text-2xl md:text-4xl font-serif font-bold leading-relaxed tracking-wider">
+                              「SOSを出せない人を、<br />どうすれば守れるのか」
+                           </h3>
+                           <div className="w-16 h-[2px] bg-[#FF1A1A] mx-auto"></div>
+                           <p className="text-base md:text-lg leading-loose font-medium text-gray-300 text-left md:text-center">
+                              警察官として、多くの「現場」を見てきました。犯罪や事故が起きてから駆けつける無力感。
+                              法や制度の壁に阻まれ、目の前の困っている人に手を差し伸べられない悔しさ。<br /><br />
+                              「助けて」と言えない子どもたち、声を上げられない被害者。<br />
+                              彼らを守るためには、事件が起きる前に「仕組み」を変えるしかない。<br /><br />
+                              それが、私が警察の制服を脱ぎ、政治の世界へ飛び込んだ理由です。<br />
+                              <strong>現場を知る私だからこそ、埋められる「穴」がある。</strong>
+                           </p>
+                        </div>
+                     </div>
+                  </Reveal>
+
+                  <Reveal>
+                     <div className="flex items-center gap-4 mb-12 relative z-10">
                         <span className="h-[2px] w-12 bg-[#FF1A1A]"></span>
                         <h3 className="text-sm font-bold tracking-widest text-[#FF1A1A]">PROFILE</h3>
                      </div>
-                     <div className="flex flex-col md:flex-row gap-12">
+                     <div className="flex flex-col md:flex-row gap-12 relative z-10">
                         <div className="w-full md:w-1/2 bg-gray-100 relative aspect-[3/4] shadow-lg">
                            <img src="/images/sidebar_final.jpg" className="absolute inset-0 w-full h-full object-cover object-top" alt="Profile" />
                         </div>
@@ -426,7 +569,6 @@ export default function Page() {
                               <div className="grid grid-cols-[80px_1fr]"><dt className="font-bold">所属</dt><dd>総務警察委員会 副委員長</dd></div>
                               <div className="grid grid-cols-[80px_1fr]"><dt className="font-bold">武道</dt><dd>空手 公認3段（世界大会優勝）</dd></div>
                            </dl>
-                           <blockquote className="p-6 bg-white border-l-4 border-[#0A1A3A] text-lg font-serif font-bold text-[#0A1A3A] shadow-sm">「元警察官として、現場で守ってきた。<br />次は制度で守る。」</blockquote>
                         </div>
                      </div>
                   </Reveal>
