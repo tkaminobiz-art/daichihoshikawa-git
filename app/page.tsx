@@ -286,7 +286,7 @@ export default function Page() {
             <div className="mt-12 relative z-10 writing-vertical-rl text-5xl font-serif tracking-widest font-black text-[#0A1A3A]">
                奈良県議会議員<br /><span className="mt-6 text-6xl">星川 大地</span>
             </div>
-            <div className="relative w-full h-[55%] z-10 mt-auto">
+            <div className="relative w-full h-[70%] z-10 mt-auto">
                <img src="/images/left-column.png" alt="Portrait" className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-full object-contain object-bottom drop-shadow-2xl" />
             </div>
          </aside>
