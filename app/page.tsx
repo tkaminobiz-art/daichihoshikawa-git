@@ -339,10 +339,10 @@ export default function Page() {
                   {/* Policy Items */}
                   {[
                      { id: "01", title: "「守りの穴」を、<br/>仕組みで塞ぐ。", items: ["見守りカメラ設置の助成を確保・拡充", "<span><strong class='text-[#FF1A1A] bg-red-50 px-1'>ベビーシッター助成</strong>の前進</span>", "児相・警察・行政の連携システム提言"] },
-                     { id: "02", title: "移動のストレスを減らし、<br/>暮らしを快適に。", items: ["公共ライドシェアの積極導入を提言", "踏切課題の解消（近鉄・県・市の協議促進）", "道路環境の改善"] },
+                     { id: "02", title: "移動のストレスを減らし、<br/>暮らしを快適に。", items: ["公共ライドシェアの導入（<strong class='text-[#FF1A1A]'>高齢者の足</strong>・交通空白地対策）", "大和西大寺駅の高架化・開かずの踏切解消", "道路環境の改善（ならの道リフレッシュ 198km）", "「あしゆびプロジェクト」で健康寿命を延伸"] },
                      { id: "03", title: "奈良は「来て終わり」じゃなく<br/>「泊まって、食べて、楽しむ」へ。", img: "/images/activity_02.png", items: ["平城宮跡南側に<strong class='text-[#FF1A1A] bg-red-50 px-1'>「食のハブ拠点」</strong>を整備", "日本酒発祥の地ブランド戦略（酒米「奈良露」）", "ふるさと納税の「コト消費」化"] },
                      { id: "04", title: "現場で働く人を、<br/>全力で支える。", items: ["介護・保育の処遇改善", "教職員／警察官の採用広報強化"] },
-                     { id: "05", title: "備えは“買える”ように、<br/>“見に行ける”ように。", img: "/images/activity_04.jpg", items: ["災害時のドローン隊強化（契約・運用）", "消防学校（五條市）の防災拠点化"] }
+                     { id: "05", title: "備えは“買える”ように、<br/>“見に行ける”ように。", img: "/images/activity_04.jpg", items: ["災害時のドローン隊強化（契約・運用）", "消防学校（五條市）の防災拠点化", "<strong class='text-[#FF1A1A]'>ツキノワグマ対策</strong>（目撃117件への即応体制）"] }
                   ].map((p, i) => (
                      <Reveal key={p.id}>
                         <div className="relative group">
