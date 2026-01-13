@@ -3,7 +3,40 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import { ArrowRight, X, Instagram, Facebook, Menu, ChevronDown, ChevronUp, Quote } from "lucide-react";
 
+import { motion } from "framer-motion";
+
 // ▼ 0. オープニング演出コンポーネント (NEW!)
+const Particles = () => {
+   return (
+      <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
+         {[...Array(20)].map((_, i) => (
+            <motion.div
+               key={i}
+               className="absolute bg-white rounded-full opacity-20"
+               initial={{
+                  x: Math.random() * (typeof window !== 'undefined' ? window.innerWidth : 1000),
+                  y: Math.random() * (typeof window !== 'undefined' ? window.innerHeight : 1000),
+                  scale: Math.random() * 0.5 + 0.5,
+               }}
+               animate={{
+                  y: [null, Math.random() * -100],
+                  opacity: [0.2, 0.5, 0.2],
+               }}
+               transition={{
+                  duration: Math.random() * 10 + 10,
+                  repeat: Infinity,
+                  ease: "linear",
+               }}
+               style={{
+                  width: Math.random() * 3 + 1,
+                  height: Math.random() * 3 + 1,
+               }}
+            />
+         ))}
+      </div>
+   );
+};
+
 const Opening = ({ onComplete }: { onComplete: () => void }) => {
    const [stage, setStage] = useState(0);
 
@@ -26,10 +59,11 @@ const Opening = ({ onComplete }: { onComplete: () => void }) => {
 
    return (
       <div
-         className={`fixed inset-0 z-[10000] flex items-center justify-center bg-[#0A1A3A] transition-transform duration-[1500ms] ease-[cubic-bezier(0.76,0,0.24,1)] ${stage === 4 ? "-translate-y-full" : "translate-y-0"
+         className={`fixed inset-0 z-[10000] flex items-center justify-center bg-[radial-gradient(ellipse_at_center,_#0A1A3A_0%,_#000000_100%)] transition-transform duration-[1500ms] ease-[cubic-bezier(0.76,0,0.24,1)] ${stage === 4 ? "-translate-y-full" : "translate-y-0"
             }`}
       >
-         <div className="relative overflow-hidden text-center px-4 w-full max-w-4xl">
+         <Particles />
+         <div className="relative overflow-hidden text-center px-4 w-full max-w-4xl z-10">
 
             {/* シーン1：名前とタイトル */}
             <div className={`transition-all duration-1000 absolute inset-0 flex flex-col items-center justify-center ${stage === 1 ? "opacity-100 blur-0 scale-100" : "opacity-0 blur-xl scale-110 pointer-events-none"
