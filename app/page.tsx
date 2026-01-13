@@ -281,12 +281,12 @@ export default function Page() {
          </div>
 
          {/* LEFT SIDEBAR (PC Only) */}
-         <aside className={`hidden lg:flex fixed left-0 top-0 h-screen w-[25%] bg-[#F9F9F6] border-r border-gray-200 z-50 flex-col justify-between p-8 overflow-hidden transition-transform duration-1000 delay-500 ${loadingComplete ? 'translate-x-0' : '-translate-x-full'}`}>
+         <aside className={`hidden lg:flex fixed left-0 top-0 h-screen w-[25%] bg-[#F9F9F6] border-r border-gray-200 z-50 flex-col justify-between overflow-hidden transition-transform duration-1000 delay-500 ${loadingComplete ? 'translate-x-0' : '-translate-x-full'}`}>
             <div className="absolute inset-0 opacity-20 pointer-events-none" style={{ backgroundImage: "url('https://grainy-gradients.vercel.app/noise.svg')" }}></div>
-            <div className="mt-12 relative z-10 writing-vertical-rl text-5xl font-serif tracking-widest font-black text-[#0A1A3A]">
+            <div className="mt-12 ml-10 relative z-10 writing-vertical-rl text-5xl font-serif tracking-widest font-black text-[#0A1A3A]">
                奈良県議会議員<br /><span className="mt-6 text-6xl">星川 大地</span>
             </div>
-            <div className="relative w-full h-[70%] z-10 mt-auto">
+            <div className="relative w-full h-[85%] z-10 mt-auto">
                <img src="/images/left-column.png" alt="Portrait" className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-full object-contain object-bottom drop-shadow-2xl" />
             </div>
          </aside>
