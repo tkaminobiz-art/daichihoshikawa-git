@@ -340,9 +340,9 @@ export default function Page() {
                   {[
                      { id: "01", title: "「守りの穴」を、<br/>仕組みで塞ぐ。", items: ["見守りカメラ設置の助成を確保・拡充", "<span><strong class='text-[#FF1A1A] bg-red-50 px-1'>ベビーシッター助成</strong>の前進</span>", "児相・警察・行政の連携システム提言"] },
                      { id: "02", title: "移動のストレスを減らし、<br/>暮らしを快適に。", items: ["公共ライドシェアの導入（<strong class='text-[#FF1A1A]'>高齢者の足</strong>・交通空白地対策）", "大和西大寺駅の高架化・開かずの踏切解消", "道路環境の改善（ならの道リフレッシュ 198km）", "「あしゆびプロジェクト」で健康寿命を延伸"] },
-                     { id: "03", title: "奈良は「来て終わり」じゃなく<br/>「泊まって、食べて、楽しむ」へ。", img: "/images/activity_02.png", items: ["平城宮跡南側に<strong class='text-[#FF1A1A] bg-red-50 px-1'>「食のハブ拠点」</strong>を整備", "日本酒発祥の地ブランド戦略（酒米「奈良露」）", "ふるさと納税の「コト消費」化"] },
+                     { id: "03", title: "奈良は「来て終わり」じゃなく<br/>「泊まって、食べて、楽しむ」へ。", items: ["平城宮跡南側に<strong class='text-[#FF1A1A] bg-red-50 px-1'>「食のハブ拠点」</strong>を整備", "日本酒発祥の地ブランド戦略（酒米「奈良露」）", "ふるさと納税の「コト消費」化"] },
                      { id: "04", title: "現場で働く人を、<br/>全力で支える。", items: ["介護・保育の処遇改善", "教職員／警察官の採用広報強化"] },
-                     { id: "05", title: "備えは“買える”ように、<br/>“見に行ける”ように。", img: "/images/activity_04.jpg", items: ["災害時のドローン隊強化（契約・運用）", "消防学校（五條市）の防災拠点化", "<strong class='text-[#FF1A1A]'>ツキノワグマ対策</strong>（目撃117件への即応体制）"] }
+                     { id: "05", title: "備えは“買える”ように、<br/>“見に行ける”ように。", items: ["災害時のドローン隊強化（契約・運用）", "消防学校（五條市）の防災拠点化", "<strong class='text-[#FF1A1A]'>ツキノワグマ対策</strong>（目撃117件への即応体制）"] }
                   ].map((p, i) => (
                      <Reveal key={p.id}>
                         <div className="relative group">
@@ -350,11 +350,6 @@ export default function Page() {
                            <span className="absolute -top-12 -left-4 lg:-top-16 lg:-left-12 text-[100px] lg:text-[180px] font-black text-[#0A1A3A]/5 select-none z-0 group-hover:text-[#FF1A1A]/10 transition-colors leading-none">{p.id}</span>
                            <div className={`relative z-10 pl-4 lg:pl-8 border-l-4 lg:border-l-8 ${i % 2 === 0 ? 'border-[#FF1A1A]' : 'border-[#0A1A3A]'}`}>
                               <h5 className="text-xl lg:text-3xl font-bold mb-6 text-[#0A1A3A]" dangerouslySetInnerHTML={{ __html: p.title }}></h5>
-                              {p.img && (
-                                 <div className="my-6 w-full h-48 lg:h-64 overflow-hidden rounded-lg shadow-sm">
-                                    <img src={p.img} alt="" className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-500" />
-                                 </div>
-                              )}
                               <ul className="space-y-4 text-sm lg:text-lg text-gray-700">
                                  {p.items.map((item, idx) => (
                                     <li key={idx} className="flex gap-3 items-start">
