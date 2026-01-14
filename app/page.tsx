@@ -287,7 +287,7 @@ export default function Page() {
                奈良県議会議員<br /><span className="mt-6 text-6xl">星川 大地</span>
             </div>
             <div className="relative w-full h-[85%] z-10 mt-auto">
-               <img src="/images/left-column.png" alt="Portrait" className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-full object-contain object-bottom drop-shadow-2xl" />
+               <img src="/images/left-column.png" alt="星川大地 奈良県議会議員 (山辺郡・奈良市選出)" className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-full object-contain object-bottom drop-shadow-2xl" />
             </div>
          </aside>
 
@@ -296,7 +296,7 @@ export default function Page() {
 
             {/* HERO SECTION */}
             <section className="relative h-[85vh] w-full bg-gray-900 overflow-hidden group">
-               <img src="/images/image_11.png" alt="Hero" className={`absolute inset-0 w-full h-full object-cover transition-all duration-[3000ms] ease-out lg:opacity-90 opacity-40 ${loadingComplete ? 'scale-100 blur-0' : 'scale-110 blur-md'}`} />
+               <img src="/images/image_11.png" alt="奈良県議会議員 星川大地 街頭演説の様子" className={`absolute inset-0 w-full h-full object-cover transition-all duration-[3000ms] ease-out lg:opacity-90 opacity-40 ${loadingComplete ? 'scale-100 blur-0' : 'scale-110 blur-md'}`} />
                <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-[#0A1A3A] lg:bg-gradient-to-t lg:from-[#0A1A3A] lg:via-transparent lg:to-transparent opacity-95"></div>
 
                <img
@@ -362,7 +362,7 @@ export default function Page() {
                         <Reveal key={i} delay={i * 100}>
                            <div className="group relative h-[500px] border border-gray-200 overflow-hidden bg-[#F9F9F6] transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 flex flex-col">
                               <Parallax className="absolute inset-0 w-full h-full z-0" offset={20}>
-                                 <img src={visionImages[i]} className="absolute inset-0 w-full h-[120%] object-cover opacity-10 group-hover:opacity-15 transition-opacity duration-500 grayscale" />
+                                 <img src={visionImages[i]} alt={`星川大地の政策ビジョン: ${v.title}${v.title2}`} className="absolute inset-0 w-full h-[120%] object-cover opacity-10 group-hover:opacity-15 transition-opacity duration-500 grayscale" />
                               </Parallax>
 
                               {/* Number */}
@@ -610,7 +610,7 @@ export default function Page() {
                      </div>
                      <div className="flex flex-col md:flex-row gap-12 relative z-10">
                         <div className="w-full md:w-1/2 bg-gray-100 relative aspect-[3/4]">
-                           <img src="/images/sidebar_final.jpg" className="absolute inset-0 w-full h-full object-cover object-top" alt="Profile" />
+                           <img src="/images/sidebar_final.jpg" className="absolute inset-0 w-full h-full object-cover object-top" alt="星川大地 プロフィール写真 (元警察官)" />
                         </div>
                         <div className="flex-1 space-y-8">
                            <div>
