@@ -28,12 +28,12 @@ export default function MobileHeader() {
             {isOpen && (
                 <div className="absolute top-full left-0 w-full bg-white border-b border-gray-200 shadow-xl py-6 px-6 flex flex-col gap-6">
                     <nav className="flex flex-col gap-4">
-                        {['VISION', 'POLICY', 'ACHIEVEMENTS', 'PROFILE'].map((item) => (
+                        {['VISION', 'POLICY', 'RESULTS', 'ASSEMBLY', 'SUPPORT', 'ROADMAP', 'ACTIVITY', 'PROFILE'].map((item) => (
                             <a
                                 key={item}
-                                href={`#${item.toLowerCase()}`}
+                                href={item === 'SUPPORT' ? '/support' : `#${item.toLowerCase()}`}
                                 onClick={() => setIsOpen(false)}
-                                className="text-lg font-bold text-gray-800 tracking-wider border-b border-gray-100 pb-2 active:text-red-600"
+                                className={`text-lg font-bold tracking-wider border-b border-gray-100 pb-2 active:text-red-600 ${item === 'SUPPORT' ? 'text-[#008c4b]' : 'text-gray-800'}`}
                             >
                                 {item}
                             </a>

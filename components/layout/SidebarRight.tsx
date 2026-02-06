@@ -11,9 +11,13 @@ export default function SidebarRight() {
             <div className="relative z-10 flex flex-col h-full p-10 pt-20 justify-between">
                 {/* Navigation */}
                 <nav className="flex flex-col gap-8">
-                    {['VISION', 'POLICY', 'ACHIEVEMENTS', 'PROFILE'].map((item) => (
-                        <a key={item} href={`#${item.toLowerCase()}`} className="group flex items-center text-lg font-bold tracking-[0.2em] transition-all hover:text-[#FF1A1A]">
-                            <span className="w-0 h-[2px] bg-[#FF1A1A] mr-0 group-hover:w-8 group-hover:mr-4 transition-all duration-300"></span>
+                    {['VISION', 'POLICY', 'RESULTS', 'ASSEMBLY', 'SUPPORT', 'ROADMAP', 'ACTIVITY', 'PROFILE'].map((item) => (
+                        <a
+                            key={item}
+                            href={item === 'SUPPORT' ? '/support' : `#${item.toLowerCase()}`}
+                            className={`group flex items-center text-lg font-bold tracking-[0.2em] transition-all ${item === 'SUPPORT' ? 'text-[#008c4b] hover:text-white' : 'hover:text-[#FF1A1A]'}`}
+                        >
+                            <span className={`w-0 h-[2px] mr-0 group-hover:w-8 group-hover:mr-4 transition-all duration-300 ${item === 'SUPPORT' ? 'bg-[#008c4b]' : 'bg-[#FF1A1A]'}`}></span>
                             {item}
                         </a>
                     ))}
