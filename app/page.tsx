@@ -217,7 +217,16 @@ export default function Page() {
 
    const toggleMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
    const toggleQA = (index: number) => setOpenQA(openQA === index ? null : index);
-   const navLinks = ['VISION', 'POLICY', 'RESULTS', 'ASSEMBLY', 'SUPPORT', 'ROADMAP', 'ACTIVITY', 'PROFILE'];
+   const navLinks = [
+      { en: 'VISION', ja: 'ビジョン' },
+      { en: 'POLICY', ja: '政策' },
+      { en: 'RESULTS', ja: '実績' },
+      { en: 'ASSEMBLY', ja: '議会' },
+      { en: 'SUPPORT', ja: '制度ナビ' },
+      { en: 'ROADMAP', ja: '計画' },
+      { en: 'ACTIVITY', ja: '活動' },
+      { en: 'PROFILE', ja: 'プロフィール' }
+   ];
 
    return (
       <div className="flex min-h-screen text-[#0A1A3A] bg-gray-100 selection:bg-[#FF1A1A] selection:text-white font-sans overflow-x-hidden">
@@ -244,13 +253,16 @@ export default function Page() {
                <nav className="flex flex-col gap-6">
                   {navLinks.map((item) => (
                      <a
-                        key={item}
-                        href={item === 'SUPPORT' ? '/support' : `#${item.toLowerCase()}`}
+                        key={item.en}
+                        href={item.en === 'SUPPORT' ? '/support' : `#${item.en.toLowerCase()}`}
                         onClick={toggleMenu}
-                        className={`text-2xl font-serif font-bold tracking-widest border-b border-white/20 pb-4 flex justify-between items-center ${item === 'SUPPORT' ? 'text-[#008c4b]' : ''}`}
+                        className={`text-2xl font-serif font-bold tracking-widest border-b border-white/20 pb-4 flex justify-between items-end ${item.en === 'SUPPORT' ? 'text-[#008c4b]' : ''}`}
                      >
-                        {item}
-                        <ArrowRight size={20} className={item === 'SUPPORT' ? 'text-[#008c4b]' : 'text-[#FF1A1A]'} />
+                        <span className="flex items-baseline gap-3">
+                           {item.en}
+                           <span className={`text-xs font-sans font-normal tracking-normal opacity-70 ${item.en === 'SUPPORT' ? 'text-[#008c4b]' : 'text-gray-300'}`}>{item.ja}</span>
+                        </span>
+                        <ArrowRight size={20} className={item.en === 'SUPPORT' ? 'text-[#008c4b]' : 'text-[#FF1A1A]'} />
                      </a>
                   ))}
                </nav>
@@ -637,12 +649,15 @@ export default function Page() {
             <nav className="relative z-10 flex flex-col gap-8">
                {navLinks.map((item) => (
                   <a
-                     key={item}
-                     href={item === 'SUPPORT' ? '/support' : `#${item.toLowerCase()}`}
-                     className={`group flex items-center text-lg font-bold tracking-[0.2em] transition-all ${item === 'SUPPORT' ? 'text-[#008c4b] hover:text-white' : 'hover:text-[#FF1A1A]'}`}
+                     key={item.en}
+                     href={item.en === 'SUPPORT' ? '/support' : `#${item.en.toLowerCase()}`}
+                     className={`group flex items-center text-lg font-bold tracking-[0.2em] transition-all ${item.en === 'SUPPORT' ? 'text-[#008c4b] hover:text-white' : 'hover:text-[#FF1A1A]'}`}
                   >
-                     <span className={`w-0 h-[2px] mr-0 group-hover:w-6 group-hover:mr-4 transition-all duration-300 ${item === 'SUPPORT' ? 'bg-[#008c4b]' : 'bg-[#FF1A1A]'}`}></span>
-                     {item}
+                     <span className={`w-0 h-[2px] mr-2 group-hover:w-6 group-hover:mr-4 transition-all duration-300 ${item.en === 'SUPPORT' ? 'bg-[#008c4b]' : 'bg-[#FF1A1A]'}`}></span>
+                     <span className="flex flex-col leading-none">
+                        <span>{item.en}</span>
+                        <span className="text-[10px] font-medium tracking-normal opacity-60 mt-1">{item.ja}</span>
+                     </span>
                   </a>
                ))}
             </nav>

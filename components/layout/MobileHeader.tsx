@@ -29,14 +29,24 @@ export default function MobileHeader() {
             {isOpen && (
                 <div className="absolute top-full left-0 w-full bg-white border-b border-gray-200 shadow-xl py-6 px-6 flex flex-col gap-6">
                     <nav className="flex flex-col gap-4">
-                        {['VISION', 'POLICY', 'RESULTS', 'ASSEMBLY', 'SUPPORT', 'ROADMAP', 'ACTIVITY', 'PROFILE'].map((item) => (
+                        {[
+                            { en: 'VISION', ja: 'ビジョン' },
+                            { en: 'POLICY', ja: '政策' },
+                            { en: 'RESULTS', ja: '実績' },
+                            { en: 'ASSEMBLY', ja: '議会' },
+                            { en: 'SUPPORT', ja: '制度ナビ' },
+                            { en: 'ROADMAP', ja: '計画' },
+                            { en: 'ACTIVITY', ja: '活動' },
+                            { en: 'PROFILE', ja: 'プロフィール' }
+                        ].map((item) => (
                             <a
-                                key={item}
-                                href={item === 'SUPPORT' ? '/support' : `#${item.toLowerCase()}`}
+                                key={item.en}
+                                href={item.en === 'SUPPORT' ? '/support' : `#${item.en.toLowerCase()}`}
                                 onClick={() => setIsOpen(false)}
-                                className={`text-lg font-bold tracking-wider border-b border-gray-100 pb-2 active:text-red-600 ${item === 'SUPPORT' ? 'text-[#008c4b]' : 'text-gray-800'}`}
+                                className={`text-lg font-bold tracking-wider border-b border-gray-100 pb-2 active:text-red-600 flex items-baseline justify-between ${item.en === 'SUPPORT' ? 'text-[#008c4b]' : 'text-gray-800'}`}
                             >
-                                {item}
+                                <span>{item.en}</span>
+                                <span className="text-xs text-gray-400 font-normal">{item.ja}</span>
                             </a>
                         ))}
                     </nav>

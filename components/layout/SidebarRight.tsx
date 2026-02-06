@@ -12,14 +12,26 @@ export default function SidebarRight() {
             <div className="relative z-10 flex flex-col h-full p-10 pt-20 justify-between">
                 {/* Navigation */}
                 <nav className="flex flex-col gap-8">
-                    {['VISION', 'POLICY', 'RESULTS', 'ASSEMBLY', 'SUPPORT', 'ROADMAP', 'ACTIVITY', 'PROFILE'].map((item) => (
+                    {[
+                        { en: 'VISION', ja: 'ビジョン' },
+                        { en: 'POLICY', ja: '政策' },
+                        { en: 'RESULTS', ja: '実績' },
+                        { en: 'ASSEMBLY', ja: '議会' },
+                        { en: 'SUPPORT', ja: '制度ナビ' },
+                        { en: 'ROADMAP', ja: '計画' },
+                        { en: 'ACTIVITY', ja: '活動' },
+                        { en: 'PROFILE', ja: 'プロフィール' }
+                    ].map((item) => (
                         <a
-                            key={item}
-                            href={item === 'SUPPORT' ? '/support' : `#${item.toLowerCase()}`}
-                            className={`group flex items-center text-lg font-bold tracking-[0.2em] transition-all ${item === 'SUPPORT' ? 'text-[#008c4b] hover:text-white' : 'hover:text-[#FF1A1A]'}`}
+                            key={item.en}
+                            href={item.en === 'SUPPORT' ? '/support' : `#${item.en.toLowerCase()}`}
+                            className={`group flex items-center text-lg font-bold tracking-[0.2em] transition-all ${item.en === 'SUPPORT' ? 'text-[#008c4b] hover:text-white' : 'hover:text-[#FF1A1A]'}`}
                         >
-                            <span className={`w-0 h-[2px] mr-0 group-hover:w-8 group-hover:mr-4 transition-all duration-300 ${item === 'SUPPORT' ? 'bg-[#008c4b]' : 'bg-[#FF1A1A]'}`}></span>
-                            {item}
+                            <span className={`w-0 h-[2px] mr-2 group-hover:w-8 group-hover:mr-4 transition-all duration-300 ${item.en === 'SUPPORT' ? 'bg-[#008c4b]' : 'bg-[#FF1A1A]'}`}></span>
+                            <span className="flex flex-col leading-none">
+                                <span>{item.en}</span>
+                                <span className="text-[10px] font-medium tracking-normal opacity-60 mt-1">{item.ja}</span>
+                            </span>
                         </a>
                     ))}
                 </nav>
