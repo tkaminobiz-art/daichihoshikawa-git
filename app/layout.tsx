@@ -4,6 +4,7 @@ import SmoothScroll from "@/components/layout/SmoothScroll";
 import "./globals.css";
 
 // フォントの最適化（Google Fontsを高速読み込み）
+// Updated: Force Deploy
 const notoSans = Noto_Sans_JP({
   subsets: ["latin"],
   weight: ["400", "500", "700", "900"],
