@@ -4,6 +4,7 @@ import React from 'react'
 import { Twitter, Instagram, Facebook } from 'lucide-react'
 
 export default function SidebarRight() {
+    // Force rebuild v0.1.1
     return (
         <aside className="hidden lg:flex flex-col fixed top-0 right-0 h-screen w-[25%] bg-[#0A1A3A] text-white z-50 shadow-2xl">
             <div className="absolute inset-0 opacity-10 pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/seigaiha.png')]"></div>
