@@ -4,10 +4,9 @@
 
 ▲ Next.js 16.1.1 (Turbopack)
 - Local:         http://localhost:3005
-- Network:       http://192.168.11.33:3005
+- Network:       http://192.168.11.7:3005
 
 ✓ Starting...
-✓ Ready in 756ms
- GET / 200 in 930ms (compile: 820ms, render: 110ms)
- GET / 200 in 112ms (compile: 35ms, render: 77ms)
- GET / 200 in 180ms (compile: 66ms, render: 114ms)
+✓ Ready in 769ms
+ GET / 200 in 973ms (compile: 746ms, render: 227ms)
+[?25h
