@@ -83,8 +83,8 @@ export default function SupportPage() {
                                     key={filter.id}
                                     onClick={() => setActiveFilter(activeFilter === filter.id ? null : filter.id)}
                                     className={`px-4 py-2 rounded-full text-sm font-bold transition-all flex items-center gap-2 border ${activeFilter === filter.id
-                                            ? 'bg-[#FF1A1A] text-white border-[#FF1A1A] shadow-lg scale-105'
-                                            : 'bg-white/10 text-white border-white/20 hover:bg-white/20'
+                                        ? 'bg-[#FF1A1A] text-white border-[#FF1A1A] shadow-lg scale-105'
+                                        : 'bg-white/10 text-white border-white/20 hover:bg-white/20'
                                         }`}
                                 >
                                     <span>{filter.icon}</span>
@@ -110,6 +110,53 @@ export default function SupportPage() {
                         />
                         <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" />
                     </motion.div>
+
+                </div>
+            </section>
+
+            {/* Manifesto Message Section */}
+            <section className="bg-white py-16 px-4 border-b border-gray-100">
+                <div className="max-w-4xl mx-auto bg-[#F9F9F6] p-8 md:p-12 rounded-2xl shadow-sm border border-gray-200 relative overflow-hidden">
+                    <div className="absolute top-0 left-0 w-2 h-full bg-[#008c4b]"></div>
+                    <div className="absolute -right-10 -bottom-10 opacity-5 pointer-events-none">
+                        <svg width="300" height="300" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L1 21h22L12 2zm0 3.8L19.5 19h-15L12 5.8z" /></svg>
+                    </div>
+
+                    <div className="relative z-10 flex flex-col md:flex-row gap-8 items-center">
+                        <div className="flex-1 space-y-6">
+                            <h2 className="text-2xl md:text-3xl font-serif font-bold text-[#0A1A3A] tracking-wide">
+                                行政を、もっとあなたの近くへ。
+                            </h2>
+                            <div className="h-[2px] w-20 bg-[#FF1A1A]"></div>
+                            <div className="space-y-4 text-gray-700 leading-loose font-medium text-justify">
+                                <p>
+                                    元警察官として20年以上、私は奈良の街を走り続けてきました。
+                                    そこで目にしたのは、複雑すぎる行政の壁に突き当たり、どこに助けを求めればいいか分からず、一人で悩みを抱える方々の姿です。
+                                </p>
+                                <p>
+                                    行政には、あなたを助けるための『力（制度）』が本当はたくさんあります。でも、届かなければ意味がない。<br />
+                                    奈良市の『殺処分ゼロ』や『子育て支援』のような素晴らしい実績も、県全体に広まらなければもったいない。
+                                </p>
+                                <p>
+                                    だから、私が現場の視点で情報を整理し、この『暮らしの道具』を作りました。<br />
+                                    政治の役割は、あなたの『困った』を『安心』に変えること。<br />
+                                    このポータルが、あなたと大切な家族を守る『お守り』のような存在になれば幸いです。
+                                </p>
+                            </div>
+                            <div className="mt-6 flex justify-end items-center gap-4">
+                                <div className="text-right">
+                                    <p className="text-xs text-gray-500 tracking-widest mb-1">奈良県議会議員</p>
+                                    <p className="text-2xl font-serif font-bold text-[#0A1A3A]">星川 だいち</p>
+                                </div>
+                                {/* Placeholder for signature image if available later */}
+                                {/* <img src="/images/signature.png" alt="Signature" className="h-12 opacity-80" /> */}
+                            </div>
+                        </div>
+                        {/* Right side image - Placeholder for "Listening" photo */}
+                        <div className="w-32 h-32 md:w-48 md:h-48 rounded-full overflow-hidden border-4 border-white shadow-lg shrink-0 grayscale hover:grayscale-0 transition-all duration-500">
+                            <img src="/images/profile.jpg" alt="星川大地" className="w-full h-full object-cover" />
+                        </div>
+                    </div>
                 </div>
             </section>
 
@@ -161,6 +208,6 @@ export default function SupportPage() {
                 </div>
             </section>
 
-        </main>
+        </main >
     );
 }
