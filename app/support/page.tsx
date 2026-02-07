@@ -9,28 +9,38 @@ import CategoryNav from "@/components/support/CategoryNav";
 
 export default function SupportPage() {
     const [searchQuery, setSearchQuery] = useState("");
+    const [activeFilter, setActiveFilter] = useState<string | null>(null);
+
+    const filters = [
+        { id: 'parent', label: '子育て世代', icon: '👶' },
+        { id: 'senior', label: '高齢者・介護', icon: '👴' },
+        { id: 'business', label: '事業者・経営', icon: '💼' },
+        { id: 'student', label: '学生・若者', icon: '🎓' },
+        { id: 'emergency', label: '緊急・困りごと', icon: '🚨' },
+    ];
 
     // Filter logic
     const filteredData = useMemo(() => {
-        if (!searchQuery.trim()) return supportData;
-
         const query = searchQuery.toLowerCase();
 
         return supportData.map(category => {
-            const matchingItems = category.items.filter(item =>
-                item.title.toLowerCase().includes(query) ||
-                item.description.toLowerCase().includes(query) ||
-                item.comment.toLowerCase().includes(query)
-            );
+            const matchingItems = category.items.filter(item => {
+                const matchesSearch = !query ||
+                    item.title.toLowerCase().includes(query) ||
+                    item.description.toLowerCase().includes(query) ||
+                    item.comment.toLowerCase().includes(query);
 
-            // Return category only if it has matching items (or if category title matches, return all?)
-            // For now, strict item matching to show only relevant results.
+                const matchesFilter = !activeFilter || item.tags?.includes(activeFilter);
+
+                return matchesSearch && matchesFilter;
+            });
+
             if (matchingItems.length > 0) {
                 return { ...category, items: matchingItems };
             }
             return null;
         }).filter(Boolean) as typeof supportData;
-    }, [searchQuery]);
+    }, [searchQuery, activeFilter]);
 
     return (
         <main className="min-h-screen bg-[#f8f9fa]">
@@ -58,6 +68,31 @@ export default function SupportPage() {
                         星川だいちの<br />
                         『県民サポート・ポータル』
                     </motion.h1>
+
+                    {/* My Support Finder (Attribute Filter) */}
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.95 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.8, delay: 0.3 }}
+                        className="mb-8"
+                    >
+                        <p className="text-white/70 text-sm mb-3 font-medium tracking-wider">▼ あなたの属性を選んでください</p>
+                        <div className="flex flex-wrap justify-center gap-3">
+                            {filters.map((filter) => (
+                                <button
+                                    key={filter.id}
+                                    onClick={() => setActiveFilter(activeFilter === filter.id ? null : filter.id)}
+                                    className={`px-4 py-2 rounded-full text-sm font-bold transition-all flex items-center gap-2 border ${activeFilter === filter.id
+                                            ? 'bg-[#FF1A1A] text-white border-[#FF1A1A] shadow-lg scale-105'
+                                            : 'bg-white/10 text-white border-white/20 hover:bg-white/20'
+                                        }`}
+                                >
+                                    <span>{filter.icon}</span>
+                                    {filter.label}
+                                </button>
+                            ))}
+                        </div>
+                    </motion.div>
 
                     {/* Real-time Search */}
                     <motion.div

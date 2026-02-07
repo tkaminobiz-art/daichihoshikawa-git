@@ -46,6 +46,37 @@ export default function SupportCard({ item, index }: { item: SupportItem; index:
                 <p className="text-sm text-[#0A1A3A] font-medium leading-relaxed mt-2">
                     {item.comment}
                 </p>
+
+                {/* Field Story (Police Notebook Style) */}
+                {item.story && (
+                    <div className="mt-4 pt-4 border-t border-dashed border-gray-300">
+                        <div className="bg-[#fffdf5] p-3 rounded border border-gray-200 shadow-sm relative overflow-hidden">
+                            {/* Texture overlay for "paper" feel */}
+                            <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: "url('https://grainy-gradients.vercel.app/noise.svg')" }}></div>
+
+                            <div className="relative z-10 flex flex-col gap-3">
+                                {/* Before */}
+                                <div className="flex gap-2 items-start">
+                                    <span className="text-[10px] font-bold bg-gray-600 text-white px-1.5 py-0.5 rounded shrink-0 mt-0.5">現場</span>
+                                    <p className="text-xs text-gray-600 leading-tight">
+                                        {item.story.before}
+                                    </p>
+                                </div>
+                                {/* Arrow */}
+                                <div className="flex justify-center -my-1">
+                                    <span className="text-xs text-[#008c4b]">▼</span>
+                                </div>
+                                {/* After */}
+                                <div className="flex gap-2 items-start">
+                                    <span className="text-[10px] font-bold bg-[#FF1A1A] text-white px-1.5 py-0.5 rounded shrink-0 mt-0.5">未来</span>
+                                    <p className="text-xs text-[#0A1A3A] font-bold leading-tight">
+                                        {item.story.after}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                )}
             </div>
 
             {/* CTA Overlay (Hidden by default, easier click on mobile) */}
