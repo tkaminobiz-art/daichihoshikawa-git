@@ -12,15 +12,7 @@ export default function SupportHero() {
                      until an actual image is provided/decided. 
                      Ideally: <img src="/images/nara_scenery.jpg" ... /> 
                   */}
-                <div className="absolute inset-0 bg-gradient-to-r from-gray-900/90 to-transparent z-0"></div>
-                <img
-                    src="/images/hero_consulting.jpg" // Using an existing accessible image or placeholder
-                    alt="Nara Scenery"
-                    className="w-full h-full object-cover opacity-60"
-                    onError={(e) => {
-                        e.currentTarget.src = "https://images.unsplash.com/photo-1528360983277-13d9b152c6d1?q=80&w=2070&auto=format&fit=crop";
-                    }}
-                />
+                <div className="absolute inset-0 bg-gradient-to-r from-gray-900 via-gray-900/95 to-gray-900/60 z-0"></div>
             </div>
 
             {/* Hoshikawa Portrait */}
@@ -74,7 +66,7 @@ export default function SupportHero() {
                 </motion.div>
 
                 {/* Vertical Text Slogan on the Right (Optical Balance) - Visible mostly on wide screens */}
-                <div className="absolute right-8 top-1/2 -translate-y-1/2 hidden xl:block writing-vertical-rl text-white font-serif font-bold text-5xl tracking-[0.3em] drop-shadow-lg opacity-90 h-[80%] border-r-2 border-white/30 pr-8 z-0">
+                <div className="absolute right-8 top-1/2 -translate-y-1/2 hidden xl:block writing-vertical-rl text-white font-serif font-bold text-5xl tracking-[0.3em] drop-shadow-lg opacity-90 h-[80%] pr-8 z-0">
                     未来を拓く。<br />伝統を守り
                 </div>
             </div>
