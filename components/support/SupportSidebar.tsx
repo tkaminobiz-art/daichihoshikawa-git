@@ -76,13 +76,7 @@ export default function SupportSidebar() {
                             奈良県奈良市登大路町30
                         </span>
                     </p>
-                    <div className="mt-3 pt-3 border-t border-gray-300">
-                        <p className="flex items-center gap-2 font-bold text-lg text-[#0A1A3A]">
-                            <Phone size={18} />
-                            0742-27-xxxx
-                        </p>
-                        <p className="text-xs text-gray-500 pl-6">(平日 9:00 - 17:00)</p>
-                    </div>
+
                 </div>
             </div>
 
