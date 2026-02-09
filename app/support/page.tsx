@@ -7,6 +7,7 @@ import { supportData } from "@/data/supportData";
 import SupportCard from "@/components/support/SupportCard";
 import SupportHero from "@/components/support/SupportHero";
 import SupportSidebar from "@/components/support/SupportSidebar";
+import MobileHeader from "@/components/layout/MobileHeader";
 
 export default function SupportPage() {
     const [searchQuery, setSearchQuery] = useState("");
@@ -44,7 +45,8 @@ export default function SupportPage() {
     }, [searchQuery, activeFilter]);
 
     return (
-        <main className="min-h-screen bg-white font-sans text-[#333]">
+        <main className="min-h-screen bg-white font-sans text-[#333] pt-16 lg:pt-0">
+            <MobileHeader />
             {/* NEW HERO */}
             <SupportHero />
 
@@ -93,8 +95,8 @@ export default function SupportPage() {
                                         key={filter.id}
                                         onClick={() => setActiveFilter(activeFilter === filter.id ? null : filter.id)}
                                         className={`px-3 py-1.5 rounded text-xs font-bold transition-all flex items-center gap-1 border ${activeFilter === filter.id
-                                                ? 'bg-[#008c4b] text-white border-[#008c4b]'
-                                                : 'bg-white text-gray-600 border-gray-200 hover:bg-gray-50'
+                                            ? 'bg-[#008c4b] text-white border-[#008c4b]'
+                                            : 'bg-white text-gray-600 border-gray-200 hover:bg-gray-50'
                                             }`}
                                     >
                                         <span>{filter.icon}</span>

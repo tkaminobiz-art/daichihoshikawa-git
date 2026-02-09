@@ -1,10 +1,16 @@
 "use client";
 
-import { MessageCircle, Phone, MapPin, ExternalLink, Twitter, Instagram, Facebook } from "lucide-react";
+import { MessageCircle, Phone, MapPin, ExternalLink, Twitter, Instagram, Facebook, Home } from "lucide-react";
 
 export default function SupportSidebar() {
     return (
         <aside className="space-y-8 sticky top-24">
+
+            {/* Back to Official Site */}
+            <a href="/" className="block bg-white border-2 border-[#0A1A3A] text-[#0A1A3A] p-4 rounded text-center font-bold hover:bg-[#0A1A3A] hover:text-white transition-colors flex items-center justify-center gap-2 group">
+                <Home size={20} className="group-hover:scale-110 transition-transform" />
+                公式サイトへ戻る
+            </a>
 
             {/* SNS Official Accounts */}
             <div className="bg-[#0A1A3A] text-white p-2 text-center font-bold text-sm tracking-widest">
