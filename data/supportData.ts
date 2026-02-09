@@ -26,7 +26,7 @@ export const supportData: SupportCategory[] = [
         description: "防犯、虐待防止、人権擁護など、生命といのちを守るための相談窓口。",
         items: [
             {
-                title: "警察本部・防犯アプリ「ナポリス」",
+                title: "奈良県警察本部（公式HP・防犯アプリ「ナポリス」）",
                 url: "https://www.police.pref.nara.jp/",
                 description: "最新の犯罪発生状況、地域安全マップ、防犯アプリ「ナポリス」の案内。",
                 comment: "現場で培った知見を治安維持の最前線へ。不審者・詐欺情報はここで即時チェックを。",
