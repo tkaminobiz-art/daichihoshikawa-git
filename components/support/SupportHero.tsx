@@ -31,6 +31,9 @@ export default function SupportHero() {
                 src="/images/hoshikawa_hero_portrait.png"
                 alt="星川だいち"
                 className="absolute bottom-0 right-[-10%] md:right-0 w-[90%] md:w-[50%] lg:w-[45%] max-w-[700px] object-contain object-bottom z-10 drop-shadow-2xl pointer-events-none"
+                onError={(e) => {
+                    e.currentTarget.style.display = 'none';
+                }}
             />
 
             {/* Overlay Card */}
