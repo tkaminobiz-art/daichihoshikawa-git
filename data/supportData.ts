@@ -68,6 +68,20 @@ export const supportData: SupportCategory[] = [
                 comment: "逃げることは恥ではありません。生活再建まで含めた「リスタート」を全力で守ります。",
                 tags: ['emergency', 'parent']
             },
+            {
+                title: "心身障害者扶養共済制度",
+                url: "https://www.pref.nara.jp/dd.aspx?menuid=1273",
+                description: "保護者が万一の際、障がいのある方に年金を支給する任意加入制度。",
+                comment: "「親亡き後」の不安に、公的な備えを。将来の安心が、今の生活の安定につながります。",
+                tags: ['parent', 'senior']
+            },
+            {
+                title: "生活福祉資金貸付制度",
+                url: "https://www.pref.nara.jp/1270.htm",
+                description: "低所得・高齢・障がい者世帯への生活費等の貸付（社協窓口）。",
+                comment: "一時的な困窮を乗り越えるためのセーフティネット。躊躇せず相談してください。",
+                tags: ['senior', 'parent']
+            },
         ],
     },
     {
@@ -112,6 +126,34 @@ export const supportData: SupportCategory[] = [
                 tags: ['emergency', 'parent', 'student', 'senior']
             },
             {
+                title: "がんネットなら（奈良県がん情報提供ポータル）",
+                url: "http://www3.pref.nara.jp/gannet/",
+                description: "がん検診、相談窓口、患者サロンなど、県内のがん医療情報を網羅。",
+                comment: "2人に1人ががんになる時代。正しい知識と早期発見が、あなたと家族の命を守ります。",
+                tags: ['senior', 'parent']
+            },
+            {
+                title: "指定難病医療費助成制度",
+                url: "https://www.pref.nara.jp/dd.aspx?menuid=11607",
+                description: "指定難病の治療にかかる医療費助成。自己負担上限管理など。",
+                comment: "長期の療養には経済的な支えが不可欠です。制度を正しく使い、治療に専念できる環境を。",
+                tags: ['senior', 'parent']
+            },
+            {
+                title: "小児慢性特定疾病医療費助成制度",
+                url: "https://www.pref.nara.jp/dd.aspx?menuid=11607",
+                description: "18歳未満の慢性疾患児の医療費負担を軽減。",
+                comment: "病気と闘う子供たちとそのご家族を、社会全体で支えるための仕組みです。",
+                tags: ['parent']
+            },
+            {
+                title: "奈良県ナースセンター（看護職支援）",
+                url: "http://www.nara-kango.or.jp/nur-01.html",
+                description: "看護職の無料職業紹介、復職支援研修、進路相談。",
+                comment: "地域医療の要は「人」です。潜在看護師の復職を全力でサポートし、医療現場を支えます。",
+                tags: ['business']
+            },
+            {
                 title: "医療（救急安心センター #7119）",
                 url: "https://www.pref.nara.jp/53886.htm",
                 description: "看護師・相談員による24時間救急相談（0744-20-0119）。",
@@ -145,6 +187,27 @@ export const supportData: SupportCategory[] = [
         description: "教育委員会、学校案内、青少年育成など、次世代の可能性を広げる情報。",
         items: [
             {
+                title: "なら結婚応援団",
+                url: "http://www.naradeai.pref.nara.jp/",
+                description: "県主催の婚活イベント、結婚支援情報のポータルサイト。",
+                comment: "「結婚したい」という想いを応援。出会いの場の創出から、少子化対策に取り組みます。",
+                tags: ['student', 'parent']
+            },
+            {
+                title: "児童扶養手当",
+                url: "https://www.pref.nara.jp/1648.htm",
+                description: "ひとり親家庭等の生活安定と自立促進のための手当詳細。",
+                comment: "子供の貧困は絶対に防ぐ。手当は「恵み」ではなく、子供の未来への「投資」です。",
+                tags: ['parent']
+            },
+            {
+                title: "ひとり親家庭等自立支援給付金",
+                url: "https://www.pref.nara.jp/dd.aspx?menuid=1272",
+                description: "資格取得（看護師等）や職業訓練受講を支援する給付金制度。",
+                comment: "スキルアップが収入アップに直結します。親御さんの「稼ぐ力」を具体的に後押しします。",
+                tags: ['parent', 'business']
+            },
+            {
                 title: "奈良県教育委員会（教職員採用・改革）",
                 url: "https://www.pref.nara.jp/kyoiku/",
                 description: "いじめ対策、ICT教育、教職員の働き方改革（育休取得促進）。",
@@ -173,6 +236,41 @@ export const supportData: SupportCategory[] = [
         icon: "💰",
         description: "事業者支援、観光情報、ふるさと納税、雇用労働相談。",
         items: [
+            {
+                title: "奈良県住宅リフォーム・耐震改修支援",
+                url: "https://www.pref.nara.jp/1260.htm",
+                description: "既存住宅の耐震改修、バリアフリー化への補助制度。",
+                comment: "命を守る「強い家」へ。リフォームは地域経済の活性化にも直結する一石二鳥の施策です。",
+                tags: ['senior', 'parent', 'business']
+            },
+            {
+                title: "県産材を使用した住宅助成事業",
+                url: "https://www.pref.nara.jp/1260.htm",
+                description: "奈良の木を使用した住宅の新築・増改築に対する助成金。",
+                comment: "地元の木を使うことが、奈良の山を守ることにつながります。環境と経済の好循環を。",
+                tags: ['business', 'parent']
+            },
+            {
+                title: "職業訓練受講給付金（求職者支援制度）",
+                url: "https://www.pref.nara.jp/1284.htm",
+                description: "求職者が月額10万円を受給しながら職業訓練を受けられる制度。",
+                comment: "学び直し（リスキリング）の期間を生活面から保障。安心して次のキャリアへ挑戦してください。",
+                tags: ['business']
+            },
+            {
+                title: "就職氷河期世代活躍支援",
+                url: "https://www.pref.nara.jp/1284.htm",
+                description: "30代半ば〜50代半ばの世代への集中就労支援プログラム。",
+                comment: "社会の都合で苦労した世代を、置き去りにしない。正規雇用への道を具体的に拓きます。",
+                tags: ['business']
+            },
+            {
+                title: "奥大和移住定住交流センター engawa",
+                url: "https://okuyamato-engawa.jp/",
+                description: "南部・東部への移住相談、空き家バンク、仕事紹介の窓口。",
+                comment: "「住んでよし、働いてよし」の奥大和へ。新しいライフスタイルを求める人を全力で歓迎します。",
+                tags: ['business', 'parent', 'senior']
+            },
             {
                 title: "産業振興・企業支援（地域産業振興センター）",
                 url: "https://www.pref.nara.jp/1285.htm",
