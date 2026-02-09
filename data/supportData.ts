@@ -182,15 +182,15 @@ export const supportData: SupportCategory[] = [
         description: "電子申請、パスポート、免許更新、施設案内。",
         items: [
             {
-                title: "e古都なら（電子申請ポータル）",
-                url: "https://s-kantan.jp/pref-nara-u/",
+                title: "奈良スーパーアプリ",
+                url: "https://nsa.pref.nara.jp/ctztop/",
                 description: "各種申請・届出のオンライン窓口。24時間受付。",
                 comment: "デジタルランク全国上位の実力。役所に行かない、待たない、書かない行政を実現します。",
                 tags: ['parent', 'business', 'senior']
             },
             {
                 title: "パスポート申請のご案内",
-                url: "https://www.pref.nara.jp/1531.htm",
+                url: "https://www.pref.nara.jp/49261.htm",
                 description: "申請手続き、窓口混雑状況、手数料。",
                 comment: "需要の高い手続きこそデジタルで完結を。国際交流の架け橋となる皆様を応援します。",
                 tags: ['student', 'business']
