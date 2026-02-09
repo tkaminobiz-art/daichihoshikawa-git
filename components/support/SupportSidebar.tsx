@@ -11,7 +11,7 @@ export default function SupportSidebar() {
                 SNS 公式アカウント
             </div>
             <div className="space-y-3">
-                <a href="#" className="block bg-[#06C755] text-white p-3 rounded shadow hover:opacity-90 transition-opacity flex items-center gap-3">
+                <a href="https://lin.ee/n4zXBZ7" target="_blank" rel="noopener noreferrer" className="block bg-[#06C755] text-white p-3 rounded shadow hover:opacity-90 transition-opacity flex items-center gap-3">
                     <div className="bg-white/20 p-1.5 rounded">
                         <MessageCircle size={20} />
                     </div>
@@ -21,7 +21,7 @@ export default function SupportSidebar() {
                     </div>
                 </a>
 
-                <a href="#" className="block bg-black text-white p-3 rounded shadow hover:opacity-90 transition-opacity flex items-center gap-3">
+                <a href="https://twitter.com/daichi_star/" target="_blank" rel="noopener noreferrer" className="block bg-black text-white p-3 rounded shadow hover:opacity-90 transition-opacity flex items-center gap-3">
                     <div className="bg-white/20 p-1.5 rounded">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" /></svg>
                     </div>
@@ -31,7 +31,7 @@ export default function SupportSidebar() {
                     </div>
                 </a>
 
-                <a href="#" className="block bg-gradient-to-tr from-[#f09433] via-[#dc2743] to-[#bc1888] text-white p-3 rounded shadow hover:opacity-90 transition-opacity flex items-center gap-3">
+                <a href="https://www.instagram.com/daichi_star12/" target="_blank" rel="noopener noreferrer" className="block bg-gradient-to-tr from-[#f09433] via-[#dc2743] to-[#bc1888] text-white p-3 rounded shadow hover:opacity-90 transition-opacity flex items-center gap-3">
                     <div className="bg-white/20 p-1.5 rounded">
                         <Instagram size={20} />
                     </div>
@@ -41,7 +41,7 @@ export default function SupportSidebar() {
                     </div>
                 </a>
 
-                <a href="#" className="block bg-[#1877F2] text-white p-3 rounded shadow hover:opacity-90 transition-opacity flex items-center gap-3">
+                <a href="https://www.facebook.com/profile.php?id=100089702911147" target="_blank" rel="noopener noreferrer" className="block bg-[#1877F2] text-white p-3 rounded shadow hover:opacity-90 transition-opacity flex items-center gap-3">
                     <div className="bg-white/20 p-1.5 rounded">
                         <Facebook size={20} />
                     </div>
