@@ -52,33 +52,7 @@ export default function SupportSidebar() {
                 </a>
             </div>
 
-            {/* Support Club / Koh-enkai */}
-            <div className="bg-[#C5A065] p-6 rounded text-center shadow-lg hover:bg-[#b08d55] transition-colors cursor-pointer group">
-                <div className="flex justify-center mb-2 text-white">
-                    <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" /></svg>
-                </div>
-                <h3 className="text-white font-bold text-xl mb-1">星川だいち 後援会</h3>
-                <p className="text-white/80 text-xs">会員募集中・入会案内はこちら</p>
-            </div>
 
-            {/* Office Info */}
-            <div className="bg-[#f4f4f4] p-5 border-l-4 border-[#0A1A3A] shadow-sm">
-                <h4 className="font-bold text-[#0A1A3A] flex items-center gap-2 mb-3">
-                    <span className="w-1 h-4 bg-[#0A1A3A]"></span>
-                    事務所のご案内
-                </h4>
-                <div className="text-sm text-gray-700 space-y-2">
-                    <p className="font-bold">星川だいち 選挙事務所</p>
-                    <p className="flex items-start gap-2">
-                        <MapPin size={16} className="mt-0.5 shrink-0 text-gray-500" />
-                        <span>
-                            〒630-8501<br />
-                            奈良県奈良市登大路町30
-                        </span>
-                    </p>
-
-                </div>
-            </div>
 
             {/* Calendar Widget Placeholder */}
             <div className="bg-white p-4 border border-gray-200 shadow-sm">
