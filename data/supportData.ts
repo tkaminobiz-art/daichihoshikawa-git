@@ -201,6 +201,13 @@ export const supportData: SupportCategory[] = [
                 comment: "奈良の風景は「資産」です。見て終わりではなく、滞在・周遊させる仕掛けで経済を回します。",
                 tags: ['business', 'student']
             },
+            {
+                title: "奈良県イベント・観光情報（イベントポータル）",
+                url: "https://event.nsa.pref.nara.jp/",
+                description: "祭り、展示、講座など、県内各地のイベント情報を一元的に検索。",
+                comment: "「今週末なにする？」が見つかる。地域の賑わいと、県民の交流を生み出す情報ハブです。",
+                tags: ['student', 'parent', 'senior']
+            },
         ],
     },
     {
