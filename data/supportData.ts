@@ -77,11 +77,39 @@ export const supportData: SupportCategory[] = [
         description: "災害への備え、救急医療、道路・河川などのインフラ情報。",
         items: [
             {
-                title: "奈良県 防災・危機管理ポータル",
-                url: "https://www.pref.nara.jp/1825.htm",
-                description: "気象警報、交通運行状況、ライフライン情報の統合ハブ。",
-                comment: "災害時は情報が命です。五條の広域防災拠点とドローン物流網で、陸の孤立を許しません。",
+                title: "奈良県防災情報サイト（公式リンク集）",
+                url: "https://www.pref.nara.jp/68322.htm",
+                description: "気象、交通、河川、ライフラインなど、災害時に必要な全情報の公式リンク集。",
+                comment: "災害時はまずここへ。必要な全ての情報への入り口がまとまっています。",
                 tags: ['emergency', 'senior', 'parent', 'business']
+            },
+            {
+                title: "奈良県防災ポータル（リアルタイム情報）",
+                url: "https://www.bosai.pref.nara.jp/dis_portal/",
+                description: "警報発令状況、避難所開設、ライブカメラなど、刻々と変わる状況をリアルタイムで確認。",
+                comment: "「今、どこが危険か」が地図で分かります。避難判断の決定打となるサイトです。",
+                tags: ['emergency', 'senior', 'parent']
+            },
+            {
+                title: "奈良県河川情報システム",
+                url: "http://www.kasen.pref.nara.jp/gispub/info/top/menu",
+                description: "県内河川の水位、雨量情報、監視カメラ映像。",
+                comment: "川の様子を見に行かないで。スマホで水位とカメラ映像を確認し、早めの避難判断を。",
+                tags: ['emergency', 'business']
+            },
+            {
+                title: "道路情報なら（県道規制情報）",
+                url: "https://pref.nara.geocloud.jp/mp/10",
+                description: "県管理道路の通行止め、規制情報のマップ表示。",
+                comment: "災害時の避難ルート・物流確保に。通れる道、通れない道を地図上で一目で確認できます。",
+                tags: ['emergency', 'business']
+            },
+            {
+                title: "Yahoo!防災速報アプリ",
+                url: "https://emg.yahoo.co.jp/",
+                description: "自治体からの緊急情報をプッシュ通知で受信。マイ・タイムライン作成も。",
+                comment: "情報は「待つ」のではなく「届く」時代へ。命を守る通知をオンにしてください。",
+                tags: ['emergency', 'parent', 'student', 'senior']
             },
             {
                 title: "医療（救急安心センター #7119）",
