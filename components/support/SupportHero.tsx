@@ -4,37 +4,52 @@ import { motion } from "framer-motion";
 
 export default function SupportHero() {
     return (
-        <section className="relative h-[65vh] min-h-[600px] w-full overflow-hidden bg-gray-900">
+        <section className="relative w-full overflow-hidden bg-gray-900 md:h-[65vh] md:min-h-[600px] flex flex-col md:block">
             {/* Background Image - Placeholder for Nara Scenery */}
-            <div className="absolute inset-0">
-                {/* Use a high-quality placeholder or specific asset if available. 
-                     For now, using a gradient/solid color to represent the image area 
-                     until an actual image is provided/decided. 
-                     Ideally: <img src="/images/nara_scenery.jpg" ... /> 
-                  */}
+            <div className="absolute inset-0 z-0">
                 <div className="absolute inset-0 bg-gradient-to-r from-gray-900 via-gray-900/95 to-gray-900/60 z-0"></div>
             </div>
 
             {/* Hoshikawa Portrait */}
+            {/* Mobile: Relative in flow. Desktop: Absolute positioned. */}
             <motion.img
                 initial={{ opacity: 0, x: 50, y: 20 }}
                 animate={{ opacity: 1, x: 0, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.3 }}
                 src="/images/hoshikawa_hero_portrait.png"
                 alt="星川だいち"
-                className="absolute bottom-0 right-[-10%] md:right-0 w-[90%] md:w-[50%] lg:w-[45%] max-w-[700px] object-contain object-bottom z-10 drop-shadow-2xl pointer-events-none"
+                className="
+                    z-10 drop-shadow-2xl pointer-events-none
+                    /* Mobile Styles */
+                    relative w-full h-[45vh] object-contain object-bottom mt-8 mr-[-10%]
+                    /* Desktop Styles */
+                    md:absolute md:bottom-0 md:right-0 md:w-[50%] md:h-auto md:max-w-[700px] md:mt-0 md:mr-0
+                "
                 onError={(e) => {
                     e.currentTarget.style.display = 'none';
                 }}
             />
 
-            {/* Overlay Card */}
-            <div className="absolute inset-0 z-20 container mx-auto px-4 flex items-center md:items-center justify-center md:justify-start">
+            {/* Overlay Card Container */}
+            <div className="
+                z-20 container mx-auto px-4 
+                /* Mobile Styles */
+                relative pb-12 mt-[-20px]
+                /* Desktop Styles */
+                md:absolute md:inset-0 md:flex md:items-center md:pb-0 md:mt-0
+                justify-center md:justify-start
+            ">
                 <motion.div
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.8 }}
-                    className="bg-white/95 backdrop-blur-sm p-6 md:p-12 max-w-lg shadow-2xl border-l-8 border-[#008c4b] relative mb-12 md:mb-0 mr-auto md:mr-0"
+                    className="
+                        bg-white/95 backdrop-blur-sm shadow-2xl border-l-8 border-[#008c4b] relative 
+                        /* Mobile */
+                        w-full p-6
+                        /* Desktop */
+                        md:p-12 md:max-w-lg
+                    "
                 >
                     <div className="flex flex-col gap-4">
                         <span className="inline-block bg-[#008c4b] text-white text-xs font-bold px-3 py-1 w-fit mb-2">
