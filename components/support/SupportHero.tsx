@@ -39,18 +39,23 @@ export default function SupportHero() {
                             奈良県議会議員<br />星川 だいち
                         </h1>
                         <div className="h-[1px] w-full bg-gray-200 my-2"></div>
-                        <p className="text-gray-700 font-medium leading-relaxed">
-                            皆様の声を県政に届け、安心で活力ある地域づくりに邁進いたします。
+                        <p className="text-gray-700 font-medium leading-relaxed mb-4">
+                            ここに、県民の皆様のお声を直接集める<br />
+                            <span className="font-bold text-[#0A1A3A] bg-yellow-100 px-1">奈良の議員で初めての試み</span>を初めています。<br />
+                            ぜひ、公聴専用の公式LINEを活用してください。
                         </p>
 
-                        <div className="mt-6 flex flex-col gap-3">
-                            <a href="#latest-policy" className="bg-[#0A1A3A] text-white text-center py-3 font-bold hover:bg-[#008c4b] transition-colors flex justify-between px-6 items-center group">
-                                <span>政策を見る</span>
-                                <span className="group-hover:translate-x-1 transition-transform">→</span>
+                        <div className="mt-4 flex flex-col gap-3">
+                            <a
+                                href="https://lin.ee/n4zXBZ7"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="bg-[#06C755] text-white text-center py-4 font-bold rounded-lg shadow-lg hover:bg-[#05b34c] hover:scale-[1.02] transition-all flex justify-center items-center gap-2 group animate-pulse hover:animate-none"
+                            >
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 5.92 2 10.75c0 2.8 1.5 5.28 3.86 6.88 1.48 1.01-.2 3.32-.4 3.79-.17.38.35.79.79.44 3.4-2.69 4.39-3.04 4.88-3.13.29.02.58.04.87.04 5.52 0 10-3.92 10-8.75S17.52 2 12 2z" /></svg>
+                                <span>公聴専用・公式LINEで声を届ける</span>
                             </a>
-                            <a href="#contact" className="border border-gray-300 text-gray-700 text-center py-3 font-medium hover:bg-gray-50 transition-colors">
-                                後援会のご案内
-                            </a>
+                            <p className="text-xs text-center text-gray-500">※お寄せいただいた声は、政策立案の参考にさせていただきます。</p>
                         </div>
                     </div>
                 </motion.div>
