@@ -1,36 +1,67 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🌟 星川大地 公式サイト (Daichi Hoshikawa Official Website)
 
-## Getting Started
+奈良県議会議員 星川大地の公式サイトリニューアルプロジェクト。
+「現場の声」と「政策（ロジック）」を融合させ、信頼と熱意を伝えるデザインを目指しています。
 
-First, run the development server:
+## 🛠️ 技術スタック (Tech Stack)
+
+- **Framework**: [Next.js 14 (App Router)](https://nextjs.org/)
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS
+- **Animation**: Framer Motion
+- **Icons**: Lucide React
+- **Deployment**: Vercel (Recommended)
+
+## 📂 プロジェクト構成 (Directory Structure)
+
+重要なドキュメントは `DAICHI HOSHIKAWA/` ディレクトリに一元管理されています。
+
+- **`DAICHI HOSHIKAWA/`**
+  - `task.md`: 進捗管理・タスク一覧
+  - `implementation_plan.md`: 実装計画・仕様詳細
+  - `addition_proposal.md`: 機能追加・デザイン提案
+
+- **`app/`**: Next.js アプリケーションのページ・ルーティング
+- **`components/`**: 再利用可能なUIコンポーネント
+- **`data/`**: コンテンツ用データファイル（`supportData.ts` など）
+
+## 🚀 開発の始め方 (Getting Started)
+
+MacBook Airなどの別デバイスで作業を始める手順です。
+
+### 1. 準備 (Prerequisites)
+- [Node.js](https://nodejs.org/) (v18以上推奨)
+- Git
+
+### 2. 環境構築 (Setup)
+
+ターミナルを開き、以下のコマンドを実行してください。
+
+```bash
+# リポジトリのクローン
+git clone https://github.com/tkaminobiz-art/daichihoshikawa-git.git
+
+# ディレクトリへ移動
+cd daichihoshikawa-git
+
+# 依存パッケージのインストール
+npm install
+```
+
+### 3. 開発サーバーの起動 (Run Dev Server)
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+ブラウザで [http://localhost:3000](http://localhost:3000) を開くと、サイトが表示されます。
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🔄 複数デバイスでの作業フロー (Workflow)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+このプロジェクトは `DAICHI HOSHIKAWA/` 内のドキュメントで進行状況を管理しています。
 
-## Learn More
+1. **作業開始前**: 必ず `git pull` して最新の状態を取得する。
+2. **指示出し**: `DAICHI HOSHIKAWA/task.md` に新しいタスクを追記するだけでも立派な指示になります。
+3. **作業終了時**: 変更内容を `git push` して保存する。
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+こうすることで、iMacとMacBook Airの間で「指示」と「進捗」を同期できます。
