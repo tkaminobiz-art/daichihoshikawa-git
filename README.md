@@ -20,6 +20,7 @@
   - `task.md`: 進捗管理・タスク一覧
   - `implementation_plan.md`: 実装計画・仕様詳細
   - `addition_proposal.md`: 機能追加・デザイン提案
+  - `DESIGN.md`: デザインルール（カラーコード・フォント）
 
 - **`app/`**: Next.js アプリケーションのページ・ルーティング
 - **`components/`**: 再利用可能なUIコンポーネント
