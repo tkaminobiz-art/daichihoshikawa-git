@@ -372,7 +372,7 @@ export default function Page() {
                         }
                      ].map((v, i) => (
                         <Reveal key={i} delay={i * 100}>
-                           <div className="group relative h-[500px] border border-gray-200 overflow-hidden bg-[#F9F9F6] transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 flex flex-col">
+                           <div className="group relative h-full min-h-[500px] border border-gray-200 overflow-hidden bg-[#F9F9F6] transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 flex flex-col">
                               <Parallax className="absolute inset-0 w-full h-full z-0" offset={20}>
                                  <img src={visionImages[i]} alt={`星川大地の政策ビジョン: ${v.title}${v.title2}`} className="absolute inset-0 w-full h-[120%] object-cover opacity-10 group-hover:opacity-15 transition-opacity duration-500 grayscale" />
                               </Parallax>
@@ -383,7 +383,7 @@ export default function Page() {
                               <div className="relative z-10 p-8 flex-1 flex flex-col">
                                  {/* Vertical Slogan */}
                                  <div className="flex-1 flex items-center justify-center py-6">
-                                    <h5 className="writing-vertical-rl text-3xl font-serif font-bold text-[#0A1A3A] tracking-wider border-r-2 border-[#FF1A1A]/30 pr-6 leading-loose shadow-[4px_0_0_0_rgba(255,255,255,0.8)]">
+                                    <h5 className="writing-vertical whitespace-nowrap text-3xl font-serif font-bold text-[#0A1A3A] tracking-wider border-r-2 border-[#FF1A1A]/30 pr-6 leading-loose shadow-[4px_0_0_0_rgba(255,255,255,0.8)]">
                                        {v.title}<span className="text-[#FF1A1A]">{v.title2}</span>
                                     </h5>
                                  </div>
