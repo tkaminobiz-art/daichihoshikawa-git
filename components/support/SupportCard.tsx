@@ -45,7 +45,7 @@ export default function SupportCard({ item, index }: { item: SupportItem; index:
                 <div className="flex items-center gap-2 mb-2">
                     <div className="bg-[#0A1A3A] text-white text-[10px] uppercase font-bold px-2 py-0.5 rounded-full shadow-sm flex items-center gap-1">
                         <MessageCircle size={10} />
-                        Star's Voice
+                        Star&apos;s Voice
                     </div>
                 </div>
                 <p className="text-xs text-[#0A1A3A] font-medium leading-relaxed mb-3">

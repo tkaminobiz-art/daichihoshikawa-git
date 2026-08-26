@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { Twitter, Instagram, Facebook } from 'lucide-react'
+import { Instagram, Facebook } from 'lucide-react'
 
 export default function SidebarRight() {
     // Force rebuild v0.1.1
@@ -13,18 +13,17 @@ export default function SidebarRight() {
                 {/* Navigation */}
                 <nav className="flex flex-col gap-8">
                     {[
-                        { en: 'VISION', ja: 'ビジョン' },
-                        { en: 'POLICY', ja: '政策' },
-                        { en: 'RESULTS', ja: '実績' },
-                        { en: 'ASSEMBLY', ja: '議会' },
-                        { en: 'SUPPORT', ja: '制度ナビ' },
-                        { en: 'ROADMAP', ja: '計画' },
-                        { en: 'ACTIVITY', ja: '活動' },
-                        { en: 'PROFILE', ja: 'プロフィール' }
+                        { en: 'VISION', ja: '重点方針', href: '#vision' },
+                        { en: 'POLICY', ja: '政策', href: '#policy' },
+                        { en: 'PROPOSALS', ja: '主な提案', href: '#proposals' },
+                        { en: 'SUPPORT', ja: '制度ナビ', href: '/support' },
+                        { en: 'ROADMAP', ja: '予定・進捗', href: '#roadmap' },
+                        { en: 'ACTIVITY', ja: '活動', href: '#activity' },
+                        { en: 'PROFILE', ja: 'プロフィール', href: '#profile' }
                     ].map((item) => (
                         <a
                             key={item.en}
-                            href={item.en === 'SUPPORT' ? '/support' : `#${item.en.toLowerCase()}`}
+                            href={item.href}
                             className={`group flex items-center text-lg font-bold tracking-[0.2em] transition-all ${item.en === 'SUPPORT' ? 'text-[#008c4b] hover:text-white' : 'hover:text-[#FF1A1A]'}`}
                         >
                             <span className={`w-0 h-[2px] mr-2 group-hover:w-8 group-hover:mr-4 transition-all duration-300 ${item.en === 'SUPPORT' ? 'bg-[#008c4b]' : 'bg-[#FF1A1A]'}`}></span>
@@ -99,7 +98,7 @@ export default function SidebarRight() {
                     <div className="text-sm text-gray-400 space-y-3 text-center opacity-80">
                         <p className="font-bold text-white tracking-widest">日本維新の会 奈良県総支部</p>
                         <p className="font-mono">〒631-0841 奈良市青野町1-4</p>
-                        <p className="pt-6 text-xs opacity-50">© Daichi Hoshikawa</p>
+                        <p className="pt-6 text-xs opacity-50">© 2026 Daichi Hoshikawa</p>
                     </div>
                 </div>
             </div>

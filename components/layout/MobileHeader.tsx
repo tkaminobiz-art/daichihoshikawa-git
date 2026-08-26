@@ -3,6 +3,7 @@
 import React, { useState } from 'react'
 import { Menu, X } from 'lucide-react'
 import { usePathname } from 'next/navigation'
+import Link from 'next/link'
 
 export default function MobileHeader() {
     // Force rebuild v0.1.1
@@ -14,15 +15,17 @@ export default function MobileHeader() {
         <header className="lg:hidden fixed top-0 left-0 w-full bg-white/90 backdrop-blur-md z-50 border-b border-gray-200">
             <div className="flex items-center justify-between px-6 py-4">
                 {/* Logo / Name */}
-                <a href="/" className="flex flex-col">
+                <Link href="/" className="flex flex-col">
                     <span className="text-xs font-bold text-gray-500 tracking-widest">奈良県議会議員</span>
                     <h1 className="text-xl font-serif font-bold text-gray-900">星川 大地</h1>
-                </a>
+                </Link>
 
                 {/* Hamburger Button */}
                 <button
                     onClick={() => setIsOpen(!isOpen)}
                     className="p-2 text-gray-700 hover:bg-gray-100 rounded-full transition-colors"
+                    aria-label={isOpen ? 'メニューを閉じる' : 'メニューを開く'}
+                    aria-expanded={isOpen}
                 >
                     {isOpen ? <X size={24} /> : <Menu size={24} />}
                 </button>
@@ -33,18 +36,17 @@ export default function MobileHeader() {
                 <div className="absolute top-full left-0 w-full bg-white border-b border-gray-200 shadow-xl py-6 px-6 flex flex-col gap-6">
                     <nav className="flex flex-col gap-4">
                         {[
-                            { en: 'VISION', ja: 'ビジョン' },
-                            { en: 'POLICY', ja: '政策' },
-                            { en: 'RESULTS', ja: '実績' },
-                            { en: 'ASSEMBLY', ja: '議会' },
-                            { en: 'SUPPORT', ja: '制度ナビ' },
-                            { en: 'ROADMAP', ja: '計画' },
-                            { en: 'ACTIVITY', ja: '活動' },
-                            { en: 'PROFILE', ja: 'プロフィール' }
+                            { en: 'VISION', ja: '重点方針', href: '#vision' },
+                            { en: 'POLICY', ja: '政策', href: '#policy' },
+                            { en: 'PROPOSALS', ja: '主な提案', href: '#proposals' },
+                            { en: 'SUPPORT', ja: '制度ナビ', href: '/support' },
+                            { en: 'ROADMAP', ja: '予定・進捗', href: '#roadmap' },
+                            { en: 'ACTIVITY', ja: '活動', href: '#activity' },
+                            { en: 'PROFILE', ja: 'プロフィール', href: '#profile' }
                         ].map((item) => {
                             const href = item.en === 'SUPPORT'
                                 ? '/support'
-                                : (isHome ? `#${item.en.toLowerCase()}` : `/#${item.en.toLowerCase()}`);
+                                : (isHome ? item.href : `/${item.href}`);
 
                             return (
                                 <a
