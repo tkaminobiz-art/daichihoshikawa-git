@@ -59,23 +59,23 @@ export default function SupportPage() {
 
                         {/* 1. Manifesto (Compact / Clean) */}
                         <section className="bg-[#f8f9fa] p-8 rounded-lg border-l-4 border-[#0A1A3A]">
-                            <h2 className="text-2xl font-serif font-bold text-[#0A1A3A] mb-4">
+                            <h2 className="jp-heading text-2xl font-serif font-bold text-[#0A1A3A] mb-4">
                                 「現場の声」こそが、政治の原点です。
                             </h2>
-                            <div className="space-y-4 text-gray-700 leading-relaxed text-sm md:text-base text-justify">
-                                <p>
-                                    元警察官として20年以上、奈良の街を走り続けてきました。<br />
+                            <div className="space-y-4 text-gray-700 leading-relaxed text-sm md:text-base text-left">
+                                <p className="jp-copy">
+                                    元警察官として20年以上、奈良の街を走り続けてきました。
                                     そこで目にしたのは、行政の壁に突き当たり困っている方々の姿です。
                                 </p>
-                                <p>
-                                    このポータルは、そんな「困った」を「安心」に変えるために作りました。<br />
+                                <p className="jp-copy">
+                                    このポータルは、そんな「困った」を「安心」に変えるために作りました。
                                     奈良市の成功事例を県全体へ広げ、あなたと大切な家族を守る『お守り』のような存在を目指します。
                                 </p>
                             </div>
                         </section>
 
                         {/* 2. Tools (Search & Filter) */}
-                        <div className="bg-white sticky top-0 z-30 pt-4 pb-4 -mt-4 border-b border-gray-100">
+                        <div className="bg-white z-30 pt-4 pb-4 -mt-4 border-b border-gray-100 md:sticky md:top-[77px] lg:top-0">
                             <div className="flex flex-col md:flex-row gap-4 mb-4">
                                 <div className="relative flex-1">
                                     <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={18} />
@@ -110,10 +110,10 @@ export default function SupportPage() {
                         <div className="space-y-16">
                             {filteredData.length > 0 ? (
                                 filteredData.map((category) => (
-                                    <section key={category.id} id={category.id} className="scroll-mt-32">
+                                    <section key={category.id} id={category.id} className="scroll-mt-24 md:scroll-mt-[220px] lg:scroll-mt-36">
                                         <div className="flex items-center gap-3 mb-6 border-b-2 border-[#008c4b] pb-2">
                                             <span className="text-2xl">{category.icon}</span>
-                                            <h2 className="text-xl md:text-2xl font-bold text-[#0A1A3A]">
+                                            <h2 className="jp-heading text-xl md:text-2xl font-bold text-[#0A1A3A]">
                                                 {category.title}
                                             </h2>
                                         </div>

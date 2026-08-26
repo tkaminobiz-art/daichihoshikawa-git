@@ -55,13 +55,13 @@ export default function SupportHero() {
                         <span className="inline-block bg-[#008c4b] text-white text-xs font-bold px-3 py-1 w-fit mb-2">
                             公式ウェブサイト
                         </span>
-                        <h1 className="text-3xl md:text-4xl font-serif font-bold text-[#0A1A3A] tracking-wider leading-tight">
+                        <h1 className="jp-heading text-3xl md:text-4xl font-serif font-bold text-[#0A1A3A] tracking-wider leading-tight">
                             奈良県議会議員<br />星川 だいち
                         </h1>
                         <div className="h-[1px] w-full bg-gray-200 my-2"></div>
-                        <p className="text-gray-700 font-medium leading-relaxed mb-4 text-sm md:text-base">
-                            ここに、県民の皆様のお声を直接集める<br />
-                            <span className="font-bold text-[#0A1A3A] bg-yellow-100 px-1">奈良の議員で初めての試み</span>を初めています。<br />
+                        <p className="jp-copy text-gray-700 font-medium leading-relaxed mb-4 text-sm md:text-base">
+                            ここに、県民の皆様のお声を直接集める
+                            <span className="font-bold text-[#0A1A3A] bg-yellow-100 px-1">奈良の議員で初めての試み</span>を初めています。
                             ぜひ、公聴専用の公式LINEを活用してください。
                         </p>
 

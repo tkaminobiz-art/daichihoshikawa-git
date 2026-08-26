@@ -24,7 +24,7 @@ export default function SupportCard({ item, index }: { item: SupportItem; index:
                     rel="noopener noreferrer"
                     className="flex items-start justify-between gap-2 group-hover:text-[#008c4b] transition-colors"
                 >
-                    <h3 className="text-lg font-bold text-[#0A1A3A] leading-snug group-hover:underline decoration-2 underline-offset-4 decoration-[#008c4b]/30">
+                    <h3 className="jp-heading text-lg font-bold text-[#0A1A3A] leading-snug group-hover:underline decoration-2 underline-offset-4 decoration-[#008c4b]/30">
                         {item.title}
                     </h3>
                     <ExternalLink size={16} className="text-gray-400 shrink-0 mt-1" />
@@ -35,7 +35,7 @@ export default function SupportCard({ item, index }: { item: SupportItem; index:
             <div className="px-5 py-2 flex-1">
                 <ul className="list-disc list-outside ml-4 space-y-1 text-gray-600 text-sm leading-relaxed">
                     {item.description.split("。").filter(Boolean).map((text, i) => (
-                        <li key={i}>{text}。</li>
+                        <li key={i} className="jp-copy">{text}。</li>
                     ))}
                 </ul>
             </div>
@@ -48,7 +48,7 @@ export default function SupportCard({ item, index }: { item: SupportItem; index:
                         Star&apos;s Voice
                     </div>
                 </div>
-                <p className="text-xs text-[#0A1A3A] font-medium leading-relaxed mb-3">
+                <p className="jp-copy text-xs text-[#0A1A3A] font-medium leading-relaxed mb-3">
                     {item.comment}
                 </p>
 
@@ -59,13 +59,13 @@ export default function SupportCard({ item, index }: { item: SupportItem; index:
                             <div className="flex flex-col gap-2">
                                 <div className="flex gap-2 items-start">
                                     <span className="text-[9px] font-bold bg-gray-500 text-white px-1 py-px rounded shrink-0 leading-none mt-0.5">現場</span>
-                                    <p className="text-[10px] text-gray-500 leading-tight line-clamp-2">
+                                    <p className="jp-copy text-[10px] text-gray-500 leading-relaxed">
                                         {item.story.before}
                                     </p>
                                 </div>
                                 <div className="flex gap-2 items-start">
                                     <span className="text-[9px] font-bold bg-[#FF1A1A] text-white px-1 py-px rounded shrink-0 leading-none mt-0.5">未来</span>
-                                    <p className="text-[10px] text-[#0A1A3A] font-bold leading-tight line-clamp-3">
+                                    <p className="jp-copy text-[10px] text-[#0A1A3A] font-bold leading-relaxed">
                                         {item.story.after}
                                     </p>
                                 </div>

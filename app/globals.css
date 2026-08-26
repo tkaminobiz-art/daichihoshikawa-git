@@ -57,3 +57,17 @@ body {
 .parallax-layer {
     will-change: transform;
 }
+
+/* Japanese line-breaking helpers */
+.jp-heading {
+    text-wrap: balance;
+}
+
+.jp-copy {
+    text-wrap: pretty;
+}
+
+.jp-keep {
+    display: inline-block;
+    white-space: nowrap;
+}

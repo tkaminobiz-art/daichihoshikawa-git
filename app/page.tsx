@@ -272,7 +272,7 @@ export default function Page() {
          </aside>
 
          {/* CENTER COLUMN (Main Content) */}
-         <main className="flex-1 lg:ml-[25%] lg:mr-[25%] bg-white relative z-40 shadow-[0_0_60px_rgba(0,0,0,0.2)] min-h-screen pb-40 lg:pb-20 pt-16 lg:pt-0">
+         <main className="min-w-0 flex-1 lg:ml-[25%] lg:mr-[25%] bg-white relative z-40 shadow-[0_0_60px_rgba(0,0,0,0.2)] min-h-screen pb-40 lg:pb-20 pt-16 lg:pt-0">
 
             {/* HERO SECTION */}
             <section className="relative h-[85vh] min-h-[620px] w-full overflow-hidden bg-[radial-gradient(circle_at_70%_25%,#17315f_0%,#0A1A3A_48%,#061126_100%)] group">
@@ -299,8 +299,8 @@ export default function Page() {
                   </div>
                   <div className={`transition-all duration-1000 delay-700 ${loadingComplete ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
                      <div className="lg:border-l-4 lg:border-[#FF1A1A] lg:pl-6">
-                        <p className="text-white/90 text-sm lg:text-lg leading-loose font-medium drop-shadow-md">
-                           元警察官として、犯罪や事故の現場に向き合ってきました。<br />
+                        <p className="jp-copy text-white/90 text-sm lg:text-base 2xl:text-lg leading-loose font-medium drop-shadow-md">
+                           元警察官として、犯罪や事故の現場に向き合ってきました。<br className="hidden 2xl:block" />
                            その経験を、未然防止と早期支援の制度に生かします。
                         </p>
                      </div>
@@ -309,17 +309,17 @@ export default function Page() {
             </section>
 
             {/* CONTENT BODY */}
-            <div className="px-6 md:px-12 py-24 space-y-32 bg-white">
+            <div className="px-6 py-24 space-y-32 bg-white md:px-12 lg:px-8 2xl:px-12">
 
                {/* VISION */}
-               <section id="vision" className="relative">
+               <section id="vision" className="relative scroll-mt-20 lg:scroll-mt-0">
                   <GoldDustAccent />
                   <Reveal>
                      <div className="flex items-center gap-4 mb-16 relative z-10">
                         <span className="h-[2px] w-12 bg-[#FF1A1A]"></span>
                         <TextReveal className="text-sm font-bold tracking-widest text-[#FF1A1A]">VISION</TextReveal>
                      </div>
-                     <h4 className="text-3xl md:text-4xl font-serif font-bold mb-20 text-[#0A1A3A] leading-relaxed relative z-10">
+                     <h4 className="jp-heading text-3xl md:text-4xl font-serif font-bold mb-20 text-[#0A1A3A] leading-relaxed relative z-10">
                         3つの重点方針
                      </h4>
                   </Reveal>
@@ -346,24 +346,25 @@ export default function Page() {
                         {visionSlides.map((slide, index) => (
                            <article
                               key={slide.category}
-                              className="relative min-h-[620px] md:min-h-[500px] w-[88%] md:w-full shrink-0 snap-start overflow-hidden border border-gray-200 bg-[#F9F9F6] shadow-[0_16px_45px_rgba(10,26,58,0.10)]"
+                              className="relative min-h-[620px] md:min-h-[560px] 2xl:min-h-[500px] w-[88%] md:w-full shrink-0 snap-start overflow-hidden border border-gray-200 bg-[#F9F9F6] shadow-[0_16px_45px_rgba(10,26,58,0.10)]"
                               role="group"
                               aria-roledescription="スライド"
                               aria-label={`${index + 1} / ${visionSlides.length} ${slide.title}${slide.accent}`}
                            >
-                              <div className="grid h-full min-h-[620px] grid-rows-[240px_1fr] md:min-h-[500px] md:grid-cols-[60%_40%] md:grid-rows-1">
-                                 <div className="relative order-2 flex flex-col p-7 sm:p-9 md:order-1 md:p-12">
+                              <div className="grid h-full min-h-[620px] grid-rows-[240px_1fr] md:min-h-[560px] md:grid-cols-[64%_36%] md:grid-rows-1 2xl:min-h-[500px]">
+                                 <div className="relative order-2 flex flex-col p-7 sm:p-9 md:order-1 md:p-7 2xl:p-12">
                                     <span data-number={`0${index + 1}`} className="absolute right-6 top-2 text-7xl font-black text-[#0A1A3A]/5 before:content-[attr(data-number)] md:right-8 md:top-5 md:text-8xl" aria-hidden="true" />
                                     <p className="mb-5 text-xs font-bold tracking-[0.18em] text-gray-500">{slide.category}</p>
-                                    <h5 className="max-w-xl text-[1.65rem] font-bold leading-[1.45] tracking-[0.01em] text-[#0A1A3A] sm:text-3xl md:text-[clamp(1.75rem,2.7vw,2.75rem)]">
-                                       {slide.title}<br className="hidden sm:block" /> <span className="text-[#FF1A1A]">{slide.accent}</span>
+                                    <h5 className="jp-heading max-w-xl text-[1.375rem] font-bold leading-[1.45] tracking-[0.01em] text-[#0A1A3A] sm:text-[1.75rem] md:text-[1.75rem] lg:text-[1.375rem] xl:text-[1.5rem] 2xl:text-[2.25rem]">
+                                       <span className="block"><span className="jp-keep">{slide.title}</span></span>
+                                       <span className="block text-[#FF1A1A]"><span className="jp-keep">{slide.accent}</span></span>
                                     </h5>
-                                    <p className="mt-6 max-w-xl text-sm font-medium leading-8 text-gray-700 md:text-base">
+                                    <p className="jp-copy mt-6 max-w-xl text-sm font-medium leading-8 text-gray-700 xl:text-base">
                                        {slide.description}
                                     </p>
                                     <ul className="mt-auto space-y-3 border-t border-gray-200 pt-6">
                                        {slide.bullets.map((bullet) => (
-                                          <li key={bullet} className="flex items-start gap-3 text-sm font-bold text-[#0A1A3A] md:text-base">
+                                          <li key={bullet} className="jp-copy flex items-start gap-3 text-sm font-bold text-[#0A1A3A] xl:text-base">
                                              <span className="mt-[0.65em] h-1.5 w-1.5 shrink-0 rounded-full bg-[#FF1A1A]" aria-hidden="true" />
                                              <span>{bullet}</span>
                                           </li>
@@ -402,29 +403,29 @@ export default function Page() {
                </section>
 
                {/* POLICY */}
-               <section id="policy">
+               <section id="policy" className="scroll-mt-20 lg:scroll-mt-0">
                   <Reveal>
                      <div className="flex items-center gap-4 mb-16">
                         <span className="h-[2px] w-12 bg-[#FF1A1A]"></span>
                         <TextReveal className="text-sm font-bold tracking-widest text-[#FF1A1A]">POLICY</TextReveal>
                      </div>
-                     <h4 className="text-3xl md:text-4xl font-serif font-bold mb-16 text-[#0A1A3A]">現場の声をもとにした、<br />5つの重点政策</h4>
+                     <h4 className="jp-heading text-[1.75rem] md:text-4xl font-serif font-bold mb-16 text-[#0A1A3A]"><span className="block">現場の声をもとにした、</span><span className="block">5つの重点政策</span></h4>
                   </Reveal>
                   <div className="space-y-20">
                      {[
-                        { title: "子育て・防犯支援の利用を広げる", items: ["見守りカメラ設置への助成", "ベビーシッター利用への支援", "児童相談所と警察の情報連携"] },
-                        { title: "地域の移動手段を確保する", items: ["公共ライドシェアの導入", "踏切課題に関する県・市・鉄道事業者の協議", "道路環境の改善"] },
-                        { title: "宿泊・周遊につながる観光を進める", items: ["県産品と飲食を扱う拠点づくり", "酒蔵を生かした観光企画", "夜間・宿泊型観光の充実"] },
-                        { title: "介護・保育・教育・警察の人材を確保する", items: ["介護・保育職員の処遇改善", "教職員・警察官の採用広報", "業務の見直しによる離職防止"] },
-                        { title: "災害時に機能する防災体制を整える", items: ["ドローンの災害活用", "五條の防災拠点整備", "避難所環境の改善"] }
+                        { title: <><span className="jp-keep">子育て・防犯支援の</span><wbr /><span className="jp-keep">利用を広げる</span></>, items: ["見守りカメラ設置への助成", "ベビーシッター利用への支援", "児童相談所と警察の情報連携"] },
+                        { title: <><span className="jp-keep">地域の移動手段を</span><wbr /><span className="jp-keep">確保する</span></>, items: ["公共ライドシェアの導入", <>踏切課題に関する県・市・<span className="jp-keep">鉄道事業者の協議</span></>, "道路環境の改善"] },
+                        { title: <><span className="jp-keep">宿泊・周遊につながる</span><wbr /><span className="jp-keep">観光を進める</span></>, items: ["県産品と飲食を扱う拠点づくり", "酒蔵を生かした観光企画", "夜間・宿泊型観光の充実"] },
+                        { title: <><span className="jp-keep">介護・保育・教育・警察の</span><wbr /><span className="jp-keep">人材を確保する</span></>, items: ["介護・保育職員の処遇改善", "教職員・警察官の採用広報", "業務の見直しによる離職防止"] },
+                        { title: <><span className="jp-keep">災害時に機能する</span><wbr /><span className="jp-keep">防災体制を整える</span></>, items: ["ドローンの災害活用", "五條の防災拠点整備", "避難所環境の改善"] }
                      ].map((policy, i) => (
                         <Reveal key={i}>
                            <div className="relative pl-8 md:pl-12 border-l-4 border-gray-200 hover:border-[#FF1A1A] transition-colors duration-500">
                               <span className="absolute -top-10 -left-6 text-8xl font-black text-gray-100 -z-10">0{i + 1}</span>
-                              <h5 className="text-xl md:text-2xl font-bold mb-6 text-[#0A1A3A]">{policy.title}</h5>
+                              <h5 className="jp-heading text-xl md:text-2xl font-bold mb-6 text-[#0A1A3A]">{policy.title}</h5>
                               <ul className="space-y-3">
                                  {policy.items.map((item, j) => (
-                                    <li key={j} className="flex items-center gap-3 text-gray-700 font-medium"><ArrowRight className="text-[#FF1A1A] w-5 h-5 shrink-0" />{item}</li>
+                                    <li key={j} className="flex items-start gap-3 text-gray-700 font-medium"><ArrowRight className="mt-[0.2em] text-[#FF1A1A] w-5 h-5 shrink-0" /><span className="jp-copy min-w-0">{item}</span></li>
                                  ))}
                               </ul>
                            </div>
@@ -434,33 +435,33 @@ export default function Page() {
                </section>
 
                {/* PROPOSALS */}
-               <section id="proposals" className="pt-20 border-t border-gray-200 relative">
+               <section id="proposals" className="relative scroll-mt-20 border-t border-gray-200 pt-20 lg:scroll-mt-0">
                   <GoldDustAccent />
                   <Reveal>
                      <div className="flex items-center gap-4 mb-16 relative z-10">
                         <span className="h-[2px] w-12 bg-[#FF1A1A]"></span>
                         <TextReveal className="text-sm font-bold tracking-widest text-[#FF1A1A]">PROPOSALS</TextReveal>
                      </div>
-                     <h4 className="text-3xl md:text-4xl font-serif font-bold mb-6 text-[#0A1A3A] relative z-10">
-                        議会で取り上げた、<br />3つの課題
+                     <h4 className="jp-heading text-3xl md:text-4xl font-serif font-bold mb-6 text-[#0A1A3A] relative z-10">
+                        <span className="block">議会で取り上げた、</span><span className="block">3つの課題</span>
                      </h4>
-                     <p className="mb-14 max-w-2xl text-sm leading-7 text-gray-600 md:text-base">実績と提案を混同せず、確認できる事実に基づいて掲載しています。</p>
+                     <p className="jp-copy mb-14 max-w-2xl text-sm leading-7 text-gray-600 md:text-base">実績と提案を混同せず、確認できる事実に基づいて掲載しています。</p>
                   </Reveal>
 
                   <div className="space-y-5 relative z-10">
                      {proposals.map((proposal, i) => (
                         <Reveal key={i} delay={i * 100}>
-                           <article className="grid min-h-[220px] overflow-hidden border border-gray-200 bg-white shadow-[0_12px_35px_rgba(10,26,58,0.08)] transition-shadow hover:shadow-[0_18px_45px_rgba(10,26,58,0.14)] md:grid-cols-[150px_minmax(190px,0.8fr)_1.2fr]">
-                              <div className="flex items-center gap-5 border-b border-gray-200 bg-[#0A1A3A] px-6 py-6 text-white md:flex-col md:items-start md:justify-between md:border-b-0 md:px-7 md:py-8">
+                           <article className="grid overflow-hidden border border-gray-200 bg-white shadow-[0_12px_35px_rgba(10,26,58,0.08)] transition-shadow hover:shadow-[0_18px_45px_rgba(10,26,58,0.14)] 2xl:min-h-[220px] 2xl:grid-cols-[130px_minmax(220px,0.8fr)_1.2fr]">
+                              <div className="flex items-center gap-5 border-b border-gray-200 bg-[#0A1A3A] px-6 py-6 text-white 2xl:flex-col 2xl:items-start 2xl:justify-between 2xl:border-b-0 2xl:px-7 2xl:py-8">
                                  <span className="text-4xl font-black text-white/25" aria-hidden="true">0{i + 1}</span>
                                  <p className="text-xs font-bold tracking-[0.18em]">{proposal.category}</p>
                               </div>
-                              <div className="flex flex-col justify-center border-b border-gray-200 px-6 py-7 md:border-b-0 md:border-r md:px-8">
+                              <div className="flex flex-col justify-center border-b border-gray-200 px-6 py-7 2xl:border-b-0 2xl:border-r 2xl:px-8">
                                  <p className="mb-3 text-xs font-bold text-[#FF1A1A]">{proposal.status}</p>
-                                 <h5 className="text-xl font-bold leading-8 text-[#0A1A3A] md:text-2xl">{proposal.title}</h5>
+                                 <h5 className="jp-heading text-xl font-bold leading-8 text-[#0A1A3A] md:text-2xl">{proposal.title}</h5>
                               </div>
-                              <div className="flex flex-col justify-center px-6 py-7 md:px-8">
-                                 <p className="text-sm font-medium leading-8 text-gray-700 md:text-base">{proposal.description}</p>
+                              <div className="flex flex-col justify-center px-6 py-7 2xl:px-8">
+                                 <p className="jp-copy text-sm font-medium leading-8 text-gray-700 md:text-base">{proposal.description}</p>
                                  <a href={proposal.source} target="_blank" rel="noopener noreferrer" className="mt-5 inline-flex w-fit items-center gap-2 text-xs font-bold text-[#0A1A3A] underline decoration-gray-300 underline-offset-4 transition-colors hover:text-[#FF1A1A] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF1A1A]">
                                     公式資料を確認する <ExternalLink size={14} />
                                  </a>
@@ -472,31 +473,31 @@ export default function Page() {
                </section>
 
                {/* ROADMAP */}
-               <section id="roadmap" className="pt-20 border-t border-gray-200">
+               <section id="roadmap" className="scroll-mt-20 border-t border-gray-200 pt-20 lg:scroll-mt-0">
                   <Reveal>
                      <div className="flex items-center gap-4 mb-16">
                         <span className="h-[2px] w-12 bg-[#FF1A1A]"></span>
                         <h3 className="text-sm font-bold tracking-widest text-[#FF1A1A]">ROADMAP</h3>
                      </div>
                      <div className="mb-14">
-                        <h4 className="text-3xl font-serif font-bold text-[#0A1A3A] md:text-4xl">県政の予定と確認事項</h4>
-                        <p className="mt-4 max-w-2xl text-sm leading-7 text-gray-600 md:text-base">完了した県の事業、現在の提案、今後の予定を区別して掲載しています。</p>
+                        <h4 className="jp-heading text-3xl font-serif font-bold text-[#0A1A3A] md:text-4xl">県政の予定と確認事項</h4>
+                        <p className="jp-copy mt-4 max-w-2xl text-sm leading-7 text-gray-600 md:text-base">完了した県の事業、現在の提案、今後の予定を区別して掲載しています。</p>
                      </div>
                   </Reveal>
-                  <div className="relative max-w-4xl mx-auto pl-8 md:pl-0">
-                     <div className="absolute left-0 md:left-1/2 top-0 bottom-0 w-[2px] bg-gray-200 -translate-x-1/2"></div>
+                  <div className="relative max-w-4xl mx-auto pl-8 2xl:pl-0">
+                     <div className="absolute left-0 2xl:left-1/2 top-0 bottom-0 w-[2px] bg-gray-200 -translate-x-1/2"></div>
                      <div className="space-y-24">
                         {roadmap.map((item, index) => (
                            <Reveal key={index} delay={index * 150}>
-                              <div className={`relative flex flex-col md:flex-row items-start md:items-center ${index % 2 === 0 ? 'md:flex-row-reverse' : ''}`}>
-                                 <div className="absolute left-0 md:left-1/2 top-4 md:top-auto w-6 h-6 bg-[#FF1A1A] rounded-full border-4 border-white shadow-md z-10 -translate-x-1/2 transform transition-transform hover:scale-125"></div>
-                                 <div className="hidden md:block md:w-1/2"></div>
-                                 <div className={`w-full md:w-1/2 pl-12 md:pl-0 ${index % 2 === 0 ? 'md:pr-16 md:text-right' : 'md:pl-16 md:text-left'}`}>
+                              <div className={`relative flex flex-col 2xl:flex-row items-start 2xl:items-center ${index % 2 === 0 ? '2xl:flex-row-reverse' : ''}`}>
+                                 <div className="absolute left-0 2xl:left-1/2 top-4 2xl:top-auto w-6 h-6 bg-[#FF1A1A] rounded-full border-4 border-white shadow-md z-10 -translate-x-1/2 transform transition-transform hover:scale-125"></div>
+                                 <div className="hidden 2xl:block 2xl:w-1/2"></div>
+                                 <div className={`w-full 2xl:w-1/2 pl-12 2xl:pl-0 ${index % 2 === 0 ? '2xl:pr-16 2xl:text-right' : '2xl:pl-16 2xl:text-left'}`}>
                                     <span className="text-4xl md:text-5xl font-black text-gray-300 block mb-2">{item.year}</span>
                                     <div className="relative z-10">
-                                       <h4 className="text-xl md:text-2xl font-bold text-[#0A1A3A] mb-2">{item.title}</h4>
+                                       <h4 className="jp-heading text-xl md:text-2xl font-bold text-[#0A1A3A] mb-2">{item.title}</h4>
                                        <p className="text-[#FF1A1A] font-bold text-sm mb-3">{item.subtitle}</p>
-                                       <p className="text-gray-600 text-sm leading-relaxed">{item.description}</p>
+                                       <p className="jp-copy text-gray-600 text-sm leading-relaxed">{item.description}</p>
                                        <a href={item.source} target="_blank" rel="noopener noreferrer" className="mt-4 inline-flex items-center gap-2 text-xs font-bold text-[#0A1A3A] underline decoration-gray-300 underline-offset-4 hover:text-[#FF1A1A]">
                                           県公式資料 <ExternalLink size={13} />
                                        </a>
@@ -505,7 +506,7 @@ export default function Page() {
                               </div>
                            </Reveal>
                         ))}
-                        <div className="absolute left-0 md:left-1/2 bottom-[-40px] -translate-x-1/2 text-gray-300">
+                        <div className="absolute left-0 2xl:left-1/2 bottom-[-40px] -translate-x-1/2 text-gray-300">
                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="animate-bounce"><path d="M12 5v14M19 12l-7 7-7-7" /></svg>
                         </div>
                      </div>
@@ -513,7 +514,7 @@ export default function Page() {
                </section>
 
                {/* ACTIVITY REPORT */}
-               <section id="activity" className="pt-32 border-t border-gray-200">
+               <section id="activity" className="scroll-mt-20 border-t border-gray-200 pt-32 lg:scroll-mt-0">
                   <Reveal>
                      <div className="flex items-center gap-4 mb-12">
                         <span className="h-[2px] w-12 bg-[#FF1A1A]"></span>
@@ -524,7 +525,7 @@ export default function Page() {
                         <p className="text-gray-500 mt-2">議会外の活動</p>
                      </div>
                   </Reveal>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                  <div className="grid grid-cols-1 2xl:grid-cols-2 gap-5">
                      {activities.map((act, i) => (
                         <Reveal key={act.id} delay={i * 100}>
                            <button
@@ -536,7 +537,7 @@ export default function Page() {
                                  <span className="text-[#B5151B]">{act.category}</span>
                                  <time className="text-gray-600">{act.date}</time>
                               </div>
-                              <h5 className="relative z-10 mt-8 text-xl font-bold leading-8 text-[#0A1A3A] md:text-2xl">{act.title}</h5>
+                              <h5 className="jp-heading relative z-10 mt-8 text-xl font-bold leading-8 text-[#0A1A3A] md:text-2xl">{act.title}</h5>
                               <span className="relative z-10 mt-auto inline-flex items-center gap-2 pt-6 text-sm font-bold text-gray-500 transition-colors group-hover:text-[#FF1A1A]">活動内容を読む <ArrowRight size={16} /></span>
                            </button>
                         </Reveal>
@@ -545,17 +546,17 @@ export default function Page() {
                </section>
 
                {/* PROFILE & STORY */}
-               <section id="profile" className="pt-20 border-t border-gray-200 relative">
+               <section id="profile" className="relative scroll-mt-20 border-t border-gray-200 pt-20 lg:scroll-mt-0">
                   <GoldDustAccent />
                   <Reveal>
                      <div className="bg-[#0A1A3A] text-white p-8 md:p-16 rounded-2xl relative overflow-hidden mb-16 shadow-2xl z-10">
                         <Quote className="absolute top-8 left-8 text-white/10 w-32 h-32 rotate-180" />
                         <div className="relative z-10 max-w-3xl mx-auto text-center space-y-8">
-                           <h3 className="text-2xl md:text-4xl font-serif font-bold leading-relaxed tracking-wider">
-                              警察官としての経験を、<br />県政に生かす
+                           <h3 className="jp-heading text-2xl md:text-3xl 2xl:text-4xl font-serif font-bold leading-relaxed tracking-wider">
+                              <span className="block">警察官としての経験を、</span><span className="block">県政に生かす</span>
                            </h3>
                            <div className="w-16 h-[2px] bg-[#FF1A1A] mx-auto"></div>
-                           <p className="text-base md:text-lg leading-loose font-medium text-gray-300 text-left md:text-center">
+                           <p className="jp-copy text-base md:text-lg leading-loose font-medium text-gray-300 text-left 2xl:text-center">
                               警察官として、犯罪や事故への対応、地域からの相談に携わりました。被害が起きた後の対応に加え、未然防止と早期支援が必要だと考え、県政に取り組んでいます。<br /><br />
                               子ども、被害者、支援を求めにくい方が相談につながる制度を整えます。現場で得た経験を、具体的な政策と議会での提案に生かします。
                            </p>
@@ -568,20 +569,20 @@ export default function Page() {
                         <span className="h-[2px] w-12 bg-[#FF1A1A]"></span>
                         <h3 className="text-sm font-bold tracking-widest text-[#FF1A1A]">PROFILE</h3>
                      </div>
-                     <div className="flex flex-col md:flex-row gap-12 relative z-10">
-                        <div className="w-full md:w-1/2 bg-gray-100 relative aspect-[3/4]">
+                     <div className="flex flex-col 2xl:flex-row gap-12 relative z-10">
+                        <div className="w-full 2xl:w-1/2 bg-gray-100 relative aspect-[3/4]">
                            <img src="/images/sidebar_final.jpg" className="absolute inset-0 w-full h-full object-cover object-top" alt="星川大地 プロフィール写真 (元警察官)" />
                         </div>
                         <div className="flex-1 space-y-8">
                            <div>
-                              <h4 className="text-4xl font-serif font-bold text-[#0A1A3A] mb-2">星川 だいち</h4>
-                              <p className="text-gray-500">1993年12月16日生まれ（32歳）</p>
+                              <h4 className="jp-heading text-4xl font-serif font-bold text-[#0A1A3A] mb-2">星川 だいち</h4>
+                              <p className="jp-copy text-gray-500">1993年12月16日生まれ（32歳）</p>
                            </div>
-                           <p className="text-xl font-bold text-[#FF1A1A] border-b border-gray-200 pb-4">奈良県議会議員（奈良市・山辺郡 選出）</p>
+                           <p className="jp-copy text-xl font-bold text-[#FF1A1A] border-b border-gray-200 pb-4">奈良県議会議員（奈良市・山辺郡 選出）</p>
                            <dl className="space-y-4 text-gray-700">
-                              <div className="grid grid-cols-[80px_1fr]"><dt className="font-bold">経歴</dt><dd>関西大学 商学部 卒<br />大阪府警 → 千葉県警 → 大阪府警</dd></div>
-                              <div className="grid grid-cols-[80px_1fr]"><dt className="font-bold">所属</dt><dd>経済労働委員会・議会運営委員会</dd></div>
-                              <div className="grid grid-cols-[80px_1fr]"><dt className="font-bold">武道</dt><dd>空手 公認3段（世界大会優勝）</dd></div>
+                              <div className="grid grid-cols-[80px_1fr]"><dt className="font-bold">経歴</dt><dd className="jp-copy">関西大学 商学部 卒<br />大阪府警 → 千葉県警 → 大阪府警</dd></div>
+                              <div className="grid grid-cols-[80px_1fr]"><dt className="font-bold">所属</dt><dd className="jp-copy">経済労働委員会・議会運営委員会</dd></div>
+                              <div className="grid grid-cols-[80px_1fr]"><dt className="font-bold">武道</dt><dd className="jp-copy">空手 公認3段（世界大会優勝）</dd></div>
                            </dl>
                         </div>
                      </div>
@@ -648,8 +649,8 @@ export default function Page() {
                   </button>
                   <div className="p-8 md:p-12">
                      <span className="text-[#B5151B] font-bold tracking-widest text-sm block mb-2">{selectedActivity.date} | {selectedActivity.category}</span>
-                     <h3 id={`activity-title-${selectedActivity.id}`} className="text-2xl md:text-3xl font-serif font-bold text-[#0A1A3A] mb-6 pr-10">{selectedActivity.title}</h3>
-                     <p className="text-gray-700 leading-loose text-lg font-medium whitespace-pre-wrap">{selectedActivity.description}</p>
+                     <h3 id={`activity-title-${selectedActivity.id}`} className="jp-heading text-2xl md:text-3xl font-serif font-bold text-[#0A1A3A] mb-6 pr-10">{selectedActivity.title}</h3>
+                     <p className="jp-copy text-gray-700 leading-loose text-lg font-medium whitespace-pre-wrap">{selectedActivity.description}</p>
                   </div>
                </div>
             </div>
