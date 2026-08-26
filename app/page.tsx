@@ -276,7 +276,13 @@ export default function Page() {
 
             {/* HERO SECTION */}
             <section className="relative h-[85vh] min-h-[620px] w-full overflow-hidden bg-[radial-gradient(circle_at_70%_25%,#17315f_0%,#0A1A3A_48%,#061126_100%)] group">
-               <div className="absolute inset-0 opacity-20" style={{ backgroundImage: "radial-gradient(circle, rgba(212,175,55,0.55) 1px, transparent 1px)", backgroundSize: "28px 28px", maskImage: "linear-gradient(to bottom right, black, transparent 62%)" }} aria-hidden="true"></div>
+               <img
+                  src="/images/image_11.png"
+                  alt="奈良県議会議員 星川大地 街頭演説の様子"
+                  className={`hidden lg:block absolute inset-0 h-full w-full object-cover object-center z-0 transition-all duration-[1800ms] ease-out ${loadingComplete ? 'scale-100 opacity-80' : 'scale-105 opacity-0'}`}
+               />
+               <div className="hidden lg:block absolute inset-0 z-[1] bg-gradient-to-b from-[#061126]/55 via-[#061126]/20 to-[#061126]/95" aria-hidden="true"></div>
+               <div className="absolute inset-0 z-[2] opacity-20" style={{ backgroundImage: "radial-gradient(circle, rgba(212,175,55,0.55) 1px, transparent 1px)", backgroundSize: "28px 28px", maskImage: "linear-gradient(to bottom right, black, transparent 62%)" }} aria-hidden="true"></div>
 
                <img
                   src="/images/left-column.png"
