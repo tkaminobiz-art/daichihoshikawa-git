@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
             allow: '/',
             disallow: ['/private/', '/api/'], // APIルートやプライベートディレクトリは除外
         },
-        sitemap: 'https://daichi-star.com/sitemap.xml',
+        sitemap: 'https://www.daichi-star.com/sitemap.xml',
     };
 }

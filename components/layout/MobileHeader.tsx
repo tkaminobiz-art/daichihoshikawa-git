@@ -17,7 +17,7 @@ export default function MobileHeader() {
                 {/* Logo / Name */}
                 <Link href="/" className="flex flex-col">
                     <span className="text-xs font-bold text-gray-500 tracking-widest">奈良県議会議員</span>
-                    <h1 className="text-xl font-serif font-bold text-gray-900">星川 大地</h1>
+                    <span className="text-xl font-serif font-bold text-gray-900">星川 大地</span>
                 </Link>
 
                 {/* Hamburger Button */}

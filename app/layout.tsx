@@ -20,7 +20,7 @@ const notoSerif = Noto_Serif_JP({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://daichi-star.com'),
+  metadataBase: new URL('https://www.daichi-star.com'),
   alternates: {
     canonical: '/',
   },
@@ -41,7 +41,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: '星川大地 | 奈良県議会議員（元警察官）',
     description: '事件が起きてから動くのではなく、事件が起きない奈良へ。星川大地の政策と活動を紹介します。',
-    url: 'https://daichi-star.com',
+    url: 'https://www.daichi-star.com',
     siteName: '星川大地 公式サイト',
     locale: 'ja_JP',
     type: 'website',
@@ -79,8 +79,8 @@ const jsonLd = {
   "@type": "Person",
   "name": "星川 大地",
   "jobTitle": "奈良県議会議員",
-  "url": "https://daichi-star.com",
-  "image": "https://daichi-star.com/images/sidebar_final.jpg",
+  "url": "https://www.daichi-star.com",
+  "image": "https://www.daichi-star.com/images/sidebar_final.jpg",
   "sameAs": [
     "https://twitter.com/daichi_star/",
     "https://www.instagram.com/daichi_star12/",

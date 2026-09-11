@@ -292,10 +292,10 @@ export default function Page() {
 
                <div className="absolute top-24 left-6 right-6 lg:top-1/2 lg:bottom-auto lg:-translate-y-1/2 lg:left-12 lg:right-12 z-20">
                   <div className={`transition-all duration-1000 delay-500 ${loadingComplete ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-                     <h2 className="text-white text-[clamp(1rem,5.2vw,1.5rem)] lg:text-[clamp(1.5rem,2.45vw,3.25rem)] font-serif font-black leading-[1.28] drop-shadow-2xl mb-6 lg:mb-8 tracking-[0.02em]">
+                     <h1 className="text-white text-[clamp(1rem,5.2vw,1.5rem)] lg:text-[clamp(1.5rem,2.45vw,3.25rem)] font-serif font-black leading-[1.28] drop-shadow-2xl mb-6 lg:mb-8 tracking-[0.02em]">
                         <span className="block whitespace-nowrap">事件が起きてから動くのではなく、</span>
                         <span className="block whitespace-nowrap"><span className="text-[#FF1A1A]">事件が起きない</span>奈良へ。</span>
-                     </h2>
+                     </h1>
                   </div>
                   <div className={`transition-all duration-1000 delay-700 ${loadingComplete ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
                      <div className="lg:border-l-4 lg:border-[#FF1A1A] lg:pl-6">
