@@ -24,6 +24,9 @@ export const metadata: Metadata = {
   alternates: {
     canonical: '/',
   },
+  verification: {
+    google: 'VN8bBHoMrjzGqSON_YUTqjmgfbBNGxOpw0YTaLrciOg',
+  },
   title: {
     template: '%s | 奈良県議会議員 星川大地 公式サイト',
     default: '星川大地 | 奈良県議会議員（元警察官・日本維新の会）',
