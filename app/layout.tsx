@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Noto_Sans_JP, Noto_Serif_JP } from "next/font/google";
+import AnalyticsConsent from "@/components/analytics/AnalyticsConsent";
 import SmoothScroll from "@/components/layout/SmoothScroll";
 import "./globals.css";
 
@@ -113,6 +114,7 @@ export default function RootLayout({
         <SmoothScroll>
           {children}
         </SmoothScroll>
+        <AnalyticsConsent />
       </body>
     </html>
   );
