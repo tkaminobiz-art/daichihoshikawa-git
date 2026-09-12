@@ -42,10 +42,10 @@ export default function MobileHeader() {
                             { en: 'SUPPORT', ja: '制度ナビ', href: '/support' },
                             { en: 'ROADMAP', ja: '予定・進捗', href: '#roadmap' },
                             { en: 'ACTIVITY', ja: '活動', href: '#activity' },
-                            { en: 'PROFILE', ja: 'プロフィール', href: '#profile' }
+                            { en: 'PROFILE', ja: 'プロフィール', href: '/profile' }
                         ].map((item) => {
-                            const href = item.en === 'SUPPORT'
-                                ? '/support'
+                            const href = item.en === 'SUPPORT' || item.en === 'PROFILE'
+                                ? item.href
                                 : (isHome ? item.href : `/${item.href}`);
 
                             return (

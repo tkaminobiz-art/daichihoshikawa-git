@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useMemo } from "react";
-import { motion } from "framer-motion";
 import { Search } from "lucide-react";
 import { supportData } from "@/data/supportData";
 import SupportCard from "@/components/support/SupportCard";
@@ -14,11 +13,11 @@ export default function SupportPage() {
     const [activeFilter, setActiveFilter] = useState<string | null>(null);
 
     const filters = [
-        { id: 'parent', label: '子育て世代', icon: '👶' },
-        { id: 'senior', label: '高齢者・介護', icon: '👴' },
-        { id: 'business', label: '事業者・経営', icon: '💼' },
-        { id: 'student', label: '学生・若者', icon: '🎓' },
-        { id: 'emergency', label: '緊急・困りごと', icon: '🚨' },
+        { id: 'parent', label: '子育て世代' },
+        { id: 'senior', label: '高齢者・介護' },
+        { id: 'business', label: '事業者・求職者' },
+        { id: 'student', label: '学生・若者' },
+        { id: 'emergency', label: '緊急時・相談' },
     ];
 
     // Filter logic
@@ -29,8 +28,7 @@ export default function SupportPage() {
             const matchingItems = category.items.filter(item => {
                 const matchesSearch = !query ||
                     item.title.toLowerCase().includes(query) ||
-                    item.description.toLowerCase().includes(query) ||
-                    item.comment.toLowerCase().includes(query);
+                    item.description.toLowerCase().includes(query);
 
                 const matchesFilter = !activeFilter || item.tags?.includes(activeFilter);
 
@@ -57,19 +55,19 @@ export default function SupportPage() {
                     {/* LEFT COLUMN (Main Content) */}
                     <div className="lg:col-span-9 space-y-12">
 
-                        {/* 1. Manifesto (Compact / Clean) */}
+                        {/* 1. Guidance */}
                         <section className="bg-[#f8f9fa] p-8 rounded-lg border-l-4 border-[#0A1A3A]">
                             <h2 className="jp-heading text-2xl font-serif font-bold text-[#0A1A3A] mb-4">
-                                「現場の声」こそが、政治の原点です。
+                                利用前にご確認ください
                             </h2>
                             <div className="space-y-4 text-gray-700 leading-relaxed text-sm md:text-base text-left">
                                 <p className="jp-copy">
-                                    元警察官として20年以上、奈良の街を走り続けてきました。
-                                    そこで目にしたのは、行政の壁に突き当たり困っている方々の姿です。
+                                    制度によって対象者、申請期限、必要書類、相談窓口が異なります。
+                                    利用前に、各カードから公式情報をご確認ください。
                                 </p>
                                 <p className="jp-copy">
-                                    このポータルは、そんな「困った」を「安心」に変えるために作りました。
-                                    奈良市の成功事例を県全体へ広げ、あなたと大切な家族を守る『お守り』のような存在を目指します。
+                                    星川大地へのご意見は、公式LINEからお寄せください。
+                                    政策を検討する際の参考にします。
                                 </p>
                             </div>
                         </section>
@@ -99,7 +97,6 @@ export default function SupportPage() {
                                             : 'bg-white text-gray-600 border-gray-200 hover:bg-gray-50'
                                             }`}
                                     >
-                                        <span>{filter.icon}</span>
                                         {filter.label}
                                     </button>
                                 ))}
@@ -111,11 +108,9 @@ export default function SupportPage() {
                             {filteredData.length > 0 ? (
                                 filteredData.map((category) => (
                                     <section key={category.id} id={category.id} className="scroll-mt-24 md:scroll-mt-[220px] lg:scroll-mt-36">
-                                        <div className="flex items-center gap-3 mb-6 border-b-2 border-[#008c4b] pb-2">
-                                            <span className="text-2xl">{category.icon}</span>
-                                            <h2 className="jp-heading text-xl md:text-2xl font-bold text-[#0A1A3A]">
-                                                {category.title}
-                                            </h2>
+                                        <div className="mb-6 border-b-2 border-[#008c4b] pb-3">
+                                            <h2 className="jp-heading text-xl md:text-2xl font-bold text-[#0A1A3A]">{category.title}</h2>
+                                            <p className="jp-copy mt-2 text-sm leading-relaxed text-gray-600">{category.description}</p>
                                         </div>
 
                                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

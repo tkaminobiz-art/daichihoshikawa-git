@@ -80,6 +80,7 @@ export const metadata: Metadata = {
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Person",
+  "@id": "https://www.daichi-star.com/#person",
   "name": "星川 大地",
   "jobTitle": "奈良県議会議員",
   "url": "https://www.daichi-star.com",

@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { MessageCircle, Instagram, Facebook, Home } from "lucide-react";
+import { MessageCircle, Instagram, Facebook, Home, UserRound } from "lucide-react";
 
 export default function SupportSidebar() {
     return (
@@ -11,6 +11,11 @@ export default function SupportSidebar() {
             <Link href="/" className="block bg-white border-2 border-[#0A1A3A] text-[#0A1A3A] p-4 rounded text-center font-bold hover:bg-[#0A1A3A] hover:text-white transition-colors flex items-center justify-center gap-2 group">
                 <Home size={20} className="group-hover:scale-110 transition-transform" />
                 公式サイトへ戻る
+            </Link>
+
+            <Link href="/profile" className="flex items-center justify-center gap-2 rounded border border-gray-200 bg-white p-4 text-center font-bold text-[#0A1A3A] transition-colors hover:border-[#008c4b] hover:text-[#008c4b]">
+                <UserRound size={20} />
+                プロフィールを見る
             </Link>
 
             {/* SNS Official Accounts */}
@@ -58,45 +63,6 @@ export default function SupportSidebar() {
                     </div>
                 </a>
             </div>
-
-
-
-            {/* Calendar Widget Placeholder */}
-            <div className="bg-white p-4 border border-gray-200 shadow-sm">
-                <h4 className="text-xs font-bold border-b pb-2 mb-2 flex justify-between">
-                    <span>2026年 2月</span>
-                    <span className="text-[#008c4b] cursor-pointer">前月 &gt;</span>
-                </h4>
-                <div className="grid grid-cols-7 text-center text-xs gap-y-2">
-                    <span className="text-red-500">日</span>
-                    <span>月</span>
-                    <span>火</span>
-                    <span>水</span>
-                    <span>木</span>
-                    <span>金</span>
-                    <span className="text-blue-500">土</span>
-
-                    {/* Dummy Calendar Data */}
-                    <span className="text-gray-300">26</span>
-                    <span className="text-gray-300">27</span>
-                    <span className="text-gray-300">28</span>
-                    <span className="text-gray-300">29</span>
-                    <span className="text-gray-300">30</span>
-                    <span className="text-gray-300">31</span>
-                    <span className="text-blue-500">1</span>
-
-                    <span className="text-red-500">2</span>
-                    <span>3</span>
-                    <span>4</span>
-                    <span>5</span>
-                    <span>6</span>
-                    <span>7</span>
-                    <span className="text-blue-500">8</span>
-
-                    {/* ... truncated for simplicity ... */}
-                </div>
-            </div>
-
         </aside>
     );
 }

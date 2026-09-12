@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { Link as ScrollLink } from "react-scroll";
 import type { SupportCategory } from "@/data/supportData";
 
@@ -16,11 +15,10 @@ export default function CategoryNav({ categories }: { categories: SupportCategor
                         smooth={true}
                         offset={-100}
                         duration={500}
-                        className="flex items-center gap-2 px-4 py-2 rounded-full cursor-pointer hover:bg-gray-100 transition-colors text-sm md:text-base font-medium text-gray-700 whitespace-nowrap group"
+                        className="flex cursor-pointer items-center rounded-full px-4 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-100 md:text-base whitespace-nowrap"
                         activeClass="!bg-[#008c4b] !text-white shadow-md"
                     >
-                        <span className="text-xl group-[.active]:grayscale-0 grayscale transition-all text-gray-900">{cat.icon}</span>
-                        <span>{cat.title.replace(/【.*?】/, "")}</span>
+                        <span>{cat.title}</span>
                     </ScrollLink>
                 ))}
             </div>

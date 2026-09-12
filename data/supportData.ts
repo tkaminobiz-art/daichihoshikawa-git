@@ -2,18 +2,12 @@ export type SupportItem = {
     title: string;
     url: string;
     description: string;
-    comment: string;
-    tags?: string[]; // 'parent', 'senior', 'business', 'student', 'emergency'
-    story?: { // The "Field Story" (Before/After)
-        before: string;
-        after: string;
-    };
+    tags?: string[];
 };
 
 export type SupportCategory = {
     id: string;
     title: string;
-    icon: string;
     description: string;
     items: SupportItem[];
 };
@@ -21,326 +15,252 @@ export type SupportCategory = {
 export const supportData: SupportCategory[] = [
     {
         id: "safety",
-        title: "【守る】安全・安心とセーフティネット",
-        icon: "🛡",
-        description: "防犯、虐待防止、人権擁護など、生命といのちを守るための相談窓口。",
+        title: "防犯・相談窓口",
+        description: "犯罪被害、児童虐待、DV、ひきこもり、生活上の困りごとに関する公的な相談先です。",
         items: [
             {
-                title: "奈良県警察本部（公式HP・防犯アプリ「ナポリス」）",
+                title: "奈良県警察本部",
                 url: "https://www.police.pref.nara.jp/",
-                description: "最新の犯罪発生状況、地域安全マップ、防犯アプリ「ナポリス」の案内。",
-                comment: "現場で培った知見を治安維持の最前線へ。不審者・詐欺情報はここで即時チェックを。",
-                tags: ['senior', 'emergency', 'parent'],
-                story: {
-                    before: "深夜、無施錠の家から現金が盗まれる事件を何度も見てきました。被害者の「まさか自分が」という悲痛な声は忘れられません。",
-                    after: "だからこそ、今すぐこの『防犯ポータル』で施錠の習慣化と最新情報を届けたい。犯罪は「知る」だけで防げるものが沢山あります。"
-                }
+                description: "犯罪発生情報、防犯対策、警察への相談窓口、防犯アプリ「ナポリス」の情報を確認できます。",
+                tags: ["senior", "emergency", "parent"],
             },
             {
-                title: "子供・家庭の緊急相談（189・中央こども家庭相談センター）",
-                url: "https://www.pref.nara.jp/1727.htm",
-                description: "児童虐待通報(189)、子育ての不安、DV相談の総合窓口。",
-                comment: "児相・警察連携システムは私の最重要政策です。SOSが出せない子供たちを、大人が守りましょう。",
-                tags: ['parent', 'emergency', 'student'],
-                story: {
-                    before: "「泣き声がするけど、通報していいのかな...」近所の躊躇が、救えるはずの命を危険に晒すケースがありました。",
-                    after: "迷わず「189」へ。あなたのその一本の電話が、警察と児相を動かし、確実に子供の命を守る「砦」となります。"
-                }
+                title: "児童相談所虐待対応ダイヤル 189",
+                url: "https://www.pref.nara.lg.jp/n058/1727.html",
+                description: "児童虐待に関する通告や相談を受け付ける窓口です。緊急の場合は110番へ連絡してください。",
+                tags: ["parent", "emergency", "student"],
             },
             {
-                title: "ひとり親家庭支援（奈良県スマイルセンター）",
-                url: "https://www.pref.nara.jp/item/140692.htm",
-                description: "自立支援、貸付相談、就労サポートを一括提供。",
-                comment: "一人で抱え込ませない。経済的・精神的な「親御さんの自立」を徹底して支えます。",
-                tags: ['parent', 'business']
+                title: "奈良県スマイルセンター",
+                url: "https://www.pref.nara.lg.jp/n051/62561.html",
+                description: "ひとり親家庭などを対象に、手当、給付金、子育て、養育費、親子交流に関する相談を受け付けています。",
+                tags: ["parent"],
             },
             {
-                title: "ひきこもり相談窓口（奈良モデル）",
-                url: "https://www.pref.nara.jp/44860.htm",
-                description: "臨床心理士による電話・来所相談、家族会情報。",
-                comment: "居場所「あらんの家」や就労体験など、社会とつながる「最初の一歩」を制度で裏付けます。",
-                tags: ['student', 'parent']
+                title: "奈良県ひきこもり相談窓口",
+                url: "https://www.pref.nara.lg.jp/n056/44860.html",
+                description: "ひきこもりに関する本人や家族からの電話相談、来所相談を受け付けています。",
+                tags: ["student", "parent"],
             },
             {
-                title: "女性相談・DV相談プラス",
-                url: "https://www.pref.nara.jp/45664.htm",
-                description: "女性センター相談窓口、DV相談プラス(SNS/チャット対応)。",
-                comment: "逃げることは恥ではありません。生活再建まで含めた「リスタート」を全力で守ります。",
-                tags: ['emergency', 'parent']
+                title: "女性相談・DV相談",
+                url: "https://www.pref.nara.lg.jp/n053/45664.html",
+                description: "配偶者や交際相手からの暴力、家庭や生活に関する悩みの相談窓口を案内しています。",
+                tags: ["emergency", "parent"],
             },
             {
                 title: "心身障害者扶養共済制度",
-                url: "https://www.pref.nara.jp/dd.aspx?menuid=1273",
-                description: "保護者が万一の際、障がいのある方に年金を支給する任意加入制度。",
-                comment: "「親亡き後」の不安に、公的な備えを。将来の安心が、今の生活の安定につながります。",
-                tags: ['parent', 'senior']
+                url: "https://www.pref.nara.lg.jp/n064/29362.html",
+                description: "障害のある方を扶養する保護者が加入し、保護者に万一のことがあった場合に年金を支給する制度です。",
+                tags: ["parent", "senior"],
             },
             {
                 title: "生活福祉資金貸付制度",
-                url: "https://www.pref.nara.jp/1270.htm",
-                description: "低所得・高齢・障がい者世帯への生活費等の貸付（社協窓口）。",
-                comment: "一時的な困窮を乗り越えるためのセーフティネット。躊躇せず相談してください。",
-                tags: ['senior', 'parent']
+                url: "https://www.pref.nara.lg.jp/n063/43453.html",
+                description: "低所得世帯、高齢者世帯、障害者世帯などを対象とする貸付制度です。相談と申請は市町村社会福祉協議会で受け付けています。",
+                tags: ["senior", "parent"],
             },
         ],
     },
     {
         id: "disaster",
-        title: "【備える】防災・医療・インフラ",
-        icon: "⛑",
-        description: "災害への備え、救急医療、道路・河川などのインフラ情報。",
+        title: "防災・医療・道路",
+        description: "災害、河川、道路、救急医療、医療費助成に関する公式情報です。",
         items: [
             {
-                title: "奈良県防災情報サイト（公式リンク集）",
-                url: "https://www.pref.nara.jp/68322.htm",
-                description: "気象、交通、河川、ライフラインなど、災害時に必要な全情報の公式リンク集。",
-                comment: "災害時はまずここへ。必要な全ての情報への入り口がまとまっています。",
-                tags: ['emergency', 'senior', 'parent', 'business']
+                title: "奈良県防災情報サイト",
+                url: "https://www.pref.nara.lg.jp/n010/68322.html",
+                description: "気象、避難、交通、河川、ライフラインに関する奈良県の防災情報を案内しています。",
+                tags: ["emergency", "senior", "parent", "business"],
             },
             {
-                title: "奈良県防災ポータル（リアルタイム情報）",
+                title: "奈良県防災ポータル",
                 url: "https://www.bosai.pref.nara.jp/dis_portal/",
-                description: "警報発令状況、避難所開設、ライブカメラなど、刻々と変わる状況をリアルタイムで確認。",
-                comment: "「今、どこが危険か」が地図で分かります。避難判断の決定打となるサイトです。",
-                tags: ['emergency', 'senior', 'parent']
+                description: "警報、避難情報、避難所の開設状況など、災害時の情報を確認できます。",
+                tags: ["emergency", "senior", "parent"],
             },
             {
                 title: "奈良県河川情報システム",
                 url: "http://www.kasen.pref.nara.jp/gispub/info/top/menu",
-                description: "県内河川の水位、雨量情報、監視カメラ映像。",
-                comment: "川の様子を見に行かないで。スマホで水位とカメラ映像を確認し、早めの避難判断を。",
-                tags: ['emergency', 'business']
+                description: "県内河川の水位、雨量、河川カメラの情報を確認できます。",
+                tags: ["emergency", "business"],
             },
             {
-                title: "道路情報なら（県道規制情報）",
-                url: "https://pref.nara.geocloud.jp/mp/10",
-                description: "県管理道路の通行止め、規制情報のマップ表示。",
-                comment: "災害時の避難ルート・物流確保に。通れる道、通れない道を地図上で一目で確認できます。",
-                tags: ['emergency', 'business']
+                title: "奈良県の道路交通情報",
+                url: "https://www.pref.nara.lg.jp/n136/p133000.html",
+                description: "県管理道路の規制情報や、道路交通情報を確認するための公式サービスを案内しています。",
+                tags: ["emergency", "business"],
             },
             {
-                title: "Yahoo!防災速報アプリ",
-                url: "https://emg.yahoo.co.jp/",
-                description: "自治体からの緊急情報をプッシュ通知で受信。マイ・タイムライン作成も。",
-                comment: "情報は「待つ」のではなく「届く」時代へ。命を守る通知をオンにしてください。",
-                tags: ['emergency', 'parent', 'student', 'senior']
-            },
-            {
-                title: "がんネットなら（奈良県がん情報提供ポータル）",
-                url: "http://www3.pref.nara.jp/gannet/",
-                description: "がん検診、相談窓口、患者サロンなど、県内のがん医療情報を網羅。",
-                comment: "2人に1人ががんになる時代。正しい知識と早期発見が、あなたと家族の命を守ります。",
-                tags: ['senior', 'parent']
+                title: "がんネットなら",
+                url: "https://www.pref.nara.lg.jp/site/gannet/index.html",
+                description: "がん検診、県内の医療機関、相談窓口、患者サロンなどを案内しています。",
+                tags: ["senior", "parent"],
             },
             {
                 title: "指定難病医療費助成制度",
-                url: "https://www.pref.nara.jp/dd.aspx?menuid=11607",
-                description: "指定難病の治療にかかる医療費助成。自己負担上限管理など。",
-                comment: "長期の療養には経済的な支えが不可欠です。制度を正しく使い、治療に専念できる環境を。",
-                tags: ['senior', 'parent']
+                url: "https://www.pref.nara.lg.jp/n084/5264.html",
+                description: "指定難病の患者で、認定基準などを満たす方を対象とする医療費助成制度です。",
+                tags: ["senior", "parent"],
             },
             {
                 title: "小児慢性特定疾病医療費助成制度",
-                url: "https://www.pref.nara.jp/dd.aspx?menuid=11607",
-                description: "18歳未満の慢性疾患児の医療費負担を軽減。",
-                comment: "病気と闘う子供たちとそのご家族を、社会全体で支えるための仕組みです。",
-                tags: ['parent']
+                url: "https://www.pref.nara.lg.jp/n084/38190.html",
+                description: "対象となる疾病や認定基準などを満たす児童を対象とする医療費助成制度です。",
+                tags: ["parent"],
             },
             {
-                title: "奈良県ナースセンター（看護職支援）",
-                url: "http://www.nara-kango.or.jp/nur-01.html",
-                description: "看護職の無料職業紹介、復職支援研修、進路相談。",
-                comment: "地域医療の要は「人」です。潜在看護師の復職を全力でサポートし、医療現場を支えます。",
-                tags: ['business']
+                title: "奈良県ナースセンター",
+                url: "https://www.nara-kango.or.jp/nurse_center.php",
+                description: "看護職の無料職業紹介、復職支援、進路相談などを行っています。",
+                tags: ["business", "student"],
             },
             {
-                title: "医療（救急安心センター #7119）",
-                url: "https://www.pref.nara.jp/53886.htm",
-                description: "看護師・相談員による24時間救急相談（0744-20-0119）。",
-                comment: "「救急車を呼ぶべきか？」迷った時のプロの判断。医療リソースを守るためにも適正利用を。",
-                tags: ['emergency', 'senior', 'parent'],
-                story: {
-                    before: "軽症の利用で救急車が出払い、一刻を争う心停止の患者さんの元へ到着が遅れる。そんな悔しい現場を変えたい。",
-                    after: "「#7119」への相談が、本当に救急車が必要な人の命を救います。迷ったらまずプロに相談してください。"
-                }
+                title: "奈良県救急安心センター #7119",
+                url: "https://www.pref.nara.lg.jp/n081/53886.html",
+                description: "救急車を呼ぶか、医療機関を受診するか迷ったときに、看護師や相談員へ電話で相談できます。緊急時は119番へ連絡してください。",
+                tags: ["emergency", "senior", "parent"],
             },
             {
-                title: "こども救急電話相談（#8000）",
-                url: "https://www.pref.nara.jp/44823.htm",
-                description: "小児特有の急病対応。夜間・休日の相談窓口（0742-20-8119）。",
-                comment: "夜中のお子さんの発熱、不安ですよね。専門家につながる安心を、全ての親御さんへ。",
-                tags: ['emergency', 'parent']
-            },
-            {
-                title: "道路緊急ダイヤル・県土マネジメント",
-                url: "https://www.pref.nara.jp/12016.htm",
-                description: "道路の異状通報、河川改修、インフラ老朽化対策。",
-                comment: "踏切解消や道路環境改善の進捗を可視化します。安全な移動は、豊かな暮らしの土台です。",
-                tags: ['business', 'senior']
+                title: "こども救急電話相談 #8000",
+                url: "https://www.pref.nara.lg.jp/n081/44823.html",
+                description: "夜間や休日に子どもの急病で受診を迷ったときに、看護師へ電話で相談できます。緊急時は119番へ連絡してください。",
+                tags: ["emergency", "parent"],
             },
         ],
     },
     {
         id: "education",
-        title: "【育む】子育て・教育・未来",
-        icon: "🌱",
-        description: "教育委員会、学校案内、青少年育成など、次世代の可能性を広げる情報。",
+        title: "子育て・教育",
+        description: "結婚、ひとり親家庭、教育、学校に関する制度と情報です。",
         items: [
             {
                 title: "なら結婚応援団",
-                url: "http://www.naradeai.pref.nara.jp/",
-                description: "県主催の婚活イベント、結婚支援情報のポータルサイト。",
-                comment: "「結婚したい」という想いを応援。出会いの場の創出から、少子化対策に取り組みます。",
-                tags: ['student', 'parent']
+                url: "https://www.naradeai.pref.nara.jp/",
+                description: "奈良県内の結婚支援イベントや、結婚支援に取り組む団体の情報を案内しています。",
+                tags: ["student", "parent"],
             },
             {
                 title: "児童扶養手当",
-                url: "https://www.pref.nara.jp/1648.htm",
-                description: "ひとり親家庭等の生活安定と自立促進のための手当詳細。",
-                comment: "子供の貧困は絶対に防ぐ。手当は「恵み」ではなく、子供の未来への「投資」です。",
-                tags: ['parent']
+                url: "https://www.pref.nara.lg.jp/n054/p086000.html",
+                description: "ひとり親家庭などを対象とする手当の支給要件、申請窓口、必要な手続きを案内しています。",
+                tags: ["parent"],
             },
             {
-                title: "ひとり親家庭等自立支援給付金",
-                url: "https://www.pref.nara.jp/dd.aspx?menuid=1272",
-                description: "資格取得（看護師等）や職業訓練受講を支援する給付金制度。",
-                comment: "スキルアップが収入アップに直結します。親御さんの「稼ぐ力」を具体的に後押しします。",
-                tags: ['parent', 'business']
+                title: "ひとり親家庭の就業・資格取得支援",
+                url: "https://www.pref.nara.lg.jp/n055/50522.html",
+                description: "ひとり親家庭を対象とする就業相談、職業訓練、資格取得に関する支援制度を案内しています。",
+                tags: ["parent", "business"],
             },
             {
-                title: "奈良県教育委員会（教職員採用・改革）",
-                url: "https://www.pref.nara.jp/kyoiku/",
-                description: "いじめ対策、ICT教育、教職員の働き方改革（育休取得促進）。",
-                comment: "先生が疲弊していては良い教育はできません。男性職員の育休取得率向上など、働く環境から変えます。",
-                tags: ['parent', 'student', 'business']
+                title: "奈良県教育委員会",
+                url: "https://www.pref.nara.lg.jp/n162/1691.html",
+                description: "奈良県の教育施策、学校教育、教職員採用などの情報を案内しています。",
+                tags: ["parent", "student", "business"],
             },
             {
                 title: "県立学校・高校入試情報",
-                url: "https://www.pref.nara.jp/70181.htm",
-                description: "入試日程、各県立高校の特色・部活動紹介。",
-                comment: "「行きたい」と思える魅力ある学校づくり。専門高校のブランド化で選択肢を広げます。",
-                tags: ['student', 'parent']
-            },
-            {
-                title: "青少年野外活動・居場所づくり",
-                url: "https://www.pref.nara.jp/37901.htm",
-                description: "野外活動センター利用案内、青少年の居場所登録制度。",
-                comment: "スマホの中だけでなく、リアルな体験と交流を。次世代リーダーは現場から生まれます。",
-                tags: ['student', 'parent']
+                url: "https://www.pref.nara.lg.jp/n002/70181.html",
+                description: "奈良県立高校の入試日程、募集要項、出願手続きなどを確認できます。",
+                tags: ["student", "parent"],
             },
         ],
     },
     {
         id: "economy",
-        title: "【稼ぐ・楽しむ】経済・観光・暮らし",
-        icon: "💰",
-        description: "事業者支援、観光情報、ふるさと納税、雇用労働相談。",
+        title: "仕事・住まい・観光",
+        description: "就職、事業経営、住宅、移住、観光に関する公的な情報です。",
         items: [
             {
-                title: "奈良県住宅リフォーム・耐震改修支援",
-                url: "https://www.pref.nara.jp/1260.htm",
-                description: "既存住宅の耐震改修、バリアフリー化への補助制度。",
-                comment: "命を守る「強い家」へ。リフォームは地域経済の活性化にも直結する一石二鳥の施策です。",
-                tags: ['senior', 'parent', 'business']
+                title: "住宅の耐震診断・耐震改修支援",
+                url: "https://www.pref.nara.lg.jp/n155/68107.html",
+                description: "住宅の耐震診断や耐震改修に関する市町村の補助制度を案内しています。対象や受付状況は市町村ごとに異なります。",
+                tags: ["senior", "parent", "business"],
             },
             {
-                title: "県産材を使用した住宅助成事業",
-                url: "https://www.pref.nara.jp/1260.htm",
-                description: "奈良の木を使用した住宅の新築・増改築に対する助成金。",
-                comment: "地元の木を使うことが、奈良の山を守ることにつながります。環境と経済の好循環を。",
-                tags: ['business', 'parent']
+                title: "奈良の木を使用した住宅への助成",
+                url: "https://www.pref.nara.lg.jp/n096/27797.html",
+                description: "奈良県産材を使用した住宅に関する助成内容と受付状況を案内しています。申請前に最新情報をご確認ください。",
+                tags: ["business", "parent"],
             },
             {
-                title: "職業訓練受講給付金（求職者支援制度）",
-                url: "https://www.pref.nara.jp/1284.htm",
-                description: "求職者が月額10万円を受給しながら職業訓練を受けられる制度。",
-                comment: "学び直し（リスキリング）の期間を生活面から保障。安心して次のキャリアへ挑戦してください。",
-                tags: ['business']
+                title: "求職者支援制度",
+                url: "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/koyou_roudou/koyou/kyushokusha_shien/index.html",
+                description: "再就職、転職、技能習得を目指す方を対象とする職業訓練と給付金の要件を案内しています。",
+                tags: ["business", "student"],
             },
             {
-                title: "就職氷河期世代活躍支援",
-                url: "https://www.pref.nara.jp/1284.htm",
-                description: "30代半ば〜50代半ばの世代への集中就労支援プログラム。",
-                comment: "社会の都合で苦労した世代を、置き去りにしない。正規雇用への道を具体的に拓きます。",
-                tags: ['business']
+                title: "ミドルシニア世代の就職支援",
+                url: "https://www.pref.nara.lg.jp/n102/52474.html",
+                description: "奈良労働局と奈良県が連携して行う就職相談や就職支援の窓口を案内しています。",
+                tags: ["business"],
             },
             {
                 title: "奥大和移住定住交流センター engawa",
                 url: "https://okuyamato-engawa.jp/",
-                description: "南部・東部への移住相談、空き家バンク、仕事紹介の窓口。",
-                comment: "「住んでよし、働いてよし」の奥大和へ。新しいライフスタイルを求める人を全力で歓迎します。",
-                tags: ['business', 'parent', 'senior']
+                description: "奈良県南部・東部地域への移住、仕事、住まいに関する相談を受け付けています。",
+                tags: ["business", "parent", "senior"],
             },
             {
-                title: "産業振興・企業支援（地域産業振興センター）",
-                url: "https://www.pref.nara.jp/1285.htm",
-                description: "補助金、制度融資、下請取引適正化「かけこみ寺」。",
-                comment: "地元企業の「稼ぐ力」を最大化します。補助金プラスアルファの実務支援をセットで。",
-                tags: ['business']
+                title: "奈良県の産業振興・企業支援",
+                url: "https://www.pref.nara.lg.jp/shigoto/sangyoushinkou/index.html",
+                description: "中小企業支援、創業、金融支援、企業立地などに関する県の情報を案内しています。",
+                tags: ["business"],
             },
             {
-                title: "雇用・労働（ならジョブカフェ・労働委員会）",
-                url: "https://www.pref.nara.jp/1286.htm",
-                description: "若者就職支援、労働紛争の「あっせん」・解決サポート。",
-                comment: "不当な解雇や賃金トラブルは一人で戦わせません。公的な解決手段をフル活用してください。",
-                tags: ['student', 'business']
+                title: "奈良県の雇用・労働情報",
+                url: "https://www.pref.nara.lg.jp/shigoto/roudou/index.html",
+                description: "就職支援、職業訓練、労働相談、労働委員会などに関する情報を案内しています。",
+                tags: ["student", "business"],
             },
             {
-                title: "農林水産業（大和野菜・ブランド認証）",
-                url: "https://www.pref.nara.jp/1287.htm",
-                description: "大和野菜、奈良の木、ブランド認証制度。",
-                comment: "「大和当帰」や「奈良の木」など、奈良ブランドを世界へ。「食のハブ拠点」で農家を支えます。",
-                tags: ['business']
+                title: "奈良県の農林水産業情報",
+                url: "https://www.pref.nara.lg.jp/shigoto/nourinsuisangyou/index.html",
+                description: "農業、林業、水産業への就業、事業者向け支援、県産品に関する情報を案内しています。",
+                tags: ["business"],
             },
             {
-                title: "景観資産・観光モデルコース",
-                url: "https://www.pref.nara.jp/keikan_shisan/",
-                description: "奈良県の景観資産登録地、周遊ルート案内。",
-                comment: "奈良の風景は「資産」です。見て終わりではなく、滞在・周遊させる仕掛けで経済を回します。",
-                tags: ['business', 'student']
+                title: "奈良県の景観づくり",
+                url: "https://www.pref.nara.lg.jp/n094/12764.html",
+                description: "奈良県景観資産、景観計画、条例、届出制度などを案内しています。",
+                tags: ["business", "student"],
             },
             {
-                title: "奈良県イベント・観光情報（イベントポータル）",
+                title: "奈良県イベントポータル",
                 url: "https://event.nsa.pref.nara.jp/",
-                description: "祭り、展示、講座など、県内各地のイベント情報を一元的に検索。",
-                comment: "「今週末なにする？」が見つかる。地域の賑わいと、県民の交流を生み出す情報ハブです。",
-                tags: ['student', 'parent', 'senior']
+                description: "奈良県内の祭り、展示、講座などのイベント情報を検索できます。",
+                tags: ["student", "parent", "senior"],
             },
         ],
     },
     {
         id: "digital",
-        title: "【変える】デジタル行政・利便性",
-        icon: "📱",
-        description: "電子申請、パスポート、免許更新、施設案内。",
+        title: "行政手続き・文化施設",
+        description: "オンライン申請、旅券、県立施設、図書館に関する情報です。",
         items: [
             {
                 title: "奈良スーパーアプリ",
                 url: "https://nsa.pref.nara.jp/ctztop/",
-                description: "各種申請・届出のオンライン窓口。24時間受付。",
-                comment: "デジタルランク全国上位の実力。役所に行かない、待たない、書かない行政を実現します。",
-                tags: ['parent', 'business', 'senior']
+                description: "奈良県のオンライン行政サービスを案内する入口です。利用できる手続きはサービスごとに異なります。",
+                tags: ["parent", "business", "senior"],
             },
             {
-                title: "パスポート申請のご案内",
-                url: "https://www.pref.nara.jp/49261.htm",
-                description: "申請手続き、窓口混雑状況、手数料。",
-                comment: "需要の高い手続きこそデジタルで完結を。国際交流の架け橋となる皆様を応援します。",
-                tags: ['student', 'business']
+                title: "旅券（パスポート）の申請",
+                url: "https://www.pref.nara.lg.jp/n013/18396.html",
+                description: "パスポートの新規申請に必要な書類、申請方法、窓口を案内しています。",
+                tags: ["student", "business"],
             },
             {
-                title: "県立美術館・文化施設（駐車場情報）",
-                url: "https://www.pref.nara.jp/63263.htm",
-                description: "展示スケジュール、周辺駐車場（※料金改定情報あり）。",
-                comment: "文化を楽しむには「足」の確保が不可欠。公共交通の利便性と、駐車場情報の透明化を進めます。",
-                tags: ['senior', 'student', 'parent']
+                title: "奈良県の施設案内",
+                url: "https://www.pref.nara.lg.jp/n002/37223.html",
+                description: "美術館、博物館、文化会館、図書館、公園など、県立施設の情報を案内しています。",
+                tags: ["senior", "student", "parent"],
             },
             {
                 title: "奈良県立図書情報館",
                 url: "https://www.library.pref.nara.jp/",
-                description: "蔵書検索、イベント情報、開館カレンダー。",
-                comment: "知の拠点としての図書館。デジタルアーカイブとの連携で、いつでもどこでも「奈良」を学べる場へ。",
-                tags: ['student', 'senior', 'parent']
+                description: "蔵書検索、利用案内、開館日、講座や展示などの情報を確認できます。",
+                tags: ["student", "senior", "parent"],
             },
         ],
     },

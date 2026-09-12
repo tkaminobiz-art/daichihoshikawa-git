@@ -207,7 +207,7 @@ export default function Page() {
          <div className="contents" inert={selectedActivity ? true : undefined} aria-hidden={selectedActivity ? true : undefined}>
 
          {/* 全体テクスチャ（和紙） - 復活 */}
-         <div className="fixed inset-0 pointer-events-none z-50 opacity-[0.03] mix-blend-multiply" style={{ backgroundImage: "url('https://grainy-gradients.vercel.app/noise.svg')" }}></div>
+         <div className="site-noise fixed inset-0 pointer-events-none z-50 opacity-[0.03] mix-blend-multiply"></div>
 
          {/* MOBILE HEADER */}
          <header className={`lg:hidden fixed top-0 left-0 right-0 h-16 bg-[#0A1A3A] z-[60] flex items-center justify-between px-6 shadow-md text-white transition-transform duration-700 ${loadingComplete ? 'translate-y-0' : '-translate-y-full'}`}>
@@ -584,6 +584,10 @@ export default function Page() {
                               <div className="grid grid-cols-[80px_1fr]"><dt className="font-bold">所属</dt><dd className="jp-copy">経済労働委員会・議会運営委員会</dd></div>
                               <div className="grid grid-cols-[80px_1fr]"><dt className="font-bold">武道</dt><dd className="jp-copy">空手 公認3段（世界大会優勝）</dd></div>
                            </dl>
+                           <div className="flex flex-col gap-3 border-t border-gray-200 pt-6 sm:flex-row">
+                              <a href="/profile" className="inline-flex items-center justify-center gap-2 bg-[#0A1A3A] px-5 py-3 text-sm font-bold text-white transition-colors hover:bg-[#142850]">プロフィールを詳しく見る <ArrowRight size={16} /></a>
+                              <a href="/support" className="inline-flex items-center justify-center gap-2 border border-[#008c4b] px-5 py-3 text-sm font-bold text-[#006e3b] transition-colors hover:bg-[#008c4b] hover:text-white">制度ナビを見る <ArrowRight size={16} /></a>
+                           </div>
                         </div>
                      </div>
                   </Reveal>

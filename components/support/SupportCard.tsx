@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ExternalLink, MessageCircle } from "lucide-react";
+import { ExternalLink } from "lucide-react";
 import type { SupportItem } from "@/data/supportData";
 
 export default function SupportCard({ item, index }: { item: SupportItem; index: number }) {
@@ -40,43 +40,17 @@ export default function SupportCard({ item, index }: { item: SupportItem; index:
                 </ul>
             </div>
 
-            {/* Footer: Star's Perspective & Stories */}
-            <div className="bg-[#f9f9f9] p-4 mt-4 border-t border-gray-100">
-                <div className="flex items-center gap-2 mb-2">
-                    <div className="bg-[#0A1A3A] text-white text-[10px] uppercase font-bold px-2 py-0.5 rounded-full shadow-sm flex items-center gap-1">
-                        <MessageCircle size={10} />
-                        Star&apos;s Voice
-                    </div>
-                </div>
-                <p className="jp-copy text-xs text-[#0A1A3A] font-medium leading-relaxed mb-3">
-                    {item.comment}
-                </p>
-
-                {/* Field Story (Compact for Sidebar layout) */}
-                {item.story && (
-                    <div className="mt-3 pt-3 border-t border-dashed border-gray-300">
-                        <div className="bg-white p-2 rounded border border-gray-200 shadow-sm">
-                            <div className="flex flex-col gap-2">
-                                <div className="flex gap-2 items-start">
-                                    <span className="text-[9px] font-bold bg-gray-500 text-white px-1 py-px rounded shrink-0 leading-none mt-0.5">現場</span>
-                                    <p className="jp-copy text-[10px] text-gray-500 leading-relaxed">
-                                        {item.story.before}
-                                    </p>
-                                </div>
-                                <div className="flex gap-2 items-start">
-                                    <span className="text-[9px] font-bold bg-[#FF1A1A] text-white px-1 py-px rounded shrink-0 leading-none mt-0.5">未来</span>
-                                    <p className="jp-copy text-[10px] text-[#0A1A3A] font-bold leading-relaxed">
-                                        {item.story.after}
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                )}
+            <div className="mt-4 border-t border-gray-100 bg-[#f9f9f9] p-4">
+                <a
+                    href={item.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-sm font-bold text-[#0A1A3A] underline decoration-[#008c4b]/40 decoration-2 underline-offset-4 hover:text-[#008c4b]"
+                >
+                    公式情報を見る
+                    <ExternalLink size={14} aria-hidden="true" />
+                </a>
             </div>
-
-            {/* CTA Overlay */}
-            <a href={item.url} target="_blank" rel="noopener noreferrer" className="absolute inset-0 z-20" aria-label={item.title}></a>
         </motion.div>
     );
 }
