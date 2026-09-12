@@ -47,6 +47,11 @@ body {
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
 }
 
+.site-seigaiha {
+    background-image: url("data:image/svg+xml,%3Csvg width='72' height='36' viewBox='0 0 72 36' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23fff' stroke-width='.8'%3E%3Cpath d='M0 36a18 18 0 0 1 36 0M9 36a9 9 0 0 1 18 0M36 36a18 18 0 0 1 36 0M45 36a9 9 0 0 1 18 0M-18 18a18 18 0 0 1 36 0M-9 18a9 9 0 0 1 18 0M18 18a18 18 0 0 1 36 0M27 18a9 9 0 0 1 18 0M54 18a18 18 0 0 1 36 0M63 18a9 9 0 0 1 18 0'/%3E%3C/g%3E%3C/svg%3E");
+    background-size: 72px 36px;
+}
+
 /* Deep Night Gradient & Glassmorphism */
 .bg-deep-night {
     background: linear-gradient(to bottom, #050A18, #0A1A3A, #142850);
