@@ -264,7 +264,7 @@ export default function Page() {
                <span className="writing-vertical whitespace-nowrap text-5xl xl:text-6xl tracking-widest leading-none">星川 大地</span>
                <span className="desktop-office-label writing-vertical whitespace-nowrap text-2xl xl:text-3xl tracking-[0.18em] leading-none">奈良県議会議員</span>
             </div>
-            <div className="relative w-full h-[85%] z-10 mt-auto">
+            <div className="relative w-full h-[85%] max-h-[calc(100vh-300px)] z-10 mt-auto">
                <img src="/images/left-column.png" alt="星川大地 奈良県議会議員 (山辺郡・奈良市選出)" className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-full object-contain object-bottom drop-shadow-2xl" />
             </div>
          </aside>
