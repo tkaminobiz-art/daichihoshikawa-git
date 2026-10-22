@@ -245,6 +245,7 @@ export default function Page() {
          </div>
 
          {/* MOBILE STICKY ACTION BAR */}
+         {!isMobileMenuOpen && (
          <div className={`lg:hidden fixed bottom-0 left-0 right-0 z-[9990] flex flex-col shadow-[0_-4px_20px_rgba(0,0,0,0.2)] transition-transform duration-1000 delay-1000 ${loadingComplete ? 'translate-y-0' : 'translate-y-full'}`}>
             <a href="https://lin.ee/n4zXBZ7" target="_blank" rel="noopener noreferrer" className="bg-[#D71920] text-white py-3 px-4 flex flex-col items-center justify-center group active:scale-95 transition-all">
                <div className="flex items-center gap-2 mb-1">
@@ -254,6 +255,7 @@ export default function Page() {
                <span className="text-[10px] font-medium tracking-wider">後援会への入会・ご意見はこちら</span>
             </a>
          </div>
+         )}
 
          {/* LEFT SIDEBAR (PC Only) */}
          <aside className={`hidden lg:flex fixed left-0 top-0 h-screen w-[25%] bg-[#F9F9F6] border-r border-gray-200 z-50 flex-col justify-between overflow-hidden transition-transform duration-1000 delay-500 ${loadingComplete ? 'translate-x-0' : '-translate-x-full'}`}>
