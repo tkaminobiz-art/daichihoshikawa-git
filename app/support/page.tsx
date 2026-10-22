@@ -62,12 +62,10 @@ export default function SupportPage() {
                             </h2>
                             <div className="space-y-4 text-gray-700 leading-relaxed text-sm md:text-base text-left">
                                 <p className="jp-copy">
-                                    制度によって対象者、申請期限、必要書類、相談窓口が異なります。
-                                    利用前に、各カードから公式情報をご確認ください。
+                                    制度によって対象者、申請期限、必要書類、相談窓口が異なります。利用前に、各カードから公式情報を<span className="jp-keep">ご確認ください。</span>
                                 </p>
                                 <p className="jp-copy">
-                                    星川大地へのご意見は、公式LINEからお寄せください。
-                                    政策を検討する際の参考にします。
+                                    星川大地へのご意見は、公式LINEからお寄せください。政策を検討する際の参考にします。
                                 </p>
                             </div>
                         </section>
@@ -76,15 +74,17 @@ export default function SupportPage() {
                         <div className="bg-white z-30 pt-4 pb-4 -mt-4 border-b border-gray-100 md:sticky md:top-[77px] lg:top-0">
                             <div className="flex flex-col md:flex-row gap-4 mb-4">
                                 <div className="relative flex-1">
-                                    <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={18} />
+                                    <Search className="absolute left-3 top-[22px] -translate-y-1/2 text-gray-400" size={18} aria-hidden="true" />
                                     <input
                                         type="text"
-                                        placeholder="キーワード検索（例：パスポート、補助金）"
-                                        aria-label="キーワード検索（例：パスポート、補助金）"
+                                        placeholder="キーワード検索"
+                                        aria-label="キーワード検索"
+                                        aria-describedby="support-search-examples"
                                         value={searchQuery}
                                         onChange={(e) => setSearchQuery(e.target.value)}
                                         className="w-full pl-10 pr-4 py-3 bg-gray-50 border border-gray-200 rounded text-sm focus:ring-2 focus:ring-[#008c4b] outline-none transition-all"
                                     />
+                                    <p id="support-search-examples" className="mt-2 text-xs text-gray-600">例：パスポート、耐震、給付金</p>
                                 </div>
                             </div>
 
@@ -95,7 +95,7 @@ export default function SupportPage() {
                                         onClick={() => setActiveFilter(activeFilter === filter.id ? null : filter.id)}
                                         aria-pressed={activeFilter === filter.id}
                                         className={`px-3 py-1.5 rounded text-xs font-bold transition-all flex items-center gap-1 border ${activeFilter === filter.id
-                                            ? 'bg-[#008c4b] text-white border-[#008c4b]'
+                                            ? 'bg-[#006e3b] text-white border-[#006e3b]'
                                             : 'bg-white text-gray-600 border-gray-200 hover:bg-gray-50'
                                             }`}
                                     >

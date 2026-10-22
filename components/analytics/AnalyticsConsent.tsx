@@ -78,12 +78,13 @@ export default function AnalyticsConsent() {
     <>
       {choice === null && (
         <section
+          data-lenis-prevent
           className="fixed inset-x-3 bottom-20 z-[10050] max-h-[calc(100dvh-6rem)] overflow-y-auto overscroll-contain border border-white/15 bg-[#071733]/[0.98] p-5 text-white shadow-[0_24px_70px_rgba(0,0,0,0.45)] sm:inset-x-auto sm:left-1/2 sm:w-[min(32rem,calc(100vw-2rem))] sm:-translate-x-1/2 sm:p-6 lg:bottom-6"
           role="dialog"
           aria-labelledby="analytics-consent-title"
           aria-describedby="analytics-consent-description"
         >
-          <h2 id="analytics-consent-title" className="font-serif text-xl font-bold tracking-wide">
+          <h2 id="analytics-consent-title" className="jp-heading font-serif text-xl font-bold tracking-wide">
             アクセス解析を許可しますか？
           </h2>
           <div id="analytics-consent-description" className="mt-3 space-y-2 text-sm leading-7 text-white/80">

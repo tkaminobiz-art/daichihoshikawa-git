@@ -61,7 +61,7 @@ export default function MobileHeader() {
                                     className={`text-lg font-bold tracking-wider border-b border-gray-100 pb-2 active:text-red-600 flex items-baseline justify-between ${item.en === 'SUPPORT' ? 'text-[#006e3b]' : 'text-gray-800'}`}
                                 >
                                     <span>{item.en}</span>
-                                    <span className="text-xs text-gray-400 font-normal">{item.ja}</span>
+                                    <span className="text-xs text-gray-600 font-normal">{item.ja}</span>
                                 </a>
                             )
                         })}
@@ -70,7 +70,7 @@ export default function MobileHeader() {
                         href="https://lin.ee/ph46c1T"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="block w-full py-4 bg-[#FF1A1A] text-white text-center font-bold rounded-sm shadow-md active:scale-95 transition-transform"
+                        className="block w-full py-4 bg-[#D71920] text-white text-center font-bold rounded-sm shadow-md active:scale-95 transition-transform"
                     >
                         LINE 登録
                     </a>

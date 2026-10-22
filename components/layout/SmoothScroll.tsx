@@ -17,6 +17,14 @@ export default function SmoothScroll({ children }: { children: ReactNode }) {
             touchMultiplier: 2,
         })
 
+        const syncModalScroll = () => {
+            if (document.body.style.overflow === 'hidden') lenis.stop()
+            else lenis.start()
+        }
+        const modalObserver = new MutationObserver(syncModalScroll)
+        modalObserver.observe(document.body, { attributes: true, attributeFilter: ['style'] })
+        syncModalScroll()
+
         let frame: number
         function raf(time: number) {
             lenis.raf(time)
@@ -26,6 +34,7 @@ export default function SmoothScroll({ children }: { children: ReactNode }) {
         frame = requestAnimationFrame(raf)
 
         return () => {
+            modalObserver.disconnect()
             cancelAnimationFrame(frame)
             lenis.destroy()
         }

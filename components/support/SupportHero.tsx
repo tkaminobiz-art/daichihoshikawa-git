@@ -52,7 +52,7 @@ export default function SupportHero() {
                     "
                 >
                     <div className="flex flex-col gap-4">
-                        <span className="inline-block bg-[#008c4b] text-white text-xs font-bold px-3 py-1 w-fit mb-2">
+                        <span className="inline-block bg-[#006e3b] text-white text-xs font-bold px-3 py-1 w-fit mb-2">
                             制度ナビ
                         </span>
                         <h1 className="jp-heading text-3xl md:text-4xl font-serif font-bold text-[#0A1A3A] tracking-wide leading-tight">
@@ -60,8 +60,7 @@ export default function SupportHero() {
                         </h1>
                         <div className="h-[1px] w-full bg-gray-200 my-2"></div>
                         <p className="jp-copy text-gray-700 font-medium leading-relaxed mb-4 text-sm md:text-base">
-                            防犯、子育て、医療、防災、仕事、住まいなど、奈良県の公的な制度と相談窓口を目的別にまとめています。
-                            対象や申請方法は、リンク先の公式情報をご確認ください。
+                            防犯、子育て、医療、防災、仕事、住まいなど、奈良県の公的な制度と相談窓口を目的別にまとめています。対象や申請方法は、リンク先の公式情報を<span className="jp-keep">ご確認ください。</span>
                         </p>
 
                         <div className="mt-2 md:mt-4 flex flex-col gap-3">
@@ -74,7 +73,7 @@ export default function SupportHero() {
                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 5.92 2 10.75c0 2.8 1.5 5.28 3.86 6.88 1.48 1.01-.2 3.32-.4 3.79-.17.38.35.79.79.44 3.4-2.69 4.39-3.04 4.88-3.13.29.02.58.04.87.04 5.52 0 10-3.92 10-8.75S17.52 2 12 2z" /></svg>
                                 <span className="text-sm md:text-base">公式LINEで意見を送る</span>
                             </a>
-                            <p className="text-balance text-[10px] md:text-xs text-center text-gray-500">お寄せいただいたご意見は、政策を検討する際の参考にします。</p>
+                            <p className="text-xs text-center text-gray-500"><span className="inline-block">お寄せいただいたご意見は、</span><wbr /><span className="inline-block">政策を検討する際の参考にします。</span></p>
                         </div>
                     </div>
                 </motion.div>

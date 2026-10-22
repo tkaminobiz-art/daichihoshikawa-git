@@ -130,7 +130,7 @@ const visionSlides = [
       description: "文化、景観、県産品を、滞在時間と地域消費の増加につなげます。事業者と連携し、県内で収益が循環する観光を進めます。",
       bullets: ["酒蔵を生かした観光企画", "県産品と飲食を扱う拠点づくり", "夜間・宿泊型観光の充実"],
       image: "/images/activity_02.png",
-      imageAlt: "油長酒造を視察する星川大地"
+      imageAlt: "徳利からおちょこに注ぐ様子"
    },
    {
       category: "防災",
@@ -139,7 +139,7 @@ const visionSlides = [
       description: "道路が寸断された場合でも、情報収集と物資輸送を続けられる体制を整えます。五條の防災拠点とドローン活用を具体化します。",
       bullets: ["五條の防災拠点整備", "ドローンによる情報収集", "孤立地域への物資輸送"],
       image: "/images/activity_04.jpg",
-      imageAlt: "防災拠点予定地を視察する星川大地"
+      imageAlt: "懐中電灯やマスクなどの防災用品"
    }
 ];
 
@@ -262,7 +262,7 @@ export default function Page() {
             <div className="site-noise absolute inset-0 opacity-20 pointer-events-none"></div>
             <div className="absolute top-10 left-8 xl:top-12 xl:left-10 z-20 flex items-start gap-4 xl:gap-6 font-serif font-black text-[#0A1A3A]">
                <span className="writing-vertical whitespace-nowrap text-5xl xl:text-6xl tracking-widest leading-none">星川 大地</span>
-               <span className="writing-vertical whitespace-nowrap text-2xl xl:text-3xl tracking-[0.18em] leading-none">奈良県議会議員</span>
+               <span className="desktop-office-label writing-vertical whitespace-nowrap text-2xl xl:text-3xl tracking-[0.18em] leading-none">奈良県議会議員</span>
             </div>
             <div className="relative w-full h-[85%] z-10 mt-auto">
                <img src="/images/left-column.png" alt="星川大地 奈良県議会議員 (山辺郡・奈良市選出)" className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-full object-contain object-bottom drop-shadow-2xl" />
@@ -414,7 +414,7 @@ export default function Page() {
                         { title: <><span className="jp-keep">子育て・防犯支援の</span><wbr /><span className="jp-keep">利用を広げる</span></>, items: ["見守りカメラ設置への助成", "ベビーシッター利用への支援", "児童相談所と警察の情報連携"] },
                         { title: <><span className="jp-keep">地域の移動手段を</span><wbr /><span className="jp-keep">確保する</span></>, items: ["公共ライドシェアの導入", <>踏切課題に関する県・市・<span className="jp-keep">鉄道事業者の協議</span></>, "道路環境の改善"] },
                         { title: <><span className="jp-keep">宿泊・周遊につながる</span><wbr /><span className="jp-keep">観光を進める</span></>, items: ["県産品と飲食を扱う拠点づくり", "酒蔵を生かした観光企画", "夜間・宿泊型観光の充実"] },
-                        { title: <><span className="jp-keep">介護・保育・教育・警察の</span><wbr /><span className="jp-keep">人材を確保する</span></>, items: ["介護・保育職員の処遇改善", "教職員・警察官の採用広報", "業務の見直しによる離職防止"] },
+                        { title: <><span className="jp-keep">介護・保育・教育・</span><wbr /><span className="jp-keep">警察の</span><wbr /><span className="jp-keep">人材を確保する</span></>, items: ["介護・保育職員の処遇改善", "教職員・警察官の採用広報", "業務の見直しによる離職防止"] },
                         { title: <><span className="jp-keep">災害時に機能する</span><wbr /><span className="jp-keep">防災体制を整える</span></>, items: ["ドローンの災害活用", "五條の防災拠点整備", "避難所環境の改善"] }
                      ].map((policy, i) => (
                         <Reveal key={i}>

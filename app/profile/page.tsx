@@ -57,7 +57,7 @@ const profileJsonLd = {
 const profileFacts = [
     { label: "生年月日", value: "1993年12月16日" },
     { label: "学歴", value: "関西大学 商学部 卒業" },
-    { label: "警察勤務歴", value: "大阪府警察、千葉県警察、大阪府警察" },
+    { label: "警察勤務歴", value: "大阪府警察、千葉県警察、大阪府警察", parts: ["大阪府警察、", "千葉県警察、", "大阪府警察"] },
     { label: "選挙区", value: "奈良市・山辺郡" },
     { label: "当選回数", value: "1回" },
     { label: "所属会派", value: "日本維新の会" },
@@ -112,7 +112,7 @@ export default function ProfilePage() {
                             {profileFacts.map((fact) => (
                                 <div key={fact.label} className="grid gap-2 py-5 sm:grid-cols-[150px_1fr] sm:gap-6">
                                     <dt className="text-sm font-bold text-gray-500">{fact.label}</dt>
-                                    <dd className="jp-copy font-medium leading-7 text-[#0A1A3A]">{fact.value}</dd>
+                                    <dd className="jp-copy font-medium leading-7 text-[#0A1A3A]">{fact.parts ? fact.parts.map((part, index) => <span key={index} className="inline-block">{part}</span>) : fact.value}</dd>
                                 </div>
                             ))}
                         </dl>
@@ -120,7 +120,7 @@ export default function ProfilePage() {
 
                     <section className="mt-12 border-t-4 border-[#008c4b] bg-white p-6 shadow-sm md:p-8" aria-labelledby="official-source-heading">
                         <h2 id="official-source-heading" className="jp-heading font-serif text-2xl font-bold"><span className="inline-block">奈良県議会の</span><wbr /><span className="inline-block">公式情報</span></h2>
-                        <p className="jp-copy mt-4 text-sm leading-7 text-gray-700">所属会派、所属委員会、当選回数は、奈良県議会の議員紹介に掲載されている令和8年7月2日現在の情報を確認しています。</p>
+                        <p className="jp-copy mt-4 text-sm leading-7 text-gray-700">所属会派、所属委員会、当選回数は、奈良県議会の議員紹介に掲載されている<span className="jp-keep">令和8年7月2日現在</span>の情報を確認しています。</p>
                         <a
                             href="https://www.pref.nara.lg.jp/n161/63671.html"
                             target="_blank"
@@ -137,7 +137,7 @@ export default function ProfilePage() {
                             トップページへ
                             <ArrowRight size={16} aria-hidden="true" />
                         </Link>
-                        <Link href="/support" className="inline-flex items-center justify-center gap-2 border border-[#008c4b] bg-white px-5 py-4 text-sm font-bold text-[#006e3b] transition-colors hover:bg-[#008c4b] hover:text-white">
+                        <Link href="/support" className="inline-flex items-center justify-center gap-2 border border-[#008c4b] bg-white px-5 py-4 text-sm font-bold text-[#006e3b] transition-colors hover:bg-[#006e3b] hover:text-white">
                             制度ナビを見る
                             <ArrowRight size={16} aria-hidden="true" />
                         </Link>

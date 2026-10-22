@@ -95,3 +95,9 @@ body {
     display: inline-block;
     white-space: nowrap;
 }
+
+@media (min-width: 1280px) and (max-height: 760px) {
+    .desktop-office-label {
+        font-size: 1.5rem;
+    }
+}

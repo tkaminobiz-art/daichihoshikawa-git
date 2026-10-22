@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { Fragment } from "react";
 import { ExternalLink } from "lucide-react";
 import type { SupportItem } from "@/data/supportData";
 
@@ -39,7 +40,10 @@ export default function SupportCard({ item, index }: { item: SupportItem; index:
                 >
                     <h3 className="jp-heading text-lg font-bold text-[#0A1A3A] leading-snug group-hover:underline decoration-2 underline-offset-4 decoration-[#008c4b]/30">
                         {(titlePhrases[item.title] || [item.title]).map((phrase, part) => (
-                            <span key={part} className="inline-block max-w-full">{phrase}</span>
+                            <Fragment key={part}>
+                                {part > 0 && phrase.startsWith(" ") && " "}
+                                <span className="inline-block max-w-full">{phrase.trimStart()}</span>
+                            </Fragment>
                         ))}
                     </h3>
                     <ExternalLink size={16} className="text-gray-400 shrink-0 mt-1" />
