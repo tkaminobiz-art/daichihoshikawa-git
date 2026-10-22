@@ -160,7 +160,7 @@ export const supportData: SupportCategory[] = [
             },
             {
                 title: "県立学校・高校入試情報",
-                url: "https://www.pref.nara.lg.jp/n002/70181.html",
+                url: "https://www.pref.nara.lg.jp/n167/66542.html",
                 description: "奈良県立高校の入試日程、募集要項、出願手続きなどを確認できます。",
                 tags: ["student", "parent"],
             },
@@ -197,7 +197,7 @@ export const supportData: SupportCategory[] = [
             },
             {
                 title: "奥大和移住定住交流センター engawa",
-                url: "https://okuyamato-engawa.jp/",
+                url: "https://www.pref.nara.lg.jp/site/okuyamato/consultation/engawa.html",
                 description: "奈良県南部・東部地域への移住、仕事、住まいに関する相談を受け付けています。",
                 tags: ["business", "parent", "senior"],
             },

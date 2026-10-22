@@ -2,6 +2,7 @@
 
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState, useSyncExternalStore } from "react";
+import { useModalFocus } from "@/lib/use-modal-focus";
 import {
   ANALYTICS_CONSENT_STORAGE_KEY,
   activateAnalytics,
@@ -24,6 +25,8 @@ export default function AnalyticsConsent() {
   const [saveError, setSaveError] = useState<string | null>(null);
   const [loadError, setLoadError] = useState<string | null>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
+  const settingsRef = useRef<HTMLElement>(null);
+  useModalFocus(settingsOpen, settingsRef, () => setSettingsOpen(false));
 
   useEffect(() => {
     if (choice !== "granted") deactivateAnalytics();
@@ -53,16 +56,6 @@ export default function AnalyticsConsent() {
     };
   }, [choice, mounted, pathname]);
 
-  useEffect(() => {
-    if (!settingsOpen) return;
-    closeButtonRef.current?.focus();
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setSettingsOpen(false);
-    };
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [settingsOpen]);
-
   const choose = (nextChoice: AnalyticsConsentChoice) => {
     setSaveError(null);
     setLoadError(null);
@@ -85,7 +78,7 @@ export default function AnalyticsConsent() {
     <>
       {choice === null && (
         <section
-          className="fixed inset-x-3 bottom-20 z-[10050] border border-white/15 bg-[#071733]/[0.98] p-5 text-white shadow-[0_24px_70px_rgba(0,0,0,0.45)] sm:inset-x-auto sm:left-1/2 sm:w-[min(32rem,calc(100vw-2rem))] sm:-translate-x-1/2 sm:p-6 lg:bottom-6"
+          className="fixed inset-x-3 bottom-20 z-[10050] max-h-[calc(100dvh-6rem)] overflow-y-auto overscroll-contain border border-white/15 bg-[#071733]/[0.98] p-5 text-white shadow-[0_24px_70px_rgba(0,0,0,0.45)] sm:inset-x-auto sm:left-1/2 sm:w-[min(32rem,calc(100vw-2rem))] sm:-translate-x-1/2 sm:p-6 lg:bottom-6"
           role="dialog"
           aria-labelledby="analytics-consent-title"
           aria-describedby="analytics-consent-description"
@@ -128,8 +121,8 @@ export default function AnalyticsConsent() {
       {choice !== null && (
         <button
           type="button"
-          onClick={() => setSettingsOpen(true)}
-          className="fixed bottom-20 right-3 z-[10040] border border-[#0A1A3A]/15 bg-white px-4 py-2 text-xs font-bold text-[#0A1A3A] shadow-[0_8px_24px_rgba(10,26,58,0.18)] transition-colors hover:bg-gray-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0A1A3A] lg:bottom-5 lg:right-5"
+          onClick={(event) => { event.currentTarget.focus({ preventScroll: true }); setSettingsOpen(true); }}
+          className={`relative ml-auto mr-3 block w-fit border border-[#0A1A3A]/15 bg-white px-4 py-2 text-xs font-bold text-[#0A1A3A] shadow-[0_8px_24px_rgba(10,26,58,0.18)] transition-colors hover:bg-gray-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0A1A3A] ${pathname === "/" ? "mb-24 lg:mb-4 lg:mr-[calc(25%+1rem)]" : "mb-4"}`}
         >
           アクセス解析の設定
         </button>
@@ -140,7 +133,10 @@ export default function AnalyticsConsent() {
           if (event.target === event.currentTarget) setSettingsOpen(false);
         }}>
           <section
-            className="relative w-full max-w-md border-t-4 border-[#D71920] bg-white p-6 text-[#0A1A3A] shadow-2xl"
+            ref={settingsRef}
+            data-lenis-prevent
+            tabIndex={-1}
+            className="relative max-h-[calc(100dvh-2rem)] w-full max-w-md overflow-y-auto overscroll-contain border-t-4 border-[#D71920] bg-white p-6 text-[#0A1A3A] shadow-2xl"
             role="dialog"
             aria-modal="true"
             aria-labelledby="analytics-settings-title"
@@ -148,6 +144,7 @@ export default function AnalyticsConsent() {
           >
             <button
               ref={closeButtonRef}
+              data-dialog-close
               type="button"
               onClick={() => setSettingsOpen(false)}
               className="absolute right-3 top-3 grid h-10 w-10 place-items-center text-2xl leading-none text-[#0A1A3A] hover:bg-gray-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0A1A3A]"

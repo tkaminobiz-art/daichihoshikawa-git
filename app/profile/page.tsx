@@ -67,7 +67,7 @@ const profileFacts = [
 
 export default function ProfilePage() {
     return (
-        <main className="min-h-screen bg-[#f5f5f2] pt-16 text-[#0A1A3A] lg:pt-0">
+        <main className="min-h-screen bg-[#f5f5f2] pt-[77px] text-[#0A1A3A] lg:pt-0">
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(profileJsonLd) }}
@@ -119,7 +119,7 @@ export default function ProfilePage() {
                     </section>
 
                     <section className="mt-12 border-t-4 border-[#008c4b] bg-white p-6 shadow-sm md:p-8" aria-labelledby="official-source-heading">
-                        <h2 id="official-source-heading" className="jp-heading font-serif text-2xl font-bold">奈良県議会の公式情報</h2>
+                        <h2 id="official-source-heading" className="jp-heading font-serif text-2xl font-bold"><span className="inline-block">奈良県議会の</span><wbr /><span className="inline-block">公式情報</span></h2>
                         <p className="jp-copy mt-4 text-sm leading-7 text-gray-700">所属会派、所属委員会、当選回数は、奈良県議会の議員紹介に掲載されている令和8年7月2日現在の情報を確認しています。</p>
                         <a
                             href="https://www.pref.nara.lg.jp/n161/63671.html"

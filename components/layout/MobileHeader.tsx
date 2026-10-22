@@ -1,6 +1,7 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
+import { useModalFocus } from '@/lib/use-modal-focus'
 import { Menu, X } from 'lucide-react'
 import { usePathname } from 'next/navigation'
 import Link from 'next/link'
@@ -10,9 +11,11 @@ export default function MobileHeader() {
     const [isOpen, setIsOpen] = useState(false)
     const pathname = usePathname()
     const isHome = pathname === '/'
+    const headerRef = useRef<HTMLElement>(null)
+    useModalFocus(isOpen, headerRef, () => setIsOpen(false))
 
     return (
-        <header className="lg:hidden fixed top-0 left-0 w-full bg-white/90 backdrop-blur-md z-50 border-b border-gray-200">
+        <header ref={headerRef} role={isOpen ? 'dialog' : undefined} aria-modal={isOpen || undefined} aria-label={isOpen ? 'メニュー' : undefined} tabIndex={-1} className="lg:hidden fixed top-0 left-0 w-full bg-white/90 backdrop-blur-md z-50 border-b border-gray-200">
             <div className="flex items-center justify-between px-6 py-4">
                 {/* Logo / Name */}
                 <Link href="/" className="flex flex-col">
@@ -22,10 +25,12 @@ export default function MobileHeader() {
 
                 {/* Hamburger Button */}
                 <button
-                    onClick={() => setIsOpen(!isOpen)}
+                    onClick={(event) => { event.currentTarget.focus({ preventScroll: true }); setIsOpen(!isOpen) }}
                     className="p-2 text-gray-700 hover:bg-gray-100 rounded-full transition-colors"
                     aria-label={isOpen ? 'メニューを閉じる' : 'メニューを開く'}
                     aria-expanded={isOpen}
+                    aria-controls="mobile-navigation"
+                    data-dialog-close
                 >
                     {isOpen ? <X size={24} /> : <Menu size={24} />}
                 </button>
@@ -33,7 +38,7 @@ export default function MobileHeader() {
 
             {/* Mobile Menu Overlay */}
             {isOpen && (
-                <div className="absolute top-full left-0 w-full bg-white border-b border-gray-200 shadow-xl py-6 px-6 flex flex-col gap-6">
+                <div id="mobile-navigation" data-lenis-prevent className="absolute top-full left-0 max-h-[calc(100dvh-77px)] w-full overflow-y-auto overscroll-contain bg-white border-b border-gray-200 shadow-xl py-6 px-6 flex flex-col gap-6">
                     <nav className="flex flex-col gap-4">
                         {[
                             { en: 'VISION', ja: '重点方針', href: '#vision' },
@@ -53,7 +58,7 @@ export default function MobileHeader() {
                                     key={item.en}
                                     href={href}
                                     onClick={() => setIsOpen(false)}
-                                    className={`text-lg font-bold tracking-wider border-b border-gray-100 pb-2 active:text-red-600 flex items-baseline justify-between ${item.en === 'SUPPORT' ? 'text-[#008c4b]' : 'text-gray-800'}`}
+                                    className={`text-lg font-bold tracking-wider border-b border-gray-100 pb-2 active:text-red-600 flex items-baseline justify-between ${item.en === 'SUPPORT' ? 'text-[#006e3b]' : 'text-gray-800'}`}
                                 >
                                     <span>{item.en}</span>
                                     <span className="text-xs text-gray-400 font-normal">{item.ja}</span>

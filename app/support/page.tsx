@@ -43,7 +43,7 @@ export default function SupportPage() {
     }, [searchQuery, activeFilter]);
 
     return (
-        <main className="min-h-screen bg-white font-sans text-[#333] pt-16 lg:pt-0">
+        <main className="min-h-screen bg-white font-sans text-[#333] pt-[77px] lg:pt-0">
             <MobileHeader />
             {/* NEW HERO */}
             <SupportHero />
@@ -58,7 +58,7 @@ export default function SupportPage() {
                         {/* 1. Guidance */}
                         <section className="bg-[#f8f9fa] p-8 rounded-lg border-l-4 border-[#0A1A3A]">
                             <h2 className="jp-heading text-2xl font-serif font-bold text-[#0A1A3A] mb-4">
-                                利用前にご確認ください
+                                <span className="inline-block">利用前に</span><wbr /><span className="inline-block">ご確認ください</span>
                             </h2>
                             <div className="space-y-4 text-gray-700 leading-relaxed text-sm md:text-base text-left">
                                 <p className="jp-copy">
@@ -80,6 +80,7 @@ export default function SupportPage() {
                                     <input
                                         type="text"
                                         placeholder="キーワード検索（例：パスポート、補助金）"
+                                        aria-label="キーワード検索（例：パスポート、補助金）"
                                         value={searchQuery}
                                         onChange={(e) => setSearchQuery(e.target.value)}
                                         className="w-full pl-10 pr-4 py-3 bg-gray-50 border border-gray-200 rounded text-sm focus:ring-2 focus:ring-[#008c4b] outline-none transition-all"
@@ -92,6 +93,7 @@ export default function SupportPage() {
                                     <button
                                         key={filter.id}
                                         onClick={() => setActiveFilter(activeFilter === filter.id ? null : filter.id)}
+                                        aria-pressed={activeFilter === filter.id}
                                         className={`px-3 py-1.5 rounded text-xs font-bold transition-all flex items-center gap-1 border ${activeFilter === filter.id
                                             ? 'bg-[#008c4b] text-white border-[#008c4b]'
                                             : 'bg-white text-gray-600 border-gray-200 hover:bg-gray-50'

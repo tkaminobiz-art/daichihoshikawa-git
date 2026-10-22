@@ -5,6 +5,7 @@ import { ArrowLeft, ArrowRight, ExternalLink, X, Instagram, Facebook, Menu, Quot
 
 import { TextReveal } from "@/components/anim/TextReveal";
 import { Magnetic } from "@/components/anim/Magnetic";
+import { useModalFocus } from "@/lib/use-modal-focus";
 
 // ▼ 1. アニメーション用コンポーネント
 const Reveal = ({ children, delay = 0, width = "100%" }: { children: React.ReactNode; delay?: number, width?: string }) => {
@@ -29,7 +30,7 @@ const Reveal = ({ children, delay = 0, width = "100%" }: { children: React.React
       <div
          ref={ref}
          style={{ transitionDelay: `${delay}ms`, width }}
-         className={`transition-all duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)] transform ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
+         className={`transition-all duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)] transform motion-reduce:transform-none ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
             }`}
       >
          {children}
@@ -50,6 +51,7 @@ const activities = [
    {
       id: 1,
       title: "ウズベキスタン共和国大使館を訪問",
+      titleParts: ["ウズベキスタン共和国", "大使館を訪問"],
       category: "国際交流",
       description: "ウズベキスタン共和国大使館を訪問し、奈良県とサマルカンド州の交流について意見を交わしました。伝統工芸や農産物の販路拡大を含め、経済・文化交流の可能性を検討します。",
       date: "2024.10.15"
@@ -57,6 +59,7 @@ const activities = [
    {
       id: 2,
       title: "油長酒造を視察",
+      titleParts: ["油長酒造を視察"],
       category: "地域産業",
       description: "油長酒造を訪れ、酒米「奈良露（ならつゆ）」と酒蔵観光について説明を受けました。県内での滞在時間と消費を増やす観光施策を検討します。",
       date: "2024.11.02"
@@ -64,6 +67,7 @@ const activities = [
    {
       id: 3,
       title: "自立援助ホーム「あらんの家」を訪問",
+      titleParts: ["自立援助ホーム", "「あらんの家」を訪問"],
       category: "若者支援",
       description: "自立援助ホーム・ミモザ「あらんの家」を訪問し、自立を目指して生活する若者や支援者と話しました。退所後も相談と生活支援が途切れない制度を検討します。",
       date: "2024.12.10"
@@ -71,6 +75,7 @@ const activities = [
    {
       id: 4,
       title: "明野駐屯地と五條防災拠点予定地を視察",
+      titleParts: ["明野駐屯地と", "五條防災拠点", "予定地を視察"],
       category: "防災",
       description: "陸上自衛隊明野駐屯地で多用途ヘリUH-2に搭乗し、五條市の大規模防災拠点予定地も視察しました。災害時の着陸場所、情報収集、物資輸送の手順を確認しました。",
       date: "2025.01.08"
@@ -78,10 +83,10 @@ const activities = [
 ];
 
 const roadmap = [
-   { year: "2025.04", title: "奈良県とJUIDAが災害時協定を締結", subtitle: "完了", description: "災害時の被害調査、情報収集、物資輸送にドローンを活用する協定です。実際に運用できる体制を確認します。", source: "https://www.pref.nara.jp/item/320355.htm" },
-   { year: "2026", title: "若い世代に届く県政広報", subtitle: "提案中", description: "県広報担当VTuber「奈々鹿」を含む発信について、閲覧数や反応を検証し、県政情報の届け方を改善します。", source: "https://www.pref.nara.jp/secure/333180/shizisyo.pdf" },
-   { year: "2028.04", title: "奈良県文化会館の供用開始予定", subtitle: "県の事業予定", description: "再整備の進捗と運営計画を確認し、県民が利用しやすい文化施設を目指します。", source: "https://www.pref.nara.jp/secure/329792/%E5%A5%88%E8%89%AF%E7%9C%8C%E6%96%87%E5%8C%96%E4%BC%9A%E9%A4%A8_%E5%AE%9F%E6%96%BD%E6%96%B9%E9%87%9D%E4%BF%AE%E6%AD%A3%E7%89%88%20%2020251128.pdf" },
-   { year: "2031", title: "国スポ・全スポの奈良県開催", subtitle: "県の開催予定", description: "競技環境と受け入れ体制の整備を確認し、開催後も地域に残るスポーツ環境をつくります。", source: "https://www.pref.nara.jp/secure/323247/chirashi.pdf" }
+   { year: "2025.04", title: "奈良県とJUIDAが災害時協定を締結", subtitle: "完了", description: "災害時の被害調査、情報収集、物資輸送にドローンを活用する協定です。実際に運用できる体制を確認します。", source: "https://www.pref.nara.lg.jp/documents/11721/r7-j-kyoutei.pdf" },
+   { year: "2026", title: "若い世代に届く県政広報", subtitle: "提案中", description: "県広報担当VTuber「奈々鹿」を含む発信について、閲覧数や反応を検証し、県政情報の届け方を改善します。", source: "https://www.pref.nara.lg.jp/n002/63865.html" },
+   { year: "2028.04", title: "奈良県文化会館の供用開始予定", subtitle: "県の事業予定", description: "再整備の進捗と運営計画を確認し、県民が利用しやすい文化施設を目指します。", source: "https://www.pref.nara.lg.jp/documents/18527/20251222101935_1.pdf" },
+   { year: "2031", title: "国スポ・全スポの奈良県開催", subtitle: "県の開催予定", description: "競技環境と受け入れ体制の整備を確認し、開催後も地域に残るスポーツ環境をつくります。", source: "https://www.pref.nara.lg.jp/n041/61499.html" }
 ];
 
 const proposals = [
@@ -90,21 +95,21 @@ const proposals = [
       title: "公共ライドシェアの導入",
       status: "県議会で質問・提案",
       description: "路線バスの維持が難しい地域を対象に、自治体やNPOが担う公共ライドシェアの導入を求めています。",
-      source: "https://www.pref.nara.jp/secure/314922/R060925_shitsumonyoshi_tei.pdf"
+      source: "https://www.pref.nara.lg.jp/documents/13380/r060925_shitsumonyoshi_tei.pdf"
    },
    {
       category: "県政広報",
       title: "若い世代に届く情報発信",
       status: "県議会で質問・提案",
       description: "県広報担当VTuber「奈々鹿」などを活用し、若い世代が県政情報に触れる機会を増やすよう求めています。",
-      source: "https://www.pref.nara.jp/secure/314922/R060925_shitsumonyoshi_tei.pdf"
+      source: "https://www.pref.nara.lg.jp/documents/13380/r060925_shitsumonyoshi_tei.pdf"
    },
    {
       category: "防災",
       title: "災害時のドローン活用",
       status: "県の協定を確認",
       description: "奈良県は2025年4月、JUIDAと災害時の調査・情報収集・物資運搬に関する協定を締結しました。運用体制を継続して確認します。",
-      source: "https://www.pref.nara.jp/item/320355.htm"
+      source: "https://www.pref.nara.lg.jp/documents/11721/r7-j-kyoutei.pdf"
    }
 ];
 
@@ -147,33 +152,22 @@ export default function Page() {
    const loadingComplete = true;
    const visionTrackRef = useRef<HTMLDivElement>(null);
    const modalCloseRef = useRef<HTMLButtonElement>(null);
+   const activityDialogRef = useRef<HTMLDivElement>(null);
+   const menuDialogRef = useRef<HTMLDivElement>(null);
+   useModalFocus(!!selectedActivity, activityDialogRef, () => setSelectedActivity(null));
+   useModalFocus(isMobileMenuOpen, menuDialogRef, () => setIsMobileMenuOpen(false));
 
-   useEffect(() => {
-      if (!selectedActivity) return;
-
-      const previousOverflow = document.body.style.overflow;
-      const handleKeyDown = (event: KeyboardEvent) => {
-         if (event.key === "Escape") setSelectedActivity(null);
-      };
-
-      document.body.style.overflow = "hidden";
-      modalCloseRef.current?.focus();
-      window.addEventListener("keydown", handleKeyDown);
-
-      return () => {
-         document.body.style.overflow = previousOverflow;
-         window.removeEventListener("keydown", handleKeyDown);
-      };
-   }, [selectedActivity]);
-
-   const toggleMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
+   const toggleMenu = (event?: React.MouseEvent<HTMLElement>) => {
+      if (!isMobileMenuOpen) event?.currentTarget.focus({ preventScroll: true });
+      setIsMobileMenuOpen(!isMobileMenuOpen);
+   };
    const goToVision = useCallback((index: number) => {
       const nextIndex = (index + visionSlides.length) % visionSlides.length;
       const track = visionTrackRef.current;
       const slide = track?.children[nextIndex] as HTMLElement | undefined;
 
       if (track && slide) {
-         track.scrollTo({ left: slide.offsetLeft, behavior: "smooth" });
+         track.scrollTo({ left: slide.offsetLeft, behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
          setActiveVision(nextIndex);
       }
    }, []);
@@ -204,16 +198,17 @@ export default function Page() {
 
    return (
       <div className="flex min-h-screen text-[#0A1A3A] bg-gray-100 selection:bg-[#FF1A1A] selection:text-white font-sans overflow-x-hidden">
-         <div className="contents" inert={selectedActivity ? true : undefined} aria-hidden={selectedActivity ? true : undefined}>
+         <div className="contents">
 
          {/* 全体テクスチャ（和紙） - 復活 */}
          <div className="site-noise fixed inset-0 pointer-events-none z-50 opacity-[0.03] mix-blend-multiply"></div>
 
          {/* MOBILE HEADER */}
+         <div ref={menuDialogRef} role={isMobileMenuOpen ? "dialog" : undefined} aria-modal={isMobileMenuOpen || undefined} aria-label={isMobileMenuOpen ? "メニュー" : undefined} tabIndex={-1} className="contents">
          <header className={`lg:hidden fixed top-0 left-0 right-0 h-16 bg-[#0A1A3A] z-[60] flex items-center justify-between px-6 shadow-md text-white transition-transform duration-700 ${loadingComplete ? 'translate-y-0' : '-translate-y-full'}`}>
             <div className="font-serif font-bold text-lg tracking-widest">星川大地</div>
             <Magnetic>
-               <button onClick={toggleMenu} className="p-2" aria-label={isMobileMenuOpen ? "メニューを閉じる" : "メニューを開く"} aria-expanded={isMobileMenuOpen}>
+               <button onClick={toggleMenu} className="p-2" data-dialog-close aria-controls="home-mobile-navigation" aria-label={isMobileMenuOpen ? "メニューを閉じる" : "メニューを開く"} aria-expanded={isMobileMenuOpen}>
                   {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
                </button>
             </Magnetic>
@@ -221,20 +216,20 @@ export default function Page() {
 
          {/* MOBILE MENU OVERLAY */}
          {isMobileMenuOpen && (
-            <div className="fixed inset-0 bg-[#0A1A3A] z-[55] pt-20 px-8 flex flex-col gap-8 text-white lg:hidden overflow-y-auto">
+            <div id="home-mobile-navigation" className="fixed inset-0 bg-[#0A1A3A] z-[55] pt-20 px-8 flex flex-col gap-8 text-white lg:hidden overflow-y-auto overscroll-contain" data-lenis-prevent>
                <nav className="flex flex-col gap-6">
                   {navLinks.map((item) => (
                      <a
                         key={item.en}
                         href={item.href}
                         onClick={toggleMenu}
-                        className={`text-2xl font-serif font-bold tracking-widest border-b border-white/20 pb-4 flex justify-between items-end ${item.en === 'SUPPORT' ? 'text-[#008c4b]' : ''}`}
+                        className={`text-2xl font-serif font-bold tracking-widest border-b border-white/20 pb-4 flex justify-between items-end ${item.en === 'SUPPORT' ? 'text-[#71c59c]' : ''}`}
                      >
                         <span className="flex items-baseline gap-3">
                            {item.en}
-                           <span className={`text-xs font-sans font-normal tracking-normal opacity-70 ${item.en === 'SUPPORT' ? 'text-[#008c4b]' : 'text-gray-300'}`}>{item.ja}</span>
+                           <span className={`text-xs font-sans font-normal tracking-normal opacity-70 ${item.en === 'SUPPORT' ? 'text-[#71c59c]' : 'text-gray-300'}`}>{item.ja}</span>
                         </span>
-                        <ArrowRight size={20} className={item.en === 'SUPPORT' ? 'text-[#008c4b]' : 'text-[#FF1A1A]'} />
+                        <ArrowRight size={20} className={item.en === 'SUPPORT' ? 'text-[#71c59c]' : 'text-[#FF1A1A]'} />
                      </a>
                   ))}
                </nav>
@@ -247,6 +242,7 @@ export default function Page() {
                </div>
             </div>
          )}
+         </div>
 
          {/* MOBILE STICKY ACTION BAR */}
          <div className={`lg:hidden fixed bottom-0 left-0 right-0 z-[9990] flex flex-col shadow-[0_-4px_20px_rgba(0,0,0,0.2)] transition-transform duration-1000 delay-1000 ${loadingComplete ? 'translate-y-0' : 'translate-y-full'}`}>
@@ -317,7 +313,7 @@ export default function Page() {
                   <Reveal>
                      <div className="flex items-center gap-4 mb-16 relative z-10">
                         <span className="h-[2px] w-12 bg-[#FF1A1A]"></span>
-                        <TextReveal className="text-sm font-bold tracking-widest text-[#FF1A1A]">VISION</TextReveal>
+                        <TextReveal className="text-sm font-bold tracking-widest text-[#B5151B]">VISION</TextReveal>
                      </div>
                      <h4 className="jp-heading text-3xl md:text-4xl font-serif font-bold mb-20 text-[#0A1A3A] leading-relaxed relative z-10">
                         3つの重点方針
@@ -352,12 +348,12 @@ export default function Page() {
                               aria-label={`${index + 1} / ${visionSlides.length} ${slide.title}${slide.accent}`}
                            >
                               <div className="grid h-full min-h-[620px] grid-rows-[240px_1fr] md:min-h-[560px] md:grid-cols-[64%_36%] md:grid-rows-1 2xl:min-h-[500px]">
-                                 <div className="relative order-2 flex flex-col p-7 sm:p-9 md:order-1 md:p-7 2xl:p-12">
+                                 <div className="relative order-2 flex min-w-0 flex-col p-7 sm:p-9 md:order-1 md:p-7 2xl:p-12">
                                     <span data-number={`0${index + 1}`} className="absolute right-6 top-2 text-7xl font-black text-[#0A1A3A]/5 before:content-[attr(data-number)] md:right-8 md:top-5 md:text-8xl" aria-hidden="true" />
                                     <p className="mb-5 text-xs font-bold tracking-[0.18em] text-gray-500">{slide.category}</p>
                                     <h5 className="jp-heading max-w-xl text-[1.375rem] font-bold leading-[1.45] tracking-[0.01em] text-[#0A1A3A] sm:text-[1.75rem] md:text-[1.75rem] lg:text-[1.375rem] xl:text-[1.5rem] 2xl:text-[2.25rem]">
-                                       <span className="block"><span className="jp-keep">{slide.title}</span></span>
-                                       <span className="block text-[#FF1A1A]"><span className="jp-keep">{slide.accent}</span></span>
+                                       <span className="block">{index === 0 ? <><span className="inline-block">{slide.title.slice(0, 7)}</span><wbr /><span className="inline-block">{slide.title.slice(7)}</span></> : slide.title}</span>
+                                       <span className="block text-[#FF1A1A]">{slide.accent}</span>
                                     </h5>
                                     <p className="jp-copy mt-6 max-w-xl text-sm font-medium leading-8 text-gray-700 xl:text-base">
                                        {slide.description}
@@ -372,7 +368,7 @@ export default function Page() {
                                     </ul>
                                  </div>
                                  <div className="relative order-1 overflow-hidden bg-[#0A1A3A] md:order-2">
-                                    <img src={slide.image} alt={slide.imageAlt} className="absolute inset-0 h-full w-full object-cover" />
+                                    <img src={slide.image} alt={slide.imageAlt} className={`absolute inset-0 h-full w-full object-cover ${index === 0 ? "object-top" : "object-center"}`} />
                                     <div className="absolute inset-0 bg-gradient-to-t from-[#0A1A3A]/35 to-transparent md:bg-gradient-to-r md:from-[#0A1A3A]/15 md:to-transparent" aria-hidden="true" />
                                  </div>
                               </div>
@@ -381,9 +377,9 @@ export default function Page() {
                         <span className="w-[12%] shrink-0 md:hidden" aria-hidden="true" />
                      </div>
 
-                     <div className="mt-6 flex items-center justify-between gap-4">
-                        <p className="text-xs font-medium text-gray-500">横にスワイプできます</p>
-                        <div className="flex items-center gap-3">
+                     <div className="mt-6 flex flex-wrap items-center justify-between gap-4">
+                        <p className="shrink-0 text-xs font-medium text-gray-500">横にスワイプできます</p>
+                        <div className="flex shrink-0 items-center gap-3">
                            <button type="button" onClick={() => goToVision(activeVision - 1)} className="grid h-11 w-11 place-items-center border border-gray-300 bg-white text-[#0A1A3A] transition-colors hover:border-[#FF1A1A] hover:text-[#FF1A1A] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF1A1A]" aria-label="前の方針を表示">
                               <ArrowLeft size={20} />
                            </button>
@@ -407,9 +403,9 @@ export default function Page() {
                   <Reveal>
                      <div className="flex items-center gap-4 mb-16">
                         <span className="h-[2px] w-12 bg-[#FF1A1A]"></span>
-                        <TextReveal className="text-sm font-bold tracking-widest text-[#FF1A1A]">POLICY</TextReveal>
+                        <TextReveal className="text-sm font-bold tracking-widest text-[#B5151B]">POLICY</TextReveal>
                      </div>
-                     <h4 className="jp-heading text-[1.75rem] md:text-4xl font-serif font-bold mb-16 text-[#0A1A3A]"><span className="block">現場の声をもとにした、</span><span className="block">5つの重点政策</span></h4>
+                     <h4 className="jp-heading text-[1.75rem] md:text-4xl font-serif font-bold mb-16 text-[#0A1A3A]"><span className="block"><span className="inline-block">現場の声を</span><wbr /><span className="inline-block">もとにした、</span></span><span className="block">5つの重点政策</span></h4>
                   </Reveal>
                   <div className="space-y-20">
                      {[
@@ -440,7 +436,7 @@ export default function Page() {
                   <Reveal>
                      <div className="flex items-center gap-4 mb-16 relative z-10">
                         <span className="h-[2px] w-12 bg-[#FF1A1A]"></span>
-                        <TextReveal className="text-sm font-bold tracking-widest text-[#FF1A1A]">PROPOSALS</TextReveal>
+                        <TextReveal className="text-sm font-bold tracking-widest text-[#B5151B]">PROPOSALS</TextReveal>
                      </div>
                      <h4 className="jp-heading text-3xl md:text-4xl font-serif font-bold mb-6 text-[#0A1A3A] relative z-10">
                         <span className="block">議会で取り上げた、</span><span className="block">3つの課題</span>
@@ -457,12 +453,12 @@ export default function Page() {
                                  <p className="text-xs font-bold tracking-[0.18em]">{proposal.category}</p>
                               </div>
                               <div className="flex flex-col justify-center border-b border-gray-200 px-6 py-7 2xl:border-b-0 2xl:border-r 2xl:px-8">
-                                 <p className="mb-3 text-xs font-bold text-[#FF1A1A]">{proposal.status}</p>
+                                 <p className="mb-3 text-xs font-bold text-[#B5151B]">{proposal.status}</p>
                                  <h5 className="jp-heading text-xl font-bold leading-8 text-[#0A1A3A] md:text-2xl">{proposal.title}</h5>
                               </div>
                               <div className="flex flex-col justify-center px-6 py-7 2xl:px-8">
                                  <p className="jp-copy text-sm font-medium leading-8 text-gray-700 md:text-base">{proposal.description}</p>
-                                 <a href={proposal.source} target="_blank" rel="noopener noreferrer" className="mt-5 inline-flex w-fit items-center gap-2 text-xs font-bold text-[#0A1A3A] underline decoration-gray-300 underline-offset-4 transition-colors hover:text-[#FF1A1A] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF1A1A]">
+                                 <a href={proposal.source} target="_blank" rel="noopener noreferrer" className="mt-5 inline-flex w-fit items-center gap-2 text-xs font-bold text-[#0A1A3A] underline decoration-gray-300 underline-offset-4 transition-colors hover:text-[#B5151B] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF1A1A]">
                                     公式資料を確認する <ExternalLink size={14} />
                                  </a>
                               </div>
@@ -477,14 +473,14 @@ export default function Page() {
                   <Reveal>
                      <div className="flex items-center gap-4 mb-16">
                         <span className="h-[2px] w-12 bg-[#FF1A1A]"></span>
-                        <h3 className="text-sm font-bold tracking-widest text-[#FF1A1A]">ROADMAP</h3>
+                        <h3 className="text-sm font-bold tracking-widest text-[#B5151B]">ROADMAP</h3>
                      </div>
                      <div className="mb-14">
                         <h4 className="jp-heading text-3xl font-serif font-bold text-[#0A1A3A] md:text-4xl">県政の予定と確認事項</h4>
                         <p className="jp-copy mt-4 max-w-2xl text-sm leading-7 text-gray-600 md:text-base">完了した県の事業、現在の提案、今後の予定を区別して掲載しています。</p>
                      </div>
                   </Reveal>
-                  <div className="relative max-w-4xl mx-auto pl-8 2xl:pl-0">
+                  <div className="relative max-w-4xl mx-auto">
                      <div className="absolute left-0 2xl:left-1/2 top-0 bottom-0 w-[2px] bg-gray-200 -translate-x-1/2"></div>
                      <div className="space-y-24">
                         {roadmap.map((item, index) => (
@@ -496,9 +492,9 @@ export default function Page() {
                                     <span className="text-4xl md:text-5xl font-black text-gray-300 block mb-2">{item.year}</span>
                                     <div className="relative z-10">
                                        <h4 className="jp-heading text-xl md:text-2xl font-bold text-[#0A1A3A] mb-2">{item.title}</h4>
-                                       <p className="text-[#FF1A1A] font-bold text-sm mb-3">{item.subtitle}</p>
+                                       <p className="text-[#B5151B] font-bold text-sm mb-3">{item.subtitle}</p>
                                        <p className="jp-copy text-gray-600 text-sm leading-relaxed">{item.description}</p>
-                                       <a href={item.source} target="_blank" rel="noopener noreferrer" className="mt-4 inline-flex items-center gap-2 text-xs font-bold text-[#0A1A3A] underline decoration-gray-300 underline-offset-4 hover:text-[#FF1A1A]">
+                                       <a href={item.source} target="_blank" rel="noopener noreferrer" className="mt-4 inline-flex items-center gap-2 text-xs font-bold text-[#0A1A3A] underline decoration-gray-300 underline-offset-4 hover:text-[#B5151B]">
                                           県公式資料 <ExternalLink size={13} />
                                        </a>
                                     </div>
@@ -529,7 +525,7 @@ export default function Page() {
                      {activities.map((act, i) => (
                         <Reveal key={act.id} delay={i * 100}>
                            <button
-                              onClick={() => setSelectedActivity(act)}
+                              onClick={(event) => { event.currentTarget.focus({ preventScroll: true }); setSelectedActivity(act); }}
                               className="group relative flex min-h-[220px] w-full flex-col overflow-hidden border border-gray-200 bg-white p-7 text-left shadow-[0_10px_30px_rgba(10,26,58,0.07)] transition-all hover:-translate-y-1 hover:border-[#FF1A1A] hover:shadow-[0_16px_40px_rgba(10,26,58,0.12)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF1A1A]"
                            >
                               <span data-number={`0${i + 1}`} className="absolute right-5 top-2 text-6xl font-black text-[#0A1A3A]/5 before:content-[attr(data-number)]" aria-hidden="true" />
@@ -537,8 +533,8 @@ export default function Page() {
                                  <span className="text-[#B5151B]">{act.category}</span>
                                  <time className="text-gray-600">{act.date}</time>
                               </div>
-                              <h5 className="jp-heading relative z-10 mt-8 text-xl font-bold leading-8 text-[#0A1A3A] md:text-2xl">{act.title}</h5>
-                              <span className="relative z-10 mt-auto inline-flex items-center gap-2 pt-6 text-sm font-bold text-gray-500 transition-colors group-hover:text-[#FF1A1A]">活動内容を読む <ArrowRight size={16} /></span>
+                              <h5 className="jp-heading relative z-10 mt-8 text-xl font-bold leading-8 text-[#0A1A3A] md:text-2xl">{act.titleParts.map(part => <span key={part} className="inline-block max-w-full">{part}</span>)}</h5>
+                              <span className="relative z-10 mt-auto inline-flex items-center gap-2 pt-6 text-sm font-bold text-gray-500 transition-colors group-hover:text-[#B5151B]">活動内容を読む <ArrowRight size={16} /></span>
                            </button>
                         </Reveal>
                      ))}
@@ -553,7 +549,7 @@ export default function Page() {
                         <Quote className="absolute top-8 left-8 text-white/10 w-32 h-32 rotate-180" />
                         <div className="relative z-10 max-w-3xl mx-auto text-center space-y-8">
                            <h3 className="jp-heading text-2xl md:text-3xl 2xl:text-4xl font-serif font-bold leading-relaxed tracking-wider">
-                              <span className="block">警察官としての経験を、</span><span className="block">県政に生かす</span>
+                              <span className="block"><span className="inline-block">警察官としての</span><wbr /><span className="inline-block">経験を、</span></span><span className="block">県政に生かす</span>
                            </h3>
                            <div className="w-16 h-[2px] bg-[#FF1A1A] mx-auto"></div>
                            <p className="jp-copy text-base md:text-lg leading-loose font-medium text-gray-300 text-left 2xl:text-center">
@@ -567,7 +563,7 @@ export default function Page() {
                   <Reveal>
                      <div className="flex items-center gap-4 mb-12 relative z-10">
                         <span className="h-[2px] w-12 bg-[#FF1A1A]"></span>
-                        <h3 className="text-sm font-bold tracking-widest text-[#FF1A1A]">PROFILE</h3>
+                        <h3 className="text-sm font-bold tracking-widest text-[#B5151B]">PROFILE</h3>
                      </div>
                      <div className="flex flex-col 2xl:flex-row gap-12 relative z-10">
                         <div className="w-full 2xl:w-1/2 bg-gray-100 relative aspect-[3/4]">
@@ -578,9 +574,9 @@ export default function Page() {
                               <h4 className="jp-heading text-4xl font-serif font-bold text-[#0A1A3A] mb-2">星川 だいち</h4>
                               <p className="jp-copy text-gray-500">1993年12月16日生まれ（32歳）</p>
                            </div>
-                           <p className="jp-copy text-xl font-bold text-[#FF1A1A] border-b border-gray-200 pb-4">奈良県議会議員（奈良市・山辺郡 選出）</p>
+                           <p className="jp-copy text-xl font-bold text-[#FF1A1A] border-b border-gray-200 pb-4"><span className="inline-block">奈良県議会議員</span><wbr /><span className="inline-block">（奈良市・山辺郡 選出）</span></p>
                            <dl className="space-y-4 text-gray-700">
-                              <div className="grid grid-cols-[80px_1fr]"><dt className="font-bold">経歴</dt><dd className="jp-copy">関西大学 商学部 卒<br />大阪府警 → 千葉県警 → 大阪府警</dd></div>
+                              <div className="grid grid-cols-[80px_1fr]"><dt className="font-bold">経歴</dt><dd className="jp-copy">関西大学 商学部 卒<br /><span className="inline-block">大阪府警</span> → <span className="inline-block">千葉県警</span> → <span className="inline-block">大阪府警</span></dd></div>
                               <div className="grid grid-cols-[80px_1fr]"><dt className="font-bold">所属</dt><dd className="jp-copy">経済労働委員会・議会運営委員会</dd></div>
                               <div className="grid grid-cols-[80px_1fr]"><dt className="font-bold">武道</dt><dd className="jp-copy">空手 公認3段（世界大会優勝）</dd></div>
                            </dl>
@@ -604,7 +600,7 @@ export default function Page() {
                   <a
                      key={item.en}
                      href={item.href}
-                     className={`group flex items-center text-base xl:text-lg font-bold tracking-[0.2em] transition-all ${item.en === 'SUPPORT' ? 'text-[#008c4b] hover:text-white' : 'hover:text-[#FF1A1A]'}`}
+                     className={`group flex items-center text-base xl:text-lg font-bold tracking-[0.2em] transition-all ${item.en === 'SUPPORT' ? 'text-[#71c59c] hover:text-white' : 'hover:text-[#FF1A1A]'}`}
                   >
                      <span className={`w-0 h-[2px] mr-2 group-hover:w-6 group-hover:mr-4 transition-all duration-300 ${item.en === 'SUPPORT' ? 'bg-[#008c4b]' : 'bg-[#FF1A1A]'}`}></span>
                      <span className="flex flex-col leading-none">
@@ -645,15 +641,15 @@ export default function Page() {
 
          {/* POPUP MODAL */}
          {selectedActivity && (
-            <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby={`activity-title-${selectedActivity.id}`}>
+            <div ref={activityDialogRef} data-lenis-prevent tabIndex={-1} className="fixed inset-0 z-[9999] flex items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby={`activity-title-${selectedActivity.id}`}>
                <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={() => setSelectedActivity(null)} aria-hidden="true"></div>
                <div className="relative bg-white w-full max-w-2xl max-h-[90vh] overflow-y-auto shadow-2xl animate-in fade-in zoom-in duration-300 border-t-4 border-[#FF1A1A]">
-                  <button ref={modalCloseRef} onClick={() => setSelectedActivity(null)} className="absolute top-4 right-4 z-10 p-2 bg-gray-100 rounded-full hover:bg-gray-200 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF1A1A]" aria-label="活動内容を閉じる">
+                  <button ref={modalCloseRef} data-dialog-close onClick={() => setSelectedActivity(null)} className="absolute top-4 right-4 z-10 p-2 bg-gray-100 rounded-full hover:bg-gray-200 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF1A1A]" aria-label="活動内容を閉じる">
                      <X className="w-6 h-6 text-[#0A1A3A]" />
                   </button>
                   <div className="p-8 md:p-12">
                      <span className="text-[#B5151B] font-bold tracking-widest text-sm block mb-2">{selectedActivity.date} | {selectedActivity.category}</span>
-                     <h3 id={`activity-title-${selectedActivity.id}`} className="jp-heading text-2xl md:text-3xl font-serif font-bold text-[#0A1A3A] mb-6 pr-10">{selectedActivity.title}</h3>
+                     <h3 id={`activity-title-${selectedActivity.id}`} className="jp-heading text-xl md:text-3xl font-serif font-bold text-[#0A1A3A] mb-6">{selectedActivity.titleParts.map(part => <span key={part} className="inline-block max-w-full">{part}</span>)}</h3>
                      <p className="jp-copy text-gray-700 leading-loose text-lg font-medium whitespace-pre-wrap">{selectedActivity.description}</p>
                   </div>
                </div>

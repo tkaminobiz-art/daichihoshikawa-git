@@ -76,6 +76,21 @@ body {
     text-wrap: pretty;
 }
 
+/* An inactive consent banner must not cover another active modal. */
+[inert][aria-labelledby="analytics-consent-title"],
+[inert] [aria-labelledby="analytics-consent-title"] {
+    visibility: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
 .jp-keep {
     display: inline-block;
     white-space: nowrap;

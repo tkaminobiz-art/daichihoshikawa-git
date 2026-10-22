@@ -2,9 +2,11 @@
 
 import { ReactNode, useEffect } from 'react'
 import Lenis from 'lenis'
+import { MotionConfig } from 'framer-motion'
 
 export default function SmoothScroll({ children }: { children: ReactNode }) {
     useEffect(() => {
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
         const lenis = new Lenis({
             duration: 1.2,
             easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
@@ -15,21 +17,23 @@ export default function SmoothScroll({ children }: { children: ReactNode }) {
             touchMultiplier: 2,
         })
 
+        let frame: number
         function raf(time: number) {
             lenis.raf(time)
-            requestAnimationFrame(raf)
+            frame = requestAnimationFrame(raf)
         }
 
-        requestAnimationFrame(raf)
+        frame = requestAnimationFrame(raf)
 
         return () => {
+            cancelAnimationFrame(frame)
             lenis.destroy()
         }
     }, [])
 
     return (
-        <div className="lenis-wrapper">
+        <MotionConfig reducedMotion="user"><div className="lenis-wrapper">
             {children}
-        </div>
+        </div></MotionConfig>
     )
 }

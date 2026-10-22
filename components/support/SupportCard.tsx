@@ -4,6 +4,19 @@ import { motion } from "framer-motion";
 import { ExternalLink } from "lucide-react";
 import type { SupportItem } from "@/data/supportData";
 
+const titlePhrases: Record<string, string[]> = {
+    "児童相談所虐待対応ダイヤル 189": ["児童相談所", "虐待対応ダイヤル 189"],
+    "小児慢性特定疾病医療費助成制度": ["小児慢性特定疾病", "医療費助成制度"],
+    "奈良県救急安心センター #7119": ["奈良県救急安心センター", " #7119"],
+    "こども救急電話相談 #8000": ["こども救急", "電話相談", " #8000"],
+    "ひとり親家庭の就業・資格取得支援": ["ひとり親家庭の", "就業・資格取得支援"],
+    "住宅の耐震診断・耐震改修支援": ["住宅の耐震診断・", "耐震改修支援"],
+    "奈良の木を使用した住宅への助成": ["奈良の木を使用した", "住宅への助成"],
+    "奈良県の産業振興・企業支援": ["奈良県の", "産業振興・企業支援"],
+    "ミドルシニア世代の就職支援": ["ミドルシニア世代の", "就職支援"],
+    "奥大和移住定住交流センター engawa": ["奥大和", "移住定住交流センター", " engawa"],
+};
+
 export default function SupportCard({ item, index }: { item: SupportItem; index: number }) {
     return (
         <motion.div
@@ -25,7 +38,9 @@ export default function SupportCard({ item, index }: { item: SupportItem; index:
                     className="flex items-start justify-between gap-2 group-hover:text-[#008c4b] transition-colors"
                 >
                     <h3 className="jp-heading text-lg font-bold text-[#0A1A3A] leading-snug group-hover:underline decoration-2 underline-offset-4 decoration-[#008c4b]/30">
-                        {item.title}
+                        {(titlePhrases[item.title] || [item.title]).map((phrase, part) => (
+                            <span key={part} className="inline-block max-w-full">{phrase}</span>
+                        ))}
                     </h3>
                     <ExternalLink size={16} className="text-gray-400 shrink-0 mt-1" />
                 </a>
